@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'karet';
+import * as U from 'karet.util';
 
-function App() {
+import Canvas from './components/Canvas';
+
+/**
+ *
+ * @param {Props} props
+ */
+function App({ state }) {
+  const { size, scale } = U.thru(state, U.view('canvas'), U.destructure);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Canvas {...{ size, scale }} />
+    </main>
   );
 }
 
 export default App;
+
+//
+
+/**
+ * @typedef {object} Props
+ * @prop {object} state
+ */
