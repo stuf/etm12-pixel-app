@@ -1,9 +1,10 @@
 .root {
-  border: dashed 2px #f00;
-
-  display: flex;
+  display: grid;
+  grid-template-columns: 2rem auto;
+  grid-gap: 1rem;
+  padding: 2rem;
 }
 
 .left {
-  width: 40px;
+  // width: 40px;
 }
