@@ -1,7 +1,5 @@
 $font-family-base: 'Work Sans', sans-serif;
-
 $font-weight-base: 400;
-
 $font-size-base: 16px;
 
 html,
@@ -11,4 +9,8 @@ input {
   font-family: $font-family-base;
   font-weight: $font-weight-base;
   font-size: $font-size-base;
+}
+
+.relative-pos {
+  position: relative;
 }

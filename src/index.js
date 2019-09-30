@@ -12,7 +12,7 @@ import * as serviceWorker from './serviceWorker';
 const state = U.atom({
   canvas: {
     size: [32, 32],
-    scale: 8,
+    scale: 16,
   },
   color: {
     palettes: [
