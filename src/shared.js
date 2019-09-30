@@ -78,7 +78,7 @@ export const getContext = U.lift(el => el.getContext('2d'));
 
 export const rangeScaled = (start, end, step) =>
   U.combine([start, end, step], (a, b, s) =>
-    Array(b + 1 - a)
+    Array(b - a)
       .fill(0)
       .map((_, i) => i * s + a),
   );
