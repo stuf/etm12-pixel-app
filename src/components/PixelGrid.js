@@ -7,36 +7,38 @@ import * as H from '../shared';
 import style from './PixelGrid.module.scss';
 
 function PixelGrid({ size, scale }) {
-  const width = U.view(0, size);
-
   const scaledSize = H.scaleSize(size, scale);
 
   const xRange = H.rangeScaled(0, U.view(0, size), scale);
   const yRange = H.rangeScaled(0, U.view(1, size), scale);
 
   return (
-    <svg
-      width={U.view(0, scaledSize)}
-      height={U.view(1, scaledSize)}
-      className={style.root}
-    >
-      <g>
-        {U.mapElems(
-          (it, i) => (
-            <line key={`y-${i}`} x1={0} x2={'100%'} y1={it} y2={it} />
-          ),
-          yRange,
-        )}
-      </g>
-      <g>
-        {U.mapElems(
-          (it, i) => (
-            <line key={`x-${i}`} x1={it} x2={it} y1={0} y2={'100%'} />
-          ),
-          xRange,
-        )}
-      </g>
-    </svg>
+    <div className={style.root}>
+      <svg
+        width={U.view(0, scaledSize)}
+        height={U.view(1, scaledSize)}
+        className={style.svg}
+      >
+        <g className="y-range">
+          {U.thru(
+            yRange,
+            U.mapValue(R.map(R.flip(R.subtract)(0.5))),
+            U.mapElems((it, i) => (
+              <line key={`y-${i}`} x1={0} x2={'100%'} y1={it} y2={it} />
+            )),
+          )}
+        </g>
+        <g className="x-range">
+          {U.thru(
+            xRange,
+            U.mapValue(R.map(R.flip(R.subtract)(0.5))),
+            U.mapElems((it, i) => (
+              <line key={`x-${i}`} x1={it} x2={it} y1={0} y2={'100%'} />
+            )),
+          )}
+        </g>
+      </svg>
+    </div>
   );
 }
 
