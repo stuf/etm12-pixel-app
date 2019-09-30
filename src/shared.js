@@ -58,9 +58,9 @@ export const pagePos = U.mapValue(R.props(Pos.PAGE));
 // COLORS
 
 /**
- *
+ * Convert a hexadecimal color into an `[r, g, b, a]` tuple.
  * @param {string} x
- * @return {[numbber, number, number, number]}
+ * @return {RGBA}
  */
 export const fromHex = x => {
   const n = parseInt(x, 16);
@@ -74,7 +74,24 @@ export const fromHex = x => {
  */
 export const getContext = U.lift(el => el.getContext('2d'));
 
+// ARRAYS
+
+export const rangeScaled = (start, end, step) =>
+  U.combine([start, end, step], (a, b, s) =>
+    Array(b + 1 - a)
+      .fill(0)
+      .map((_, i) => i * s + a),
+  );
+
 //
+
+/**
+ * @typedef {[number, number, number]} RGB
+ */
+
+/**
+ * @typedef {[number, number, number, number]} RGBA
+ */
 
 /**
  * @template T
