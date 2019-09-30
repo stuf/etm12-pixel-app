@@ -4,6 +4,7 @@ import * as R from 'ramda';
 
 import Canvas from './components/Canvas';
 import Palette from './components/Palette';
+import PixelGrid from './components/PixelGrid';
 
 import styles from './App.module.scss';
 
@@ -16,10 +17,11 @@ function App({ state }) {
 
   return (
     <main className={styles.root}>
-      <div>
+      <div className={styles.left}>
         <Palette items={U.view(['color', 'palettes', 0, 'items'], state)} />
       </div>
-      <div>
+      <div className="relative-pos">
+        <PixelGrid {...{ size, scale }} />
         <Canvas {...{ size, scale }} />
       </div>
     </main>
