@@ -5,7 +5,9 @@ $font-weight-base: 400;
 $font-size-base: 16px;
 
 html,
-body {
+body,
+button,
+input {
   font-family: $font-family-base;
   font-weight: $font-weight-base;
   font-size: $font-size-base;

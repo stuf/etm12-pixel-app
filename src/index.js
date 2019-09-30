@@ -2,7 +2,6 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import { render } from 'react-dom';
 
-import * as H from './shared';
 import 'normalize.css';
 import './index.scss';
 
@@ -14,6 +13,14 @@ const state = U.atom({
   canvas: {
     size: [32, 32],
     scale: 8,
+  },
+  color: {
+    palettes: [
+      {
+        name: 'bgb',
+        items: ['#081820', '#346856', '#88c070', '#e0f8d0'],
+      },
+    ],
   },
 });
 

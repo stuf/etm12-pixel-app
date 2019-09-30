@@ -1,3 +1,3 @@
-declare module 'infestines' {
-  export function foo<T>(v: T): void;
-}
+declare module 'infestines' {}
+
+declare module 'karet.util' {}
