@@ -2,8 +2,6 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'ramda';
 
-import Button from './Button';
-
 import style from './Palette.module.scss';
 
 function Palette({ items }) {
@@ -15,7 +13,11 @@ function Palette({ items }) {
           U.mapValue(
             R.map(it => (
               <li key={it}>
-                <Button>{it}</Button>
+                <button
+                  style={{
+                    backgroundColor: it,
+                  }}
+                ></button>
               </li>
             )),
           ),
