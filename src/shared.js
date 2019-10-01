@@ -76,6 +76,9 @@ export const getContext = U.lift(el => el.getContext('2d'));
 
 // ARRAYS
 
+export const fstOf = U.view(0);
+export const sndOf = U.view(1);
+
 export const rangeScaled = (start, end, step) =>
   U.combine([start, end, step], (a, b, s) =>
     Array(b - a)
