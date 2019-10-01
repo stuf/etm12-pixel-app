@@ -1,4 +1,9 @@
 .root {
+  position: relative;
+  // border: solid 2px #f00;
+}
+
+.canvas {
   // border: dashed 1px #f00;
   -ms-interpolation-mode: nearest-neighbor;
   image-rendering: pixelated;
