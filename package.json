@@ -12,7 +12,8 @@
     "ramda": "^0.26.1",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "react-scripts": "3.1.2"
+    "react-scripts": "3.1.2",
+    "yiq": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
