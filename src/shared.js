@@ -3,6 +3,7 @@ import * as U from 'karet.util';
 import * as R from 'ramda';
 import * as I from 'infestines';
 import * as K from 'kefir';
+import yiq from 'yiq';
 
 // eslint-disable-next-line
 const setName = process.env.NODE_ENV === 'production' ? a => a : I.defineNameU;
@@ -85,6 +86,10 @@ export const rangeScaled = (start, end, step) =>
       .fill(0)
       .map((_, i) => i * s + a),
   );
+
+const yiq_ = (opts = {}) => c => yiq(c, opts);
+
+export const yiqFor = c => U.thru(c, U.mapValue(yiq_()));
 
 //
 
