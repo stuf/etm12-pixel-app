@@ -3,7 +3,6 @@ import * as U from 'karet.util';
 
 import Canvas from './components/Canvas';
 import Palette from './components/Palette';
-import PixelGrid from './components/PixelGrid';
 
 import styles from './App.module.scss';
 
@@ -12,20 +11,22 @@ import styles from './App.module.scss';
  * @param {Props} props
  */
 function App({ state }) {
-  const { size, scale } = U.thru(state, U.view('canvas'), U.destructure);
-  const { currentColor } = U.thru(state, U.view('color'), U.destructure);
+  const { canvas, color } = U.destructure(state);
+  const { size, scale } = U.destructure(canvas);
+  const { currentColor, currentPalette } = U.destructure(color);
 
   return (
     <main className={styles.root}>
       <div className={styles.left}>
         <Palette
-          {...{ currentColor }}
-          items={U.view(['color', 'palettes', 0, 'items'], state)}
+          {...{
+            currentColor,
+            items: U.view(['palettes', currentPalette, 'items'], color),
+          }}
         />
       </div>
       <div className="relative-pos">
-        <PixelGrid {...{ size, scale }} />
-        <Canvas {...{ size, scale }} />
+        <Canvas {...{ size, scale, color }} />
       </div>
     </main>
   );
@@ -37,5 +38,5 @@ export default App;
 
 /**
  * @typedef {object} Props
- * @prop {object} state
+ * @prop {typeof state} state
  */
