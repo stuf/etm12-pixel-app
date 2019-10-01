@@ -2,6 +2,8 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'ramda';
 
+import * as H from '../shared';
+
 import style from './Palette.module.scss';
 
 function Palette({ items, currentColor }) {
@@ -15,9 +17,11 @@ function Palette({ items, currentColor }) {
             return (
               <li key={`color-${i}`} className={U.when(isActive, style.active)}>
                 <button
-                  style={{ backgroundColor: it }}
+                  style={{ backgroundColor: it, color: H.yiqFor(it) }}
                   onClick={U.doSet(currentColor, i)}
-                />
+                >
+                  {it}
+                </button>
               </li>
             );
           }),
