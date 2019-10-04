@@ -1,0 +1,19 @@
+.root {
+  border: solid 2px #f00;
+  height: 100%;
+}
+
+.itemList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.item {
+  border: dashed 1px #f00;
+  margin-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
