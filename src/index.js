@@ -1,4 +1,7 @@
 import * as React from 'karet';
+import * as U from 'karet.util';
+import * as R from 'kefir.ramda';
+import * as L from 'kefir.partial.lenses';
 import { render } from 'react-dom';
 
 import 'normalize.css';
@@ -6,10 +9,15 @@ import './index.scss';
 
 import App from './App';
 import state from './core/state';
+import canvasData from './core/canvas-data';
 
 import * as serviceWorker from './serviceWorker';
 
-render(<App {...{ state }} />, document.getElementById('root'));
+if (process.env.NODE_ENV !== 'production') {
+  Object.assign(window, { U, R, L });
+}
+
+render(<App {...{ state, canvasData }} />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

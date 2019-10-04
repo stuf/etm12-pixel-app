@@ -91,6 +91,20 @@ const yiq_ = (opts = {}) => c => yiq(c, opts);
 
 export const yiqFor = c => U.thru(c, U.mapValue(yiq_()));
 
+// DEBUG
+
+export const logObsType = name => obs => {
+  if (process.env.NODE_ENV === 'production') {
+    return;
+  }
+
+  console.group(name);
+  console.log('instanceof Stream =>', obs instanceof K.Stream);
+  console.log('instanceof Property =>', obs instanceof K.Property);
+  console.log('instanceof Observable =>', obs instanceof K.Observable);
+  console.groupEnd();
+};
+
 //
 
 /**

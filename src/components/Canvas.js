@@ -1,12 +1,14 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K]"}] */
 import * as React from 'karet';
+import * as L from 'partial.lenses';
 import * as U from 'karet.util';
 import * as R from 'ramda';
-import * as L from 'partial.lenses';
 import * as K from 'kefir';
 
-import * as H from '../shared';
+import * as M from '../meta';
 import * as E from '../core/mouse';
+import * as H from '../shared';
+
 import PixelGrid from './_/PixelGrid';
 
 import styles from './Canvas.module.scss';
@@ -29,6 +31,10 @@ const drawEff = ([[dx, dy], ctx, color]) => {
 function Canvas({ size, scale, color }) {
   const scaleInverse = scale.map(R.divide(1));
 
+  const actions = U.serializer(null);
+
+  actions.log();
+
   const dom = U.variable();
   const ctx = H.getContext(dom);
   const scaledSize = H.scaleSize(size, scale);
@@ -45,25 +51,18 @@ function Canvas({ size, scale, color }) {
     height: H.sndOf(scaledSize),
   };
 
-  const currentColor = U.view(
-    L.choose(x => [
-      'palettes',
-      x.currentPalette,
-      'items',
-      x.currentColor,
-      L.dropPrefix('#'),
-    ]),
-    color,
-  ).log();
+  const currentColor = M.selectedColorIn(color);
 
   //
 
   const draw = U.thru(
     K.combine([scaledXY, ctx], [currentColor], H.takeAll),
+    U.toProperty,
+    R.tap(H.logObsType('draw')),
     U.consume(drawEff),
   );
 
-  const effSink = U.sink(U.parallel([draw]));
+  const effSink = U.sink(U.parallel([draw, actions]));
 
   //
 

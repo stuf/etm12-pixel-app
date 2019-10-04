@@ -18,6 +18,8 @@ import { COLOR_CHANNELS } from '../constants';
  */
 const state = U.atom();
 
+export default state;
+
 //
 
 /**

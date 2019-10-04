@@ -7,10 +7,9 @@ import Palette from './components/Palette';
 import styles from './App.module.scss';
 
 /**
- *
  * @param {Props} props
  */
-function App({ state }) {
+function App({ state, canvasData }) {
   const { canvas, color } = U.destructure(state);
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette } = U.destructure(color);
@@ -26,7 +25,7 @@ function App({ state }) {
         />
       </div>
       <div className="relative-pos">
-        <Canvas {...{ size, scale, color }} />
+        <Canvas {...{ size, scale, color, canvasData }} />
       </div>
     </main>
   );
@@ -39,4 +38,5 @@ export default App;
 /**
  * @typedef {object} Props
  * @prop {typeof state} state
+ * @prop {typeof canvasData} canvasData
  */
