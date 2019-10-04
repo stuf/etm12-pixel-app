@@ -25,6 +25,7 @@ const initialState = {
       },
     ],
   },
+  menu: [{ label: 'Save' }, { label: 'Load' }],
 };
 
 /**
