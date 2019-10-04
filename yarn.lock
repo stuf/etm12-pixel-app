@@ -3107,6 +3107,14 @@ d@1, d@^1.0.1:
     es5-ext "^0.10.50"
     type "^1.0.1"
 
+daggy@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/daggy/-/daggy-1.4.0.tgz#178b4722866e1c8fac7b91d4bbf171d3767c1573"
+  integrity sha512-6g8sOIPMzriYtyoCfpM2bUobu2yj0UPdaPy+Yzdqow8RqJy/Dv2PrqiNOzCvbxUuT6B1eSbr2EmFPlLNfKFDzQ==
+  dependencies:
+    sanctuary-type-classes "3.0.0"
+    sanctuary-type-identifiers "1.0.0"
+
 damerau-levenshtein@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/damerau-levenshtein/-/damerau-levenshtein-1.0.5.tgz#780cf7144eb2e8dbd1c3bb83ae31100ccc31a414"
@@ -5991,7 +5999,7 @@ jsx-ast-utils@^2.1.0, jsx-ast-utils@^2.2.1:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
 
-karet.lift@^2.1.0:
+"karet.lift@>=1.0.0 <3.0.0", karet.lift@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/karet.lift/-/karet.lift-2.1.0.tgz#8d2cb23fc8fb76658d6d4c0905eae77dddc5e5ac"
   integrity sha512-f3WMShAv5My4fnJJebnJEsqtG5L5wUqTLAEHlncphf9Cdy7XhdY4poQWm15pQOWxILF6LQLC4opB6Cbg9D6RWg==
@@ -6025,6 +6033,30 @@ kefir.atom@^5.5.1:
   dependencies:
     infestines "^0.4.10"
     partial.lenses ">=2.2.0"
+
+kefir.partial.lenses.history@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/kefir.partial.lenses.history/-/kefir.partial.lenses.history-1.2.0.tgz#76491e9f53211525b568198a12381ffb0c9332be"
+  integrity sha512-03U/LuS12b0jy7S8T0SLDW8Cogs89/3BAlewzIOREPTjltI3rgmnehjYFza7j7KRYqJ+3Jln5XWtjpYRUiF8iw==
+  dependencies:
+    karet.lift ">=1.0.0 <3.0.0"
+    partial.lenses.history "^1.2.0"
+
+kefir.partial.lenses@^14.17.0:
+  version "14.17.0"
+  resolved "https://registry.yarnpkg.com/kefir.partial.lenses/-/kefir.partial.lenses-14.17.0.tgz#56e4fa6f0408b8045c235e04946f8ea8b433f2b1"
+  integrity sha512-wvHpIY4gnAcwd/rHpon65l4oIim/JIdjGWzLmO4KQEH9t5wHfCU5+imUI6lFrtmZVFR2XK8iJrU4wzEH8cU06Q==
+  dependencies:
+    karet.lift "^2.1.0"
+    partial.lenses "^14.17.0"
+
+kefir.ramda@^0.26.0:
+  version "0.26.0"
+  resolved "https://registry.yarnpkg.com/kefir.ramda/-/kefir.ramda-0.26.0.tgz#43496a2410e70bdf6844a4068b061e6a8bf8cb6a"
+  integrity sha512-J3gSk1HL3K9Za38rXgeHMl0RvBkXm0iBHlMzTP7Zy4Pbu2cZw/T9WiA7gd7fUSnFG9+X19oRtqWdDdhGc9crUA==
+  dependencies:
+    karet.lift "^2.1.0"
+    ramda "^0.26.0"
 
 kefir@^3.8.6:
   version "3.8.6"
@@ -7304,6 +7336,23 @@ parseurl@~1.3.2, parseurl@~1.3.3:
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
   integrity sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==
 
+partial.lenses.history@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/partial.lenses.history/-/partial.lenses.history-1.2.0.tgz#10b04433b62097466a010b0dd699a8748cc08103"
+  integrity sha512-T8QCHShFcs5zDveYTpJs7bt+K4gZys26ifX6j1DWdhzVVaFm3OttLHLP7rtljAxTHnwvptiX0uZHugVjDFKUQQ==
+  dependencies:
+    infestines "^0.4.10"
+    partial.lenses ">=2.2.0"
+    partial.lenses.validation ">=1.0.0 <3.0.0"
+
+"partial.lenses.validation@>=1.0.0 <3.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/partial.lenses.validation/-/partial.lenses.validation-2.0.0.tgz#9b518b58a9c2281f375d5e4a5b63464daa3213a2"
+  integrity sha512-NBZhmrunQWc4Ih5pJGYPHCEJfjIITPEkYn0Z6YB8qmW0iN4ZeqN0eZTWAPAH8MxjsEGx3G+8xnTMsEHbzy0k/A==
+  dependencies:
+    infestines "^0.4.10"
+    partial.lenses "^14.0.0"
+
 partial.lenses@>=2.2.0, partial.lenses@^14.0.0, partial.lenses@^14.17.0:
   version "14.17.0"
   resolved "https://registry.yarnpkg.com/partial.lenses/-/partial.lenses-14.17.0.tgz#5a57590668d5dfda6d2f7ac550068c1607e00eff"
@@ -8352,7 +8401,7 @@ raf@3.4.1:
   dependencies:
     performance-now "^2.1.0"
 
-ramda@^0.26.1:
+ramda@^0.26.0, ramda@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
   integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
@@ -9004,6 +9053,18 @@ safe-regex@^1.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
+
+sanctuary-type-classes@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-type-classes/-/sanctuary-type-classes-3.0.0.tgz#e4cf422abceb8c78b6f625d84d61fdb5c6d44116"
+  integrity sha1-5M9CKrzrjHi29iXYTWH9tcbUQRY=
+  dependencies:
+    sanctuary-type-identifiers "1.0.x"
+
+sanctuary-type-identifiers@1.0.0, sanctuary-type-identifiers@1.0.x:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/sanctuary-type-identifiers/-/sanctuary-type-identifiers-1.0.0.tgz#e8f359f006cb5e624cfb8464603fc114608bde9f"
+  integrity sha1-6PNZ8AbLXmJM+4RkYD/BFGCL3p8=
 
 sane@^4.0.3:
   version "4.1.0"
