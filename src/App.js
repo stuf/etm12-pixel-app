@@ -3,6 +3,7 @@ import * as U from 'karet.util';
 
 import Canvas from './components/Canvas';
 import Palette from './components/Palette';
+import Menu from './components/ui/Menu';
 
 import * as H from './shared';
 import * as M from './meta';
@@ -12,12 +13,15 @@ import styles from './App.module.scss';
  * @param {Props} props
  */
 function App({ state, canvasData }) {
-  const { canvas, color } = U.destructure(state);
+  const { canvas, color, menu } = U.destructure(state);
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette } = U.destructure(color);
 
   return (
     <main className={styles.root}>
+      <header className={styles.top}>
+        <Menu {...{ items: menu }} />
+      </header>
       <div className={styles.left}>
         <Palette
           {...{
