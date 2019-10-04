@@ -1,3 +1,7 @@
+/**
+ * @module mouse
+ * @namespace core
+ */
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "K"}] */
 import * as U from 'karet.util';
 import * as K from 'kefir';

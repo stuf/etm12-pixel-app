@@ -1,3 +1,7 @@
+/**
+ * @module state
+ * @namespace core
+ */
 import * as U from 'karet.util';
 // eslint-disable-next-line
 import * as K from 'kefir';
@@ -6,6 +10,10 @@ const initialState = {
   canvas: {
     size: [32, 32],
     scale: 16,
+  },
+  currentFile: {
+    name: 'Untitled',
+    createdAt: new Date(),
   },
   color: {
     currentColor: 0,
