@@ -4,6 +4,8 @@ import * as U from 'karet.util';
 import Canvas from './components/Canvas';
 import Palette from './components/Palette';
 
+import * as H from './shared';
+import * as M from './meta';
 import styles from './App.module.scss';
 
 /**
@@ -26,6 +28,56 @@ function App({ state, canvasData }) {
       </div>
       <div className="relative-pos">
         <Canvas {...{ size, scale, color, canvasData }} />
+      </div>
+      <div className={styles.right}>
+        <section>
+          <header>Canvas</header>
+
+          <div>
+            <div>
+              <label>
+                Width
+                <U.Input
+                  {...{
+                    type: 'range',
+                    min: 4,
+                    max: 64,
+                    value: U.view([0, M.wNumber], size),
+                  }}
+                />
+                {H.fstOf(size)}
+              </label>
+            </div>
+
+            <div>
+              <label>
+                Height
+                <U.Input
+                  {...{
+                    type: 'range',
+                    min: 4,
+                    max: 64,
+                    value: U.view([1, M.wNumber], size),
+                  }}
+                />
+                {H.sndOf(size)}
+              </label>
+            </div>
+
+            <div>
+              <label>
+                Scale
+                <U.Input
+                  type="range"
+                  min={4}
+                  max={40}
+                  value={U.view(M.wNumber, scale)}
+                />
+                {scale}
+              </label>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   );
