@@ -14,3 +14,7 @@ export const selectedColorIn = U.view(
     L.dropPrefix('#'),
   ]),
 );
+
+//
+
+export const wNumber = L.rewrite(n => parseInt(n, 10));
