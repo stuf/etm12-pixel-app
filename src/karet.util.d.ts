@@ -15,6 +15,9 @@ declare module 'karet.util' {
   function thru<T, R>(x: T, f0: Ary1Fn<T, R>): T;
   function thru<T0, T1, R>(x: T0, f0: Ary1Fn<T0, T1>, f1: Ary1Fn<T1, R>): R;
 
+  function mapValue<T0, R>(fn: Ary1Fn<T0, R>, x: T0): R;
+  function mapValue<T0, R>(fn: Ary1Fn<T0, R>): (x: T0) => R;
+
   function mapElems<T extends {}, R>(
     fn: (x: T, i: number) => R,
   ): (xs: T[]) => R[];
