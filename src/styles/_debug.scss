@@ -1,0 +1,22 @@
+@import 'variables';
+
+fieldset.debug {
+  font-size: 0.875rem;
+
+  legend {
+    padding: 0 0.5rem;
+  }
+
+  dl {
+    font-size: 0.75rem;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+
+    dt {
+    }
+
+    dd {
+      font-family: $font-family-monospace;
+    }
+  }
+}
