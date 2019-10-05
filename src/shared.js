@@ -1,9 +1,11 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K]"}] */
 import * as U from 'karet.util';
 import * as R from 'ramda';
+import * as L from 'kefir.partial.lenses';
 import * as I from 'infestines';
 import * as K from 'kefir';
 import yiq from 'yiq';
+import { COLOR_CHANNELS } from './constants';
 
 // eslint-disable-next-line
 const setName = process.env.NODE_ENV === 'production' ? a => a : I.defineNameU;
@@ -39,6 +41,49 @@ export const reciprocalU = setName(U.lift(reciprocal), 'reciprocalU');
  */
 export const scaleSize = U.lift(([w, h], m) => [w * m, h * m]);
 
+/**
+ * @param {number[]} xs
+ * @return {number}
+ */
+export const mean = xs => {
+  const sum = R.reduce(R.add, 0, xs);
+  return sum / xs.length;
+};
+
+/**
+ *
+ * @param {number[]} xs
+ * @return {number[]}
+ */
+export const difference = xs => {
+  const avg = mean(xs);
+  const diffs = R.map(x => x - avg, xs);
+  return diffs;
+};
+
+/**
+ *
+ * @param {number[]} xs
+ * @return {number[]}
+ */
+export const squaredDifference = xs => {
+  const avg = mean(xs);
+  return R.map(x => Math.pow(x - avg, 2), xs);
+};
+
+/**
+ * @param {number[]} xs
+ * @return {number}
+ */
+export const meanSquaredDifference = xs => mean(squaredDifference(xs));
+
+/**
+ *
+ * @param {number[]} xs
+ * @return {number}
+ */
+export const stdDev = xs => Math.sqrt(meanSquaredDifference(xs));
+
 // COORDINATES
 
 /**
@@ -55,6 +100,21 @@ export const screenPos = U.mapValue(R.props(Pos.SCREEN));
  * @type {PosTransform}
  */
 export const pagePos = U.mapValue(R.props(Pos.PAGE));
+
+/**
+ * @type {(pos: [number, number], w: number) => number}
+ */
+export const computeIx = U.lift(([x, y], w) => {
+  return (~~y * w + ~~x) * COLOR_CHANNELS;
+});
+
+/**
+ * @type {(pos: [number, number], w: number) => [number, number]}
+ */
+export const getIx = U.lift(([x, y], w) => {
+  const ix = computeIx([x, y], w);
+  return [ix, ix + COLOR_CHANNELS];
+});
 
 // COLORS
 
