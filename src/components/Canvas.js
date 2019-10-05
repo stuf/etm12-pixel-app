@@ -9,6 +9,8 @@ import * as M from '../meta';
 import * as E from '../core/mouse';
 import * as H from '../shared';
 
+import * as T from './Canvas.d';
+
 import PixelGrid from './_/PixelGrid';
 
 import styles from './Canvas.module.scss';
@@ -25,15 +27,10 @@ const drawEff = ([[dx, dy], ctx, color]) => {
 };
 
 /**
- *
- * @param {Props} props
+ * @param {T.Props} props
  */
-function Canvas({ size, scale, color }) {
+function Canvas({ size, scale, color, canvasData }) {
   const scaleInverse = scale.map(R.divide(1));
-
-  const actions = U.serializer(null);
-
-  actions.log();
 
   const dom = U.variable();
   const ctx = H.getContext(dom);
@@ -68,7 +65,7 @@ function Canvas({ size, scale, color }) {
     U.consume(drawEff),
   );
 
-  const effSink = U.sink(U.parallel([draw, actions]));
+  const effSink = U.sink(U.parallel([draw]));
 
   //
 
@@ -102,25 +99,3 @@ function Canvas({ size, scale, color }) {
 }
 
 export default Canvas;
-
-//
-
-/**
- * @typedef {object} Props
- * @prop {object} size
- * @prop {object} scale
- * @prop {IStateColor} color
- */
-
-/**
- * @typedef {object} IStateColor
- * @prop {number} currentColor
- * @prop {number} currentPalette
- * @prop {IPalette[]} palettes
- */
-
-/**
- * @typedef {object} IPalette
- * @prop {string} name
- * @prop {string[]} items
- */
