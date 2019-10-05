@@ -135,6 +135,13 @@ export const fromHex = x => {
  */
 export const getContext = U.lift(el => el.getContext('2d'));
 
+/**
+ * @type {Ary2Lift<[number, number], CanvasRenderingContext2D, ImageData>}
+ */
+export const getImageData = U.lift(([w, h], ctx) =>
+  ctx.getImageData(0, 0, w, h),
+);
+
 // ARRAYS
 
 export const fstOf = U.view(0);
