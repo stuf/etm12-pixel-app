@@ -43,8 +43,14 @@ function Canvas({ size, scale, color }) {
   const dragXY = H.layerPos(K.merge([ev.onDrag, ev.onButtonDown])).toProperty();
   const scaledXY = H.scaleSize(dragXY, scaleInverse).toProperty();
 
+  const movementXY = H.scaleSize(H.layerPos(ev.onMove), scaleInverse)
+    .map(R.map(Math.trunc))
+    .skipDuplicates(R.equals);
+
   const width = H.fstOf(size);
   const height = H.sndOf(size);
+
+  const ix = H.getIx(movementXY, width);
 
   const style = {
     width: H.fstOf(scaledSize),
@@ -80,6 +86,17 @@ function Canvas({ size, scale, color }) {
           ref: U.refTo(dom),
         }}
       />
+
+      <fieldset className="debug">
+        <legend>Debug</legend>
+
+        <dl>
+          <dt>
+            index range for mouse (<code>ix</code>)
+          </dt>
+          <dd>{U.stringify(ix)}</dd>
+        </dl>
+      </fieldset>
     </div>
   );
 }
