@@ -22,6 +22,7 @@ function App({ state, canvasData }) {
       <header className={styles.top}>
         <Menu {...{ items: menu }} />
       </header>
+
       <div className={styles.left}>
         <Palette
           {...{
@@ -30,9 +31,11 @@ function App({ state, canvasData }) {
           }}
         />
       </div>
+
       <div className="relative-pos">
         <Canvas {...{ size, scale, color, canvasData }} />
       </div>
+
       <div className={styles.right}>
         <section>
           <header>Canvas</header>
