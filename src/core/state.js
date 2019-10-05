@@ -5,7 +5,11 @@
 import * as U from 'karet.util';
 // eslint-disable-next-line
 import * as K from 'kefir';
+import * as T from './models';
 
+/**
+ * @type {IState}
+ */
 const initialState = {
   canvas: {
     size: [32, 32],
@@ -29,7 +33,7 @@ const initialState = {
 };
 
 /**
- * @type {K.Property<typeof initialState, never>}
+ * @type {K.Property<IState, never>}
  */
 const state = U.atom(initialState);
 
