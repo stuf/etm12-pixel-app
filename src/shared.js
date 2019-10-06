@@ -120,13 +120,12 @@ export const getIx = U.lift(([x, y], w) => {
 
 /**
  * Convert a hexadecimal color into an `[r, g, b, a]` tuple.
- * @param {string} x
- * @return {RGBA}
+ * @type {Ary1Lift<string, RGBA>}
  */
-export const fromHex = x => {
+export const fromHex = U.lift(x => {
   const n = parseInt(x, 16);
   return [(n & 0xff0000) >> 16, (n & 0xff00) >> 8, n & 0xff, 255];
-};
+});
 
 // CANVAS
 
@@ -169,6 +168,10 @@ export const logObsType = name => obs => {
   console.log('instanceof Stream =>', obs instanceof K.Stream);
   console.log('instanceof Property =>', obs instanceof K.Property);
   console.log('instanceof Observable =>', obs instanceof K.Observable);
+
+  if (obs instanceof K.Property) {
+    console.log('Property =>', obs);
+  }
   console.groupEnd();
 };
 

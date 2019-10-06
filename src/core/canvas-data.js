@@ -16,7 +16,7 @@ import { COLOR_CHANNELS } from '../constants';
 /**
  * @type {K.Property<number[], any>}
  */
-const state = U.atom();
+const state = U.atom(H.init({ replacePeriod: 200 }, []));
 
 export default state;
 
@@ -53,3 +53,7 @@ export const resizeImage = (w, h) => resizeImage_(w, h) || state;
  * @return {K.Property<Uint8ClampedArray, any>}
  */
 export const asUint8 = () => state.map(R.constructN(1, Uint8ClampedArray));
+
+if (process.env.NODE_ENV === 'development') {
+  state.log('canvas image data');
+}

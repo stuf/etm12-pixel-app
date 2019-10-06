@@ -1,13 +1,14 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K]"}] */
 import * as React from 'karet';
-import * as L from 'partial.lenses';
+import * as L from 'kefir.partial.lenses';
 import * as U from 'karet.util';
-import * as R from 'ramda';
+import * as R from 'kefir.ramda';
 import * as K from 'kefir';
 
 import * as M from '../meta';
 import * as E from '../core/mouse';
 import * as H from '../shared';
+import { COLOR_CHANNELS } from '../constants';
 
 import * as T from './Canvas.d';
 
@@ -24,6 +25,12 @@ const drawEff = ([[dx, dy], ctx, color]) => {
   const p = new Uint8ClampedArray(rgb);
   const data = new ImageData(p, 1, 1);
   ctx.putImageData(data, ~~dx, ~~dy);
+};
+
+const resizeImageData = state => ([[w, h], n]) => {
+  console.log({ w, h, n });
+  const xs = Array(w * h * n).fill(0);
+  state.set(xs);
 };
 
 /**
@@ -47,7 +54,7 @@ function Canvas({ size, scale, color, canvasData }) {
   const width = H.fstOf(size);
   const height = H.sndOf(size);
 
-  const ix = H.getIx(movementXY, width);
+  const ix = H.getIx(movementXY, width).skipDuplicates(R.equals);
 
   const style = {
     width: H.fstOf(scaledSize),
@@ -56,16 +63,49 @@ function Canvas({ size, scale, color, canvasData }) {
 
   const currentColor = M.selectedColorIn(color);
 
+  const colorHex = H.fromHex(currentColor);
+
+  const updateDataOnDraw = U.thru(
+    K.combine([movementXY.sampledBy(ev.onDrag)], [colorHex, width], H.takeAll),
+    U.toProperty,
+    U.consume(([[x, y], rgba, w]) => {
+      const [start, end] = H.getIx([x, y], w);
+
+      canvasData.view(L.slice(start, end)).set(rgba);
+    }),
+  );
+
+  const updateCanvas = U.thru(
+    K.combine([canvasData], [ctx, width, height], H.takeAll),
+    U.toProperty,
+    U.consume(
+      /**
+       * @param {[number[], CanvasRenderingContext2D, number, number]} poopoo
+       */
+      ([data, context, w, h]) => {
+        const xs = new Uint8ClampedArray(data);
+        const imageData = new ImageData(xs, w, h);
+        context.putImageData(imageData, 0, 0);
+      },
+    ),
+  );
+
   //
 
   const draw = U.thru(
     K.combine([scaledXY, ctx], [currentColor], H.takeAll),
     U.toProperty,
-    R.tap(H.logObsType('draw')),
     U.consume(drawEff),
   );
 
-  const effSink = U.sink(U.parallel([draw]));
+  const resize = U.thru(
+    U.combine([size, COLOR_CHANNELS], H.takeAll),
+    U.toProperty,
+    R.tap(H.logObsType('resize')),
+    U.consume(resizeImageData(canvasData)),
+  ).spy('resize');
+
+  const effSink = U.sink(U.parallel([resize, updateDataOnDraw, updateCanvas]));
 
   //
 

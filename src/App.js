@@ -1,5 +1,6 @@
 import * as React from 'karet';
 import * as U from 'karet.util';
+import * as Z from 'kefir.partial.lenses.history';
 
 import Canvas from './components/Canvas';
 import Palette from './components/Palette';
@@ -17,6 +18,8 @@ function App({ state, canvasData }) {
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette } = U.destructure(color);
 
+  const undoIndex = U.atom(1);
+
   return (
     <main className={styles.root}>
       <header className={styles.top}>
@@ -33,7 +36,28 @@ function App({ state, canvasData }) {
       </div>
 
       <div className="relative-pos">
-        <Canvas {...{ size, scale, color, canvasData }} />
+        <h1>
+          U have this many undo states :DDDD {' → '}
+          {U.view(Z.count, canvasData).map(x => x - 1)}
+        </h1>
+
+        <fieldset>
+          <legend>Undo my mistakes :(((</legend>
+
+          <U.Input
+            type="range"
+            min={0}
+            max={Z.indexMax(canvasData)}
+            value={U.view(Z.index, canvasData)}
+            onChange={U.getProps({
+              valueAsNumber: U.view(Z.index, canvasData),
+            })}
+          />
+        </fieldset>
+
+        <Canvas
+          {...{ size, scale, color, canvasData: U.view(Z.present, canvasData) }}
+        />
       </div>
 
       <div className={styles.right}>
