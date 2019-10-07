@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[KT]"}] */
 import * as React from 'karet';
 import * as U from 'karet.util';
 import * as T from './Menu.d';
@@ -17,7 +18,10 @@ function Menu({ items }) {
             <li
               {...{
                 key: `menuitem-${i}`,
-                className: styles.item,
+                className: U.cns(
+                  styles.item,
+                  U.when(U.view('disabled', it), styles.disabled),
+                ),
               }}
             >
               {U.view('label', it)}

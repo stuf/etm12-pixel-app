@@ -1,4 +1,4 @@
-/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K]"}] */
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[KT]"}] */
 import * as React from 'karet';
 import * as L from 'kefir.partial.lenses';
 import * as U from 'karet.util';
@@ -28,8 +28,16 @@ const drawEff = ([[dx, dy], ctx, color]) => {
 };
 
 const resizeImageData = state => ([[w, h], n]) => {
-  console.log({ w, h, n });
   const xs = Array(w * h * n).fill(0);
+  console.group('resizeImageData');
+  console.warn(
+    'This function is currently a no-op, due to incomplete values being set into canvas image data state.',
+  );
+  console.warn(
+    'TODO: verify `Array(w * h * n)` results in a valid value for `ImageData`.',
+  );
+  console.warn('What would be set into `canvasData`:', xs);
+  console.groupEnd();
   state.set(xs);
 };
 

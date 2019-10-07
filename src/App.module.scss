@@ -26,4 +26,8 @@ $border-thick: solid 2px $border-color;
 
 .right {
   border-left: $border-thick;
+
+  > * + * {
+    margin-top: 0.5rem;
+  }
 }

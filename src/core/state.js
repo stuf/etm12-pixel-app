@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[KT]"}] */
 /**
  * @module state
  * @namespace core
@@ -30,10 +31,10 @@ const initialState = {
     ],
   },
   menu: [
-    { label: 'Save' },
-    { label: 'Load' },
-    { label: 'Undo' },
-    { label: 'Redo' },
+    { label: 'Save', disabled: true },
+    { label: 'Load', disabled: true },
+    { label: 'Undo', disabled: true },
+    { label: 'Redo', disabled: true },
   ],
 };
 

@@ -1,5 +1,5 @@
 .root {
-  border: solid 2px #f00;
+  // border: solid 2px #f00;
   height: 100%;
   font-size: 0.875rem;
 }
@@ -17,4 +17,9 @@
   border: dashed 1px #f00;
   margin-right: 0.5rem;
   padding: 0.25rem 0.5rem;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

@@ -1,5 +1,6 @@
 import * as React from 'karet';
 import * as U from 'karet.util';
+import * as L from 'kefir.partial.lenses';
 import * as Z from 'kefir.partial.lenses.history';
 
 import Canvas from './components/Canvas';
@@ -8,7 +9,6 @@ import Menu from './components/ui/Menu';
 import Details from './components/ui/Details';
 import Field from './components/form/Field';
 
-import * as H from './shared';
 import * as M from './meta';
 import styles from './App.module.scss';
 
@@ -36,14 +36,21 @@ function App({ state, canvasData }) {
       </div>
 
       <div className="relative-pos">
-        <h1>
-          U have this many undo states :DDDD {' → '}
-          {U.view(Z.count, canvasData).map(x => x - 1)}
-        </h1>
+        <Canvas
+          {...{ size, scale, color, canvasData: U.view(Z.present, canvasData) }}
+        />
+      </div>
 
-        <fieldset>
-          <legend>Undo my mistakes :(((</legend>
+      <div className={styles.right}>
+        <Details title="Image">
+          <Field
+            label="Name"
+            value={U.view(['currentFile', 'name', L.valueOr('')], state)}
+          />
+        </Details>
 
+        <Details title="History">
+          <div>{U.view(Z.count, canvasData).map(x => x - 1)}</div>
           <U.Input
             type="range"
             min={0}
@@ -53,17 +60,11 @@ function App({ state, canvasData }) {
               valueAsNumber: U.view(Z.index, canvasData),
             })}
           />
-        </fieldset>
+        </Details>
 
-        <Canvas
-          {...{ size, scale, color, canvasData: U.view(Z.present, canvasData) }}
-        />
-      </div>
-
-      <div className={styles.right}>
         <Details title="Canvas">
           <Field label="Width" value={U.view([0, M.wNumber], size)} />
-          <Field label="Height" value={U.view([0, M.wNumber], size)} />
+          <Field label="Height" value={U.view([1, M.wNumber], size)} />
           <Field label="Scale" value={U.view(M.wNumber, scale)} />
         </Details>
       </div>

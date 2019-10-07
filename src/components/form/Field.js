@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[KT]"}] */
 import * as React from 'karet';
 import * as U from 'karet.util';
 

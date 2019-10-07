@@ -55,5 +55,5 @@ export const resizeImage = (w, h) => resizeImage_(w, h) || state;
 export const asUint8 = () => state.map(R.constructN(1, Uint8ClampedArray));
 
 if (process.env.NODE_ENV === 'development') {
-  state.log('canvas image data');
+  state.debounce(200).log('canvas image data');
 }
