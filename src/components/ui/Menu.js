@@ -1,6 +1,6 @@
 import * as React from 'karet';
 import * as U from 'karet.util';
-import * as T from './Menu';
+import * as T from './Menu.d';
 
 import styles from './Menu.module.scss';
 
