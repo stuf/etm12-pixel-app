@@ -2,15 +2,16 @@
  * @module mouse
  * @namespace core
  */
-/* eslint no-unused-vars: [1, {"varsIgnorePattern": "K"}] */
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
 import * as U from 'karet.util';
 import * as K from 'kefir';
+import * as T from './mouse.d';
 
 /**
  *
  * @param {string} type
- * @param {K.Observable<HTMLElement, any> | HTMLElement} source
- * @return {ObservableMouseEvent}
+ * @param {T.MaybeObservable<HTMLElement, any>} source
+ * @return {K.Property<MouseEvent, any>}
  */
 const takeEvents = (type, source) =>
   U.thru(
