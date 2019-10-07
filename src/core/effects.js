@@ -1,7 +1,10 @@
 import { taggedSum } from 'daggy';
+import * as T from './effects.d';
 
 const actionCtors = {
-  Foo: [],
+  RegisterContext: ['ctx'],
+  SaveImage: [],
+  LoadImage: [],
 };
 
 /**
