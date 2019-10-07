@@ -1,0 +1,19 @@
+$details-border: solid 1px rgba(0, 0, 0, 0.3);
+$details-base-padding: 0.5rem;
+
+.root {
+  border: $details-border;
+}
+
+.summary {
+  border-bottom: $details-border;
+  padding: $details-base-padding;
+}
+
+.children {
+  padding: $details-base-padding;
+
+  > * + * {
+    margin-top: $details-base-padding;
+  }
+}
