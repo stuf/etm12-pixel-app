@@ -29,7 +29,12 @@ const initialState = {
       },
     ],
   },
-  menu: [{ label: 'Save' }, { label: 'Load' }],
+  menu: [
+    { label: 'Save' },
+    { label: 'Load' },
+    { label: 'Undo' },
+    { label: 'Redo' },
+  ],
 };
 
 /**
