@@ -10,6 +10,7 @@ import './index.scss';
 import App from './App';
 import state from './core/state';
 import canvasData from './core/canvas-data';
+import { menuItems } from './core/menu';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -17,7 +18,10 @@ if (process.env.NODE_ENV !== 'production') {
   Object.assign(window, { U, R, L });
 }
 
-render(<App {...{ state, canvasData }} />, document.getElementById('root'));
+render(
+  <App {...{ state, canvasData, menuItems }} />,
+  document.getElementById('root'),
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

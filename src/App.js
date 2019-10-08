@@ -10,20 +10,21 @@ import Details from './components/ui/Details';
 import Field from './components/form/Field';
 
 import * as M from './meta';
+import * as T from './App.d';
 import styles from './App.module.scss';
 
 /**
- * @param {Props} props
+ * @param {T.Props} props
  */
-function App({ state, canvasData }) {
-  const { canvas, color, menu } = U.destructure(state);
+function App({ state, canvasData, menuItems }) {
+  const { canvas, color } = U.destructure(state);
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette } = U.destructure(color);
 
   return (
     <main className={styles.root}>
       <header className={styles.top}>
-        <Menu {...{ items: menu }} />
+        <Menu {...{ items: menuItems }} />
       </header>
 
       <div className={styles.left}>
