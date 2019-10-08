@@ -1,13 +1,17 @@
-import { taggedSum } from 'daggy';
-import * as T from './effects.d';
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
+/**
+ * @module effects
+ * @namespace core
+ */
+import * as R from 'ramda';
+import { saveAs } from 'file-saver';
 
-const actionCtors = {
-  RegisterContext: ['ctx'],
-  SaveImage: [],
-  LoadImage: [],
-};
+const mkElem = document.createElement.bind(document);
 
 /**
- * @type {{ [k: keyof actionCtors]: any}}
+ *
+ * @param {HTMLCanvasElement} canvas
  */
-const Action = taggedSum('Action', actionCtors);
+export const saveImageFromCanvas = canvas => {
+  canvas.toBlob(b => saveAs(b, 'poopoo.png'));
+};
