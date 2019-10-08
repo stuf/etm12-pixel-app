@@ -9,6 +9,7 @@ import * as M from '../meta';
 import * as E from '../core/mouse';
 import * as H from '../shared';
 import { COLOR_CHANNELS } from '../constants';
+import { saveImageFromCanvas } from '../core/effects';
 
 import * as T from './Canvas.d';
 
@@ -45,6 +46,8 @@ const resizeImageData = state => ([[w, h], n]) => {
  * @param {T.Props} props
  */
 function Canvas({ size, scale, color, canvasData }) {
+  const actions = U.serializer();
+
   const scaleInverse = scale.map(R.divide(1));
 
   const dom = U.variable();
@@ -84,7 +87,7 @@ function Canvas({ size, scale, color, canvasData }) {
   );
 
   const updateCanvas = U.thru(
-    K.combine([canvasData], [ctx, width, height], H.takeAll),
+    K.combine([canvasData], [ctx, width, height]),
     U.toProperty,
     U.consume(
       /**
@@ -113,7 +116,9 @@ function Canvas({ size, scale, color, canvasData }) {
     U.consume(resizeImageData(canvasData)),
   ).spy('resize');
 
-  const effSink = U.sink(U.parallel([resize, updateDataOnDraw, updateCanvas]));
+  const effSink = U.sink(
+    U.parallel([resize, updateDataOnDraw, updateCanvas, actions]),
+  );
 
   //
 
@@ -131,6 +136,19 @@ function Canvas({ size, scale, color, canvasData }) {
           ref: U.refTo(dom),
         }}
       />
+
+      <fieldset>
+        <legend>File</legend>
+
+        <button
+          onClick={U.actions(
+            e => e.persist(),
+            () => saveImageFromCanvas(dom.get()),
+          )}
+        >
+          Save image
+        </button>
+      </fieldset>
 
       <fieldset className="debug">
         <legend>Debug</legend>

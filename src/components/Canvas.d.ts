@@ -1,4 +1,4 @@
-import { Property } from 'kefir';
+import { Observable, Property } from 'kefir';
 import { IColorState } from '../core/state.d';
 
 export interface Props {
