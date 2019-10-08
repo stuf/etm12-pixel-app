@@ -21,11 +21,12 @@ export interface IColorState {
   palettes: IPalette[];
 }
 
-export interface IMenuState {}
+export interface IMenuState { }
 
 //
 
 export interface IPalette {
   name: string;
+  source: string;
   items: string[];
 }

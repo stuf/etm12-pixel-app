@@ -10,8 +10,8 @@ import * as Model from './models.d';
  * @type {Model.IMenuItem[]}
  */
 export const menuItems = [
-  {
-    label: 'Save',
-    // action: SaveImage,
-  },
+  { label: 'Item 1', disabled: true },
+  { label: 'Item 2', disabled: true },
+  { label: 'Item 3', disabled: true },
+  { label: 'Item 4', disabled: true },
 ];
