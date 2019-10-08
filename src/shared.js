@@ -142,6 +142,9 @@ export const getImageData = U.lift(([w, h], ctx) =>
 
 // ARRAYS
 
+/**
+ * @template T, U
+ * @type {(v: K.Observable<T, any>) => K.Observable<T[0], any>} */
 export const fstOf = U.view(0);
 export const sndOf = U.view(1);
 

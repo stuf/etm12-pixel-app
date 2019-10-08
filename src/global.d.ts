@@ -1,5 +1,3 @@
-import { O } from 'ts-toolbelt';
-
 declare global {
   /**
    * Interface for color palettes
