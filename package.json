@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "daggy": "^1.4.0",
+    "file-saver": "^2.0.2",
     "infestines": "^0.4.11",
     "karet": "^4.1.0",
     "karet.util": "^0.19.1",
@@ -42,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@types/file-saver": "^2.0.1",
     "@types/kefir": "^3.8.2",
     "@types/ramda": "^0.26.25",
     "@types/react": "^16.9.5",
