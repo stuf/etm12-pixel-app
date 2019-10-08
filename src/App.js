@@ -21,6 +21,8 @@ function App({ state, canvasData, menuItems }) {
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette } = U.destructure(color);
 
+  const selectedPalette = U.view(['palettes', currentPalette], color);
+
   return (
     <main className={styles.root}>
       <header className={styles.top}>
@@ -28,12 +30,15 @@ function App({ state, canvasData, menuItems }) {
       </header>
 
       <div className={styles.left}>
-        <Palette
-          {...{
-            currentColor,
-            items: U.view(['palettes', currentPalette, 'items'], color),
-          }}
-        />
+        <Details title="Palette">
+          <Palette
+            {...{
+              currentColor,
+              name: U.view('name', selectedPalette),
+              items: U.view('items', selectedPalette),
+            }}
+          />
+        </Details>
       </div>
 
       <div className="relative-pos">
