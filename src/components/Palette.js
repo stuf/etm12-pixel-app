@@ -1,14 +1,21 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
 import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'ramda';
 
 import * as H from '../shared';
 
+import * as T from './Palette.d';
 import style from './Palette.module.scss';
 
-function Palette({ items, currentColor }) {
+/**
+ *
+ * @param {T.Props} props
+ */
+function Palette({ name, items, currentColor }) {
   return (
-    <div className={style.root}>
+    <section className={style.root}>
+      <header>{name}</header>
       <ul className={style.items}>
         {U.thru(
           items,
@@ -27,7 +34,7 @@ function Palette({ items, currentColor }) {
           }),
         )}
       </ul>
-    </div>
+    </section>
   );
 }
 
