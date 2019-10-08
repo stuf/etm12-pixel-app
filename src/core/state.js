@@ -6,10 +6,10 @@
 import * as U from 'karet.util';
 // eslint-disable-next-line
 import * as K from 'kefir';
-import * as T from './models.d';
+import * as T from './state.d';
 
 /**
- * @type {IState}
+ * @type {T.IState}
  */
 const initialState = {
   canvas: {
@@ -38,9 +38,6 @@ const initialState = {
   ],
 };
 
-/**
- * @type {K.Property<IState, never>}
- */
 const state = U.atom(initialState);
 
 export default state;
