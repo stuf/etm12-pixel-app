@@ -1,8 +1,8 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[KT]"}] */
 import * as React from 'karet';
 
-import * as T from './Details.d';
-import styles from './Details.module.scss';
+import * as T from './index.d';
+import styles from './index.module.scss';
 
 /**
  * @param {T.Props} props

@@ -1,9 +1,9 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[KT]"}] */
 import * as React from 'karet';
 import * as U from 'karet.util';
-import * as T from './Menu.d';
 
-import styles from './Menu.module.scss';
+import * as T from './index.d';
+import styles from './index.module.scss';
 
 /**
  * @param {T.Props} props
