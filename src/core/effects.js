@@ -3,10 +3,7 @@
  * @module effects
  * @namespace core
  */
-import * as R from 'ramda';
 import { saveAs } from 'file-saver';
-
-const mkElem = document.createElement.bind(document);
 
 /**
  *

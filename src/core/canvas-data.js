@@ -1,8 +1,8 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
 /**
  * @module canvas-data
  * @namespace core
  */
-// eslint-disable-next-line
 import * as K from 'kefir';
 import * as H from 'kefir.partial.lenses.history';
 import * as U from 'karet.util';

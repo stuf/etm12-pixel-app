@@ -1,10 +1,3 @@
-export interface IState {
-  canvas: ICanvasState;
-  currentFile: ICurrentFileState;
-  color: IColorState;
-  menu: IMenuState;
-}
-
 export interface ICanvasState {
   size: [number, number];
   scale: number;
@@ -13,6 +6,12 @@ export interface ICanvasState {
 export interface ICurrentFileState {
   name: string;
   createdAt: Date;
+}
+
+export interface IPalette {
+  name: string;
+  source: string;
+  items: string[];
 }
 
 export interface IColorState {
@@ -25,8 +24,9 @@ export interface IMenuState { }
 
 //
 
-export interface IPalette {
-  name: string;
-  source: string;
-  items: string[];
+export interface IState {
+  canvas: ICanvasState;
+  currentFile: ICurrentFileState;
+  color: IColorState;
+  menu: IMenuState;
 }

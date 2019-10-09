@@ -1,4 +1,4 @@
-/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T|Model]"}] */
 /**
  * @module menu
  * @namespace core

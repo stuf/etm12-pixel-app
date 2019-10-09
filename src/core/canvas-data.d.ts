@@ -1,5 +1,3 @@
-import { Property } from 'kefir';
-
 export interface HistoryLConfig {
   p: number;
   e: boolean;
