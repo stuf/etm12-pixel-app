@@ -1,3 +1,8 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T|Model]"}] */
+/**
+ * @module Bitmap
+ * @namespace components
+ */
 import * as React from 'karet';
 import * as U from 'karet.util';
 import * as K from 'kefir';
@@ -25,33 +30,26 @@ function Bitmap({ size, scale, data }) {
 
   const imageData = U.thru(
     K.combine([U.view(H.present, data), size], takeAll),
-    U.mapValue(([ps, [w, h]]) => {
-      if (!ps || !ps.length) {
-        console.warn('ps was undefined or empty', { ps });
-        console.trace();
-        return;
-      }
+    U.flatMapLatest(([ps, [w, h]]) =>
+      !ps || !ps.length || ps.length % 4 !== 0
+        ? K.constantError(new Error('image data invalid'))
+        : new ImageData(new Uint8ClampedArray(ps), w, h),
+    ),
+  );
 
-      if (!ps.length % 4 !== 0) {
-        console.warn('ps length was not divisible by 4');
-        console.trace();
-        return;
-      }
-
-      const ys = new Uint8ClampedArray(ps);
-      const z = new ImageData(ys, w, h);
-
-      return z;
-    }),
+  const drawImageData = U.thru(
+    imageData,
     U.flatMapLatest(v => U.combine([ctx, v], takeAll)),
     U.consume(([c, d]) => c.putImageData(d, 0, 0)),
   );
 
   //
 
+  const effSink = U.sink(U.parallel([imageData, drawImageData]));
+
   return (
     <div className={styles.root}>
-      <>{U.sink(U.parallel([imageData]))}</>
+      <>{effSink}</>
       <div>
         {size.map(x => x.join(' x '))} x {scale}
       </div>

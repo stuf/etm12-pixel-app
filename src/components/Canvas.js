@@ -1,4 +1,4 @@
-/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[KT]"}] */
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
 import * as React from 'karet';
 import * as L from 'kefir.partial.lenses';
 import * as U from 'karet.util';
@@ -16,17 +16,6 @@ import * as T from './Canvas.d';
 import PixelGrid from './_/PixelGrid';
 
 import styles from './Canvas.module.scss';
-
-/**
- *
- * @param {[[number, number], CanvasRenderingContext2D]} param0
- */
-const drawEff = ([[dx, dy], ctx, color]) => {
-  const rgb = H.fromHex(color);
-  const p = new Uint8ClampedArray(rgb);
-  const data = new ImageData(p, 1, 1);
-  ctx.putImageData(data, ~~dx, ~~dy);
-};
 
 const resizeImageData = state => ([[w, h], n]) => {
   const xs = Array(w * h * n).fill(0);
@@ -54,9 +43,6 @@ function Canvas({ size, scale, color, canvasData }) {
   const ctx = H.getContext(dom);
   const scaledSize = H.scaleSize(size, scale);
   const ev = E.mouseEventsFor(dom);
-
-  const dragXY = H.layerPos(K.merge([ev.onDrag, ev.onButtonDown])).toProperty();
-  const scaledXY = H.scaleSize(dragXY, scaleInverse).toProperty();
 
   const movementXY = H.scaleSize(H.layerPos(ev.onMove), scaleInverse)
     .map(R.map(Math.trunc))
@@ -102,12 +88,6 @@ function Canvas({ size, scale, color, canvasData }) {
   );
 
   //
-
-  const draw = U.thru(
-    K.combine([scaledXY, ctx], [currentColor], H.takeAll),
-    U.toProperty,
-    U.consume(drawEff),
-  );
 
   const resize = U.thru(
     U.combine([size, COLOR_CHANNELS], H.takeAll),
