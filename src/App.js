@@ -1,5 +1,10 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T|Model]"}] */
+/**
+ * @module App
+ */
 import * as React from 'karet';
 import * as U from 'karet.util';
+import * as R from 'kefir.ramda';
 import * as L from 'kefir.partial.lenses';
 import * as Z from 'kefir.partial.lenses.history';
 
@@ -8,8 +13,10 @@ import Palette from './components/Palette';
 import Menu from './components/ui/Menu';
 import Details from './components/ui/Details';
 import Field from './components/form/Field';
+import Bitmap from './components/Bitmap';
 
 import * as M from './meta';
+
 import * as T from './App.d';
 import styles from './App.module.scss';
 
@@ -48,6 +55,12 @@ function App({ state, canvasData, menuItems }) {
       </div>
 
       <div className={styles.right}>
+        <Details title="Preview">
+          <Bitmap
+            {...{ size, scale: 2, data: U.skipUnless(R.identity, canvasData) }}
+          />
+        </Details>
+
         <Details title="Image">
           <Field
             label="Name"
