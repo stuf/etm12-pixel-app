@@ -11,10 +11,12 @@ import * as L from 'kefir.partial.lenses';
 
 import { COLOR_CHANNELS } from '../constants';
 
+import * as T from './canvas-data.d';
+
 //
 
 /**
- * @type {K.Property<number[], any>}
+ * @type {K.Property<T.HistoryL<number[]>, any>}
  */
 const state = U.atom(H.init({ replacePeriod: 200 }, []));
 
@@ -24,11 +26,13 @@ export default state;
 
 /**
  * @return {void}
+ * @deprecated
  */
 export const clearImage_ = () => U.view(L.elems, state).modify(R.always(0));
 
 /**
  * @return {typeof state}
+ * @deprecated
  */
 export const clearImage = () => clearImage_() || state;
 
