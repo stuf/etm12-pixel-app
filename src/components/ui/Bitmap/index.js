@@ -7,10 +7,10 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import * as K from 'kefir';
 
-import * as T from './Bitmap.d';
-import styles from './Bitmap.module.scss';
+import * as T from './index.d';
+import styles from './index.module.scss';
 
-import { takeAll, scaleSize, fstOf, sndOf, getContext } from '../shared';
+import { takeAll, scaleSize, fstOf, sndOf, getContext } from '../../../shared';
 
 /**
  *

@@ -1,11 +1,16 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T|Model]"}] */
 import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'ramda';
 
-import * as H from '../../shared';
+import * as H from '../../../../shared';
 
+import * as T from './PixelGrid.d';
 import style from './PixelGrid.module.scss';
 
+/**
+ * @param {T.Props} props
+ */
 function PixelGrid({ size, scale }) {
   const scaledSize = H.scaleSize(size, scale);
 

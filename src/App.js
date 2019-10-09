@@ -8,12 +8,12 @@ import * as R from 'kefir.ramda';
 import * as L from 'kefir.partial.lenses';
 import * as Z from 'kefir.partial.lenses.history';
 
-import Canvas from './components/Canvas';
-import Palette from './components/Palette';
+import Field from './components/form/Field';
+import Canvas from './components/ui/Canvas';
+import Palette from './components/ui/Palette';
 import Menu from './components/ui/Menu';
 import Details from './components/ui/Details';
-import Field from './components/form/Field';
-import Bitmap from './components/Bitmap';
+import Bitmap from './components/ui/Bitmap';
 
 import * as M from './meta';
 

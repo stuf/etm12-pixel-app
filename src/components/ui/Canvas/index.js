@@ -5,17 +5,16 @@ import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 import * as K from 'kefir';
 
-import * as M from '../meta';
-import * as E from '../core/mouse';
-import * as H from '../shared';
-import { COLOR_CHANNELS } from '../constants';
-import { saveImageFromCanvas } from '../core/effects';
-
-import * as T from './Canvas.d';
+import * as M from '../../../meta';
+import * as E from '../../../core/mouse';
+import * as H from '../../../shared';
+import { COLOR_CHANNELS } from '../../../constants';
+import { saveImageFromCanvas } from '../../../core/effects';
 
 import PixelGrid from './_/PixelGrid';
 
-import styles from './Canvas.module.scss';
+import * as T from './index.d';
+import styles from './index.module.scss';
 
 const resizeImageData = state => ([[w, h], n]) => {
   const xs = Array(w * h * n).fill(0);

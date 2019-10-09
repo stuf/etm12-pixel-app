@@ -3,10 +3,10 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'ramda';
 
-import * as H from '../shared';
+import * as H from '../../../shared';
 
-import * as T from './Palette.d';
-import style from './Palette.module.scss';
+import * as T from './index.d';
+import style from './index.module.scss';
 
 /**
  *
