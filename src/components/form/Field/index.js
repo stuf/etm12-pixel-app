@@ -2,9 +2,8 @@
 import * as React from 'karet';
 import * as U from 'karet.util';
 
-import * as T from './Field.d';
-
-import styles from './Field.module.scss';
+import * as T from './index.d';
+import styles from './index.module.scss';
 
 /**
  * @param {T.Props} props
