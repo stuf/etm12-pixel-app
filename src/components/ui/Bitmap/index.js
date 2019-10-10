@@ -5,6 +5,7 @@
  */
 import * as React from 'karet';
 import * as U from 'karet.util';
+import * as R from 'kefir.ramda';
 import * as K from 'kefir';
 
 import * as T from './index.d';
@@ -50,8 +51,12 @@ function Bitmap({ size, scale, data }) {
     <div className={styles.root}>
       <>{effSink}</>
       <div>
-        {size.map(x => x.join(' x '))} x {scale}
+        {U.thru(
+          U.combine([fstOf(size), sndOf(size), scale], takeAll),
+          U.mapValue(R.join(' x ')),
+        )}
       </div>
+
       <canvas
         {...{
           className: styles.canvas,
