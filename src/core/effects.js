@@ -2,6 +2,8 @@
 /**
  * @module effects
  * @namespace core
+ *
+ * @todo This needs some thinking about how this should be reasoned around
  */
 import { saveAs } from 'file-saver';
 
