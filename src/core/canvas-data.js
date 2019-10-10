@@ -16,9 +16,11 @@ import * as T from './canvas-data.d';
 //
 
 /**
- * @type {K.Property<T.HistoryL<number[]>, any>}
+ * @type {number[]}
  */
-const state = U.atom(H.init({ replacePeriod: 200 }, []));
+const initValue = [];
+
+const state = U.atom(H.init({ maxCount: 10, replacePeriod: 200 }, initValue));
 
 export default state;
 
@@ -50,14 +52,3 @@ export const resizeImage_ = (w, h) =>
  * @return {typeof state}
  */
 export const resizeImage = (w, h) => resizeImage_(w, h) || state;
-
-//
-
-/**
- * @return {K.Property<Uint8ClampedArray, any>}
- */
-export const asUint8 = () => state.map(R.constructN(1, Uint8ClampedArray));
-
-if (process.env.NODE_ENV === 'development') {
-  state.debounce(200).log('canvas image data');
-}

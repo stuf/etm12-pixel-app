@@ -57,7 +57,11 @@ function App({ state, canvasData, menuItems }) {
       <div className={styles.right}>
         <Details title="Preview">
           <Bitmap
-            {...{ size, scale: 2, data: U.skipUnless(R.identity, canvasData) }}
+            {...{
+              size,
+              scale: 2,
+              data: U.view(Z.present, U.skipUnless(R.identity, canvasData)),
+            }}
           />
         </Details>
 
@@ -70,6 +74,7 @@ function App({ state, canvasData, menuItems }) {
 
         <Details title="History">
           <div>{U.view(Z.count, canvasData).map(x => x - 1)}</div>
+
           <U.Input
             type="range"
             min={0}
@@ -79,6 +84,14 @@ function App({ state, canvasData, menuItems }) {
               valueAsNumber: U.view(Z.index, canvasData),
             })}
           />
+
+          <fieldset>
+            <legend>Controls</legend>
+
+            <button>Undo</button>
+            <button>Redo</button>
+            <button>Purge history</button>
+          </fieldset>
         </Details>
 
         <Details title="Canvas">

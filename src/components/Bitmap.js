@@ -6,7 +6,6 @@
 import * as React from 'karet';
 import * as U from 'karet.util';
 import * as K from 'kefir';
-import * as H from 'kefir.partial.lenses.history';
 
 import * as T from './Bitmap.d';
 import styles from './Bitmap.module.scss';
@@ -29,7 +28,7 @@ function Bitmap({ size, scale, data }) {
   };
 
   const imageData = U.thru(
-    K.combine([U.view(H.present, data), size], takeAll),
+    K.combine([data, size], takeAll),
     U.flatMapLatest(([ps, [w, h]]) =>
       !ps || !ps.length || ps.length % 4 !== 0
         ? K.constantError(new Error('image data invalid'))
