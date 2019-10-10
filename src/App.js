@@ -70,6 +70,12 @@ function App({ state, canvasData, menuItems }) {
             label="Name"
             value={U.view(['currentFile', 'name', L.valueOr('')], state)}
           />
+
+          <fieldset>
+            <legend>Controls</legend>
+
+            <button>Clear image</button>
+          </fieldset>
         </Details>
 
         <Details title="History">
