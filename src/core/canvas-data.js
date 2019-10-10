@@ -16,7 +16,7 @@ import * as T from './canvas-data.d';
 //
 
 /**
- * @type {number[]}
+ * @type {T.CanvasData}
  */
 const initValue = [];
 
