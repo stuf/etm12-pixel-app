@@ -67,6 +67,21 @@ function Canvas({ size, scale, color, canvasData }) {
     U.consume(([[x, y], rgba, w]) => {
       const [start, end] = H.getIx([x, y], w);
 
+      const takePerf = () => performance.now();
+
+      const t1 = canvasData.take(1).map(takePerf);
+
+      const t2 = canvasData
+        .skip(1)
+        .take(1)
+        .map(takePerf);
+
+      const tdiff = K.combine([t1, t2], (a, b) => b - a).toProperty();
+
+      tdiff.observe({
+        value: v => console.log(`updating canvasData took ${v.toFixed(3)} ms`),
+      });
+
       canvasData.view(L.slice(start, end)).set(rgba);
     }),
   );
@@ -102,19 +117,21 @@ function Canvas({ size, scale, color, canvasData }) {
   //
 
   return (
-    <div {...{ className: styles.root }}>
+    <div {...{ className: U.cns(styles.root, 'flow') }}>
       <>{effSink}</>
 
-      <PixelGrid {...{ size, scale }} />
-      <canvas
-        {...{
-          width,
-          height,
-          style,
-          className: styles.canvas,
-          ref: U.refTo(dom),
-        }}
-      />
+      <div className="relative-pos">
+        <PixelGrid {...{ size, scale }} />
+        <canvas
+          {...{
+            width,
+            height,
+            style,
+            className: styles.canvas,
+            ref: U.refTo(dom),
+          }}
+        />
+      </div>
 
       <fieldset>
         <legend>File</legend>
