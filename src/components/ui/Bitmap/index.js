@@ -45,7 +45,7 @@ function Bitmap({ size, scale, data }) {
 
   //
 
-  const effSink = U.sink(U.parallel([imageData, drawImageData]));
+  const effSink = U.sink(U.parallel([drawImageData]));
 
   return (
     <div className={styles.root}>

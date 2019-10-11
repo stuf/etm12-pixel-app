@@ -20,13 +20,10 @@ export interface IColorState {
   palettes: IPalette[];
 }
 
-export interface IMenuState { }
-
 //
 
 export interface IState {
   canvas: ICanvasState;
   currentFile: ICurrentFileState;
   color: IColorState;
-  menu: IMenuState;
 }

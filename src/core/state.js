@@ -28,14 +28,25 @@ const initialState = {
         name: 'bgb',
         items: ['#081820', '#346856', '#88c070', '#e0f8d0'],
       },
+      {
+        name: 'aap-micro12',
+        items: [
+          '#040303',
+          '#1c1618',
+          '#47416b',
+          '#6c8c50',
+          '#e3d245',
+          '#d88038',
+          '#a13d3b',
+          '#4e282e',
+          '#9a407e',
+          '#f0d472',
+          '#f9f5ef',
+          '#8a8fc4',
+        ],
+      },
     ],
   },
-  menu: [
-    { label: 'Save', disabled: true },
-    { label: 'Load', disabled: true },
-    { label: 'Undo', disabled: true },
-    { label: 'Redo', disabled: true },
-  ],
 };
 
 const state = U.atom(initialState);

@@ -6,8 +6,9 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-gap: 2px;
+  grid-gap: 1px;
   grid-auto-rows: 1.5rem;
+  grid-template-columns: repeat(2, 1fr);
 
   button {
     display: block;
@@ -19,5 +20,9 @@
 }
 
 .active {
-  border: solid 2px #fff;
+  border: dashed 1px #fff;
+
+  button {
+    font-weight: 700;
+  }
 }

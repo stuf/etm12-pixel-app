@@ -7,18 +7,7 @@ import * as U from 'karet.util';
 import * as K from 'kefir';
 import * as T from './mouse.d';
 
-/**
- *
- * @param {string} type
- * @param {T.MaybeObservable<HTMLElement, any>} source
- * @return {K.Property<MouseEvent, any>}
- */
-const takeEvents = (type, source) =>
-  U.thru(
-    source,
-    U.flatMapLatest(src => U.fromEvents(src, type, a => a)),
-    U.toProperty,
-  );
+import { takeEvents } from './_shared';
 
 /**
  *
