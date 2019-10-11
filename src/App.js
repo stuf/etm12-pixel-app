@@ -15,6 +15,7 @@ import Palette from './components/ui/Palette';
 import Menu from './components/ui/Menu';
 import Details from './components/ui/Details';
 import Bitmap from './components/ui/Bitmap';
+import ColorStats from './components/ui/ColorStats';
 import TimeControlButton from './components/ui/TimeControlButton';
 
 import * as M from './meta';
@@ -128,6 +129,10 @@ function App({ state, canvasData, menuItems }) {
           <Field label="Width" value={U.view([0, M.wNumber], size)} />
           <Field label="Height" value={U.view([1, M.wNumber], size)} />
           <Field label="Scale" value={U.view(M.wNumber, scale)} />
+        </Details>
+
+        <Details title="Stats">
+          <ColorStats data={U.view(Z.present, canvasData)} />
         </Details>
       </div>
     </main>

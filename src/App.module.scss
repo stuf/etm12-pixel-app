@@ -18,6 +18,7 @@ $border-thick: solid 2px $border-color;
 .left,
 .right {
   padding: 0.5rem;
+  overflow: auto;
 }
 
 .left {
