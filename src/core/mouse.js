@@ -3,7 +3,6 @@
  * @module mouse
  * @namespace core
  */
-import * as U from 'karet.util';
 import * as K from 'kefir';
 import * as T from './mouse.d';
 
