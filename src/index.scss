@@ -15,10 +15,17 @@ body,
 html,
 body,
 button,
+select,
+option,
 input {
   font-family: $font-family-base;
   font-weight: $font-weight-base;
   font-size: $font-size-base;
+}
+
+select {
+  display: block;
+  width: 100%;
 }
 
 fieldset {

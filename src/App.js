@@ -14,6 +14,7 @@ import Palette from './components/ui/Palette';
 import Menu from './components/ui/Menu';
 import Details from './components/ui/Details';
 import Bitmap from './components/ui/Bitmap';
+import TimeControlButton from './components/ui/TimeControlButton';
 
 import * as M from './meta';
 
@@ -26,9 +27,9 @@ import styles from './App.module.scss';
 function App({ state, canvasData, menuItems }) {
   const { canvas, color } = U.destructure(state);
   const { size, scale } = U.destructure(canvas);
-  const { currentColor, currentPalette } = U.destructure(color);
+  const { currentColor, currentPalette, palettes } = U.destructure(color);
 
-  const selectedPalette = U.view(['palettes', currentPalette], color);
+  const selectedPalette = U.view(currentPalette, palettes);
 
   return (
     <main className={styles.root}>
@@ -38,6 +39,21 @@ function App({ state, canvasData, menuItems }) {
 
       <div className={styles.left}>
         <Details title="Palette">
+          <fieldset>
+            <legend>Switcher</legend>
+
+            <select onChange={e => currentPalette.set(e.target.value)}>
+              {U.thru(
+                palettes,
+                U.mapElems((it, i) => (
+                  <option key={`palette-item-${i}`} value={i}>
+                    {M.nameIn(it)}
+                  </option>
+                )),
+              )}
+            </select>
+          </fieldset>
+
           <Palette
             {...{
               currentColor,
@@ -94,9 +110,15 @@ function App({ state, canvasData, menuItems }) {
           <fieldset>
             <legend>Controls</legend>
 
-            <button>Undo</button>
-            <button>Redo</button>
-            <button>Purge history</button>
+            <TimeControlButton count={U.view(Z.undoIndex, canvasData)}>
+              Undo
+            </TimeControlButton>
+            <TimeControlButton count={U.view(Z.redoIndex, canvasData)}>
+              Redo
+            </TimeControlButton>
+            <button onClick={U.doModify(canvasData, Z.undoForget)}>
+              Purge history
+            </button>
           </fieldset>
         </Details>
 
