@@ -7669,7 +7669,7 @@ partial.lenses.history@^1.2.0:
     partial.lenses ">=2.2.0"
     partial.lenses.validation ">=1.0.0 <3.0.0"
 
-"partial.lenses.validation@>=1.0.0 <3.0.0":
+"partial.lenses.validation@>=1.0.0 <3.0.0", partial.lenses.validation@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/partial.lenses.validation/-/partial.lenses.validation-2.0.0.tgz#9b518b58a9c2281f375d5e4a5b63464daa3213a2"
   integrity sha512-NBZhmrunQWc4Ih5pJGYPHCEJfjIITPEkYn0Z6YB8qmW0iN4ZeqN0eZTWAPAH8MxjsEGx3G+8xnTMsEHbzy0k/A==
