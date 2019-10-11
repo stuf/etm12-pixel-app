@@ -9,6 +9,7 @@ import * as L from 'kefir.partial.lenses';
 import * as Z from 'kefir.partial.lenses.history';
 
 import Field from './components/form/Field';
+import Range from './components/form/Range';
 import Canvas from './components/ui/Canvas';
 import Palette from './components/ui/Palette';
 import Menu from './components/ui/Menu';
@@ -97,14 +98,15 @@ function App({ state, canvasData, menuItems }) {
         <Details title="History">
           <div>{U.view(Z.count, canvasData).map(x => x - 1)}</div>
 
-          <U.Input
-            type="range"
-            min={0}
-            max={Z.indexMax(canvasData)}
-            value={U.view(Z.index, canvasData)}
-            onChange={U.getProps({
-              valueAsNumber: U.view(Z.index, canvasData),
-            })}
+          <Range
+            {...{
+              value: U.view(Z.index, canvasData),
+              min: 0,
+              max: Z.indexMax(canvasData),
+              onChange: U.getProps({
+                valueAsNumber: U.view(Z.index, canvasData),
+              }),
+            }}
           />
 
           <fieldset>
