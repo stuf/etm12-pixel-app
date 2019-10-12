@@ -14,7 +14,6 @@ import Canvas from './components/ui/Canvas';
 import Palette from './components/ui/Palette';
 import Details from './components/ui/Details';
 import Bitmap from './components/ui/Bitmap';
-import ColorStats from './components/ui/ColorStats';
 import TimeControlButton from './components/ui/TimeControlButton';
 
 import LayoutHeader from './components/layout/Header';
@@ -26,9 +25,10 @@ import styles from './App.module.scss';
 
 /**
  * @param {T.Props} props
+ * @return {T.Component}
  */
 function App({ state, canvasData, menuItems }) {
-  const { canvas, color } = U.destructure(state);
+  const { canvas, color, currentFile } = U.destructure(state);
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette, palettes } = U.destructure(color);
 
@@ -36,7 +36,14 @@ function App({ state, canvasData, menuItems }) {
 
   return (
     <main className={styles.root}>
-      <LayoutHeader {...{ menuItems, className: styles.top }} />
+      <LayoutHeader
+        {...{
+          menuItems,
+          className: styles.top,
+          name: M.nameIn(currentFile),
+          isEditing: M.isEditingIn(currentFile),
+        }}
+      />
 
       <div className={styles.left}>
         <Details title="Tools">
@@ -138,10 +145,6 @@ function App({ state, canvasData, menuItems }) {
           <Field label="Width" value={U.view([0, M.wNumber], size)} />
           <Field label="Height" value={U.view([1, M.wNumber], size)} />
           <Field label="Scale" value={U.view(M.wNumber, scale)} />
-        </Details>
-
-        <Details title="Stats">
-          <ColorStats data={U.view(Z.present, canvasData)} />
         </Details>
       </div>
     </main>

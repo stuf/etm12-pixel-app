@@ -1,3 +1,4 @@
+import { FunctionComponent } from 'react';
 import { Property } from 'kefir';
 
 import { IState } from './core/state.d';
@@ -9,3 +10,5 @@ export interface Props {
   menuItems: Model.IMenuItem[];
   env: { [key: string]: string };
 }
+
+export interface Component extends FunctionComponent<Props> {}

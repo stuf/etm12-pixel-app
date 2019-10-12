@@ -6,6 +6,7 @@ export interface ICanvasState {
 export interface ICurrentFileState {
   name: string;
   createdAt: Date;
+  isEditing: boolean;
 }
 
 export interface IPalette {

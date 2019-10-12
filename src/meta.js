@@ -17,6 +17,8 @@ export const selectedColorIn = U.view(
 
 export const nameIn = U.view('name');
 
+export const isEditingIn = U.view('isEditing');
+
 //
 
 export const wNumber = L.rewrite(n => parseInt(n, 10));

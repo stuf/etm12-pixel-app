@@ -26,9 +26,7 @@ function Palette({ name, items, currentColor }) {
                 <button
                   style={{ backgroundColor: it, color: H.yiqFor(it) }}
                   onClick={U.doSet(currentColor, i)}
-                >
-                  {it}
-                </button>
+                />
               </li>
             );
           }),

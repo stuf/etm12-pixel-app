@@ -1,4 +1,4 @@
-/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[KT]"}] */
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
 /**
  * @module state
  * @namespace core
@@ -20,6 +20,7 @@ const initialState = {
   currentFile: {
     name: 'Untitled',
     createdAt: new Date(),
+    isEditing: false,
   },
   color: {
     currentColor: 0,
