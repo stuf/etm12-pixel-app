@@ -29,7 +29,7 @@ const initialState = {
   },
   tool: {
     current: 0,
-    items: [{ name: 'eyedropper' }, { name: 'pencil' }],
+    items: [{ name: 'eyedropper' }, { name: 'pencil' }, { name: 'eraser' }],
   },
 };
 
