@@ -27,6 +27,10 @@ const initialState = {
     currentPalette: 0,
     palettes,
   },
+  tool: {
+    current: 0,
+    items: [{ name: 'eyedropper' }, { name: 'pencil' }],
+  },
 };
 
 const state = U.atom(initialState);

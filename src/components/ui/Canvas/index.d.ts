@@ -7,3 +7,13 @@ export interface Props {
   color: Property<IColorState, any>;
   canvasData: Property<number[], any>;
 }
+
+export interface Tool {
+  name: string;
+}
+
+export interface ToolAction {
+  canvasData: number[];
+  pos: [number, number];
+  tool: Tool;
+}

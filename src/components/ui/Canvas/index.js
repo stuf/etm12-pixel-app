@@ -61,6 +61,8 @@ function Canvas({ size, scale, color, canvasData }) {
 
   const colorHex = H.fromHex(currentColor);
 
+  //
+
   const updateDataOnDraw = U.thru(
     K.combine([movementXY.sampledBy(ev.onDrag)], [colorHex, width], H.takeAll),
     U.toProperty,
@@ -78,9 +80,9 @@ function Canvas({ size, scale, color, canvasData }) {
 
       const tdiff = K.combine([t1, t2], (a, b) => b - a).toProperty();
 
-      tdiff.observe({
-        value: v => console.log(`updating canvasData took ${v.toFixed(3)} ms`),
-      });
+      // tdiff.observe({
+      //   value: v => console.log(`updating canvasData took ${v.toFixed(3)} ms`),
+      // });
 
       canvasData.view(L.slice(start, end)).set(rgba);
     }),

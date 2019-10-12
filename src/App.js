@@ -28,11 +28,13 @@ import styles from './App.module.scss';
  * @return {T.Component}
  */
 function App({ state, canvasData, menuItems }) {
-  const { canvas, color, currentFile } = U.destructure(state);
+  const { canvas, color, currentFile, tool } = U.destructure(state);
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette, palettes } = U.destructure(color);
 
   const selectedPalette = U.view(currentPalette, palettes);
+
+  const currentTool = M.currentIn(tool);
 
   return (
     <main className={styles.root}>
@@ -48,12 +50,21 @@ function App({ state, canvasData, menuItems }) {
       <div className={styles.left}>
         <Details title="Tools">
           <ul className={U.cns(styles.toolgrid, 'unstyled-list')}>
-            <li>
-              <button>Eye dropper</button>
-            </li>
-            <li>
-              <button>Pen</button>
-            </li>
+            {U.thru(
+              M.itemsIn(tool),
+              U.mapElems((t, i) => (
+                <li
+                  key={`tool-${i}`}
+                  className={U.cns(
+                    U.when(R.equals(i, M.currentIn(tool)), 'active'),
+                  )}
+                >
+                  <button onClick={U.actions(U.doSet(currentTool, i))}>
+                    {M.nameIn(t)}
+                  </button>
+                </li>
+              )),
+            )}
           </ul>
         </Details>
         <Details title="Palette">
@@ -71,7 +82,6 @@ function App({ state, canvasData, menuItems }) {
               )}
             </select>
           </fieldset>
-
           <Palette
             {...{
               currentColor,
@@ -79,6 +89,8 @@ function App({ state, canvasData, menuItems }) {
               items: U.view('items', selectedPalette),
             }}
           />
+          <hr />
+          Current color
         </Details>
       </div>
 

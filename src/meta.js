@@ -17,6 +17,10 @@ export const selectedColorIn = U.view(
 
 export const nameIn = U.view('name');
 
+export const itemsIn = U.view('items');
+
+export const currentIn = U.view('current');
+
 export const isEditingIn = U.view('isEditing');
 
 //
