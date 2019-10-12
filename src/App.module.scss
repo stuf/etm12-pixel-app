@@ -32,3 +32,15 @@ $border-thick: solid 2px $border-color;
     margin-top: 0.5rem;
   }
 }
+
+.toolgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+
+  button {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}

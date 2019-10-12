@@ -40,6 +40,16 @@ function App({ state, canvasData, menuItems }) {
       </header>
 
       <div className={styles.left}>
+        <Details title="Tools">
+          <ul className={U.cns(styles.toolgrid, 'unstyled-list')}>
+            <li>
+              <button>Eye dropper</button>
+            </li>
+            <li>
+              <button>Pen</button>
+            </li>
+          </ul>
+        </Details>
         <Details title="Palette">
           <fieldset>
             <legend>Switcher</legend>
