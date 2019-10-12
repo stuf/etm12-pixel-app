@@ -1,12 +1,16 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T|Model]"}] */
+/**
+ * @module PixelGrid
+ * @namespace components.ui.Canvas._
+ */
 import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'ramda';
 
-import * as H from '../../../../shared';
+import * as H from '../../../../../shared';
 
-import * as T from './PixelGrid.d';
-import style from './PixelGrid.module.scss';
+import * as T from './index.d';
+import style from './index.module.scss';
 
 /**
  * @param {T.Props} props
