@@ -18,7 +18,7 @@ function Header({ menuItems, className, name, isEditing }) {
   return (
     <header className={U.cns(styles.root, className)}>
       <div className={styles.logoWrapper}>
-        <img className={styles.logo} src={logo} />
+        <img className={styles.logo} src={logo} alt="Logo" />
       </div>
 
       <div className={styles.wrapper}>
