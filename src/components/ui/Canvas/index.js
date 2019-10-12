@@ -12,6 +12,7 @@ import { COLOR_CHANNELS } from '../../../constants';
 import { saveImageFromCanvas } from '../../../core/effects';
 
 import PixelGrid from './_/PixelGrid';
+import Cursor from './_/Cursor';
 
 import * as T from './index.d';
 import styles from './index.module.scss';
@@ -123,6 +124,7 @@ function Canvas({ size, scale, color, canvasData }) {
       <>{effSink}</>
 
       <div className="relative-pos">
+        <Cursor {...{ pos: movementXY, scale }} />
         <PixelGrid {...{ size, scale }} />
         <canvas
           {...{

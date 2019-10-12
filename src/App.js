@@ -47,7 +47,7 @@ function App({ state, canvasData, menuItems }) {
         }}
       />
 
-      <div className={styles.left}>
+      <div className={U.cns(styles.left, styles.panel)}>
         <Details title="Tools">
           <ul className={U.cns(styles.toolgrid, 'unstyled-list')}>
             {U.thru(
@@ -67,6 +67,7 @@ function App({ state, canvasData, menuItems }) {
             )}
           </ul>
         </Details>
+
         <Details title="Palette">
           <fieldset>
             <legend>Switcher</legend>
@@ -100,7 +101,7 @@ function App({ state, canvasData, menuItems }) {
         />
       </div>
 
-      <div className={styles.right}>
+      <div className={U.cns(styles.right, styles.panel)}>
         <Details title="Preview">
           <Bitmap
             {...{
