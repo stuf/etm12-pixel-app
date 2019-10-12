@@ -18,8 +18,10 @@ if (process.env.NODE_ENV !== 'production') {
   Object.assign(window, { U, R, L });
 }
 
+console.log(process.env);
+
 render(
-  <App {...{ state, canvasData, menuItems }} />,
+  <App {...{ state, canvasData, menuItems, env: process.env }} />,
   document.getElementById('root'),
 );
 

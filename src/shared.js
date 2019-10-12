@@ -126,6 +126,13 @@ export const fromHex = U.lift(x => {
   return [(n & 0xff0000) >> 16, (n & 0xff00) >> 8, n & 0xff, 255];
 });
 
+export const toHex = U.lift(x => {
+  const y = x.slice(0, 3);
+
+  console.log({ y });
+  return y.join('-');
+});
+
 // CANVAS
 
 /**

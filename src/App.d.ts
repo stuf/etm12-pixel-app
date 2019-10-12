@@ -7,4 +7,5 @@ export interface Props {
   state: Property<IState, any>;
   canvasData: Property<number[], any>;
   menuItems: Model.IMenuItem[];
+  env: { [key: string]: string };
 }

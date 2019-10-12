@@ -12,11 +12,12 @@ import Field from './components/form/Field';
 import Range from './components/form/Range';
 import Canvas from './components/ui/Canvas';
 import Palette from './components/ui/Palette';
-import Menu from './components/ui/Menu';
 import Details from './components/ui/Details';
 import Bitmap from './components/ui/Bitmap';
 import ColorStats from './components/ui/ColorStats';
 import TimeControlButton from './components/ui/TimeControlButton';
+
+import LayoutHeader from './components/layout/Header';
 
 import * as M from './meta';
 
@@ -35,9 +36,7 @@ function App({ state, canvasData, menuItems }) {
 
   return (
     <main className={styles.root}>
-      <header className={styles.top}>
-        <Menu {...{ items: menuItems }} />
-      </header>
+      <LayoutHeader {...{ menuItems, className: styles.top }} />
 
       <div className={styles.left}>
         <Details title="Tools">
