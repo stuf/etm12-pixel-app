@@ -8,20 +8,20 @@ import * as R from 'kefir.ramda';
 import * as L from 'kefir.partial.lenses';
 import * as Z from 'kefir.partial.lenses.history';
 
-import Field from './components/form/Field';
-import Range from './components/form/Range';
-import Canvas from './components/ui/Canvas';
-import Palette from './components/ui/Palette';
-import Details from './components/ui/Details';
-import Bitmap from './components/ui/Bitmap';
-import TimeControlButton from './components/ui/TimeControlButton';
+import Field from 'components/form/Field';
+import Range from 'components/form/Range';
+import Canvas from 'components/ui/Canvas';
+import Palette from 'components/ui/Palette';
+import Details from 'components/ui/Details';
+import Bitmap from 'components/ui/Bitmap';
+import TimeControlButton from 'components/ui/TimeControlButton';
 
-import LayoutHeader from './components/layout/Header';
+import LayoutHeader from 'components/layout/Header';
 
-import * as M from './meta';
+import * as M from 'meta';
 
-import * as T from './App.d';
-import styles from './App.module.scss';
+import * as T from 'App.d';
+import styles from 'App.module.scss';
 
 /**
  * @param {T.Props} props
