@@ -43,7 +43,9 @@
     }
   },
   "husky": {
-    "pre-push": "npm test"
+    "hooks": {
+      "pre-push": "npm test"
+    }
   },
   "browserslist": {
     "production": [
