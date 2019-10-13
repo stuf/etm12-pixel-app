@@ -7,7 +7,7 @@ import { render } from 'react-dom';
 import 'normalize.css';
 import './index.scss';
 
-import App from './App';
+import Main from './Main';
 import state from './core/state';
 import canvasData from './core/canvas-data';
 import { menuItems } from './core/menu';
@@ -21,7 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 console.log(process.env);
 
 render(
-  <App {...{ state, canvasData, menuItems, env: process.env }} />,
+  <Main {...{ state, canvasData, menuItems, env: process.env }} />,
   document.getElementById('root'),
 );
 
