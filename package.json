@@ -28,6 +28,7 @@
     "prebuild": "npm run test -- --watchAll=false --collectCoverage && codecov",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:simple": "npm run test -- --watchAll=false",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -44,7 +45,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm test"
+      "pre-push": "npm run test:simple"
     }
   },
   "browserslist": {
