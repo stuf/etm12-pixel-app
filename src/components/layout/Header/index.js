@@ -2,13 +2,13 @@
 import * as React from 'karet';
 import * as U from 'karet.util';
 
-import Menu from '../../ui/Menu';
+import Menu from 'components/ui/Menu';
 import ImageName from './_/ImageName';
 
 import * as T from './index.d';
 import styles from './index.module.scss';
 
-import logo from '../../../assets/logo.svg';
+import logo from 'assets/logo.svg';
 
 /**
  * @type {T.Props} props

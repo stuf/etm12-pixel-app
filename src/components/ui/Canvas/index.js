@@ -5,11 +5,11 @@ import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 import * as K from 'kefir';
 
-import * as M from '../../../meta';
-import * as E from '../../../core/mouse';
-import * as H from '../../../shared';
-import { COLOR_CHANNELS } from '../../../constants';
-import { saveImageFromCanvas } from '../../../core/effects';
+import * as M from 'meta';
+import * as E from 'core/mouse';
+import * as H from 'shared';
+import * as S from 'settings';
+import { saveImageFromCanvas } from 'core/effects';
 
 import PixelGrid from './_/PixelGrid';
 import Cursor from './_/Cursor';
@@ -107,7 +107,7 @@ function Canvas({ size, scale, color, canvasData }) {
   //
 
   const resize = U.thru(
-    U.combine([size, COLOR_CHANNELS], H.takeAll),
+    U.combine([size, S.canvas.colorChannels], H.takeAll),
     U.toProperty,
     R.tap(H.logObsType('resize')),
     U.consume(resizeImageData(canvasData)),

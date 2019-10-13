@@ -1,3 +1,7 @@
+/**
+ * @module SplashScene
+ * @namespace scenes
+ */
 import * as React from 'karet';
 
 import * as T from './index.d';

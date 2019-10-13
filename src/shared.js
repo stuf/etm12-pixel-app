@@ -4,7 +4,9 @@ import * as R from 'ramda';
 import * as I from 'infestines';
 import * as K from 'kefir';
 import yiq from 'yiq';
-import { COLOR_CHANNELS } from './constants';
+import * as S from './settings';
+
+const COLOR_CHANNELS = S.canvas.colorChannels;
 
 // eslint-disable-next-line
 const setName = process.env.NODE_ENV === 'production' ? a => a : I.defineNameU;
