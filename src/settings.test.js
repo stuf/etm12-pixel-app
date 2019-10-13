@@ -5,12 +5,14 @@ import * as S from './settings';
 
 const isNonEmpty = R.identity;
 const isNumber = R.is(Number);
+const isBool = R.is(Boolean);
 
 //
 
 const Rule = {
   REQUIRED: [isNonEmpty, 'required'],
   NUMBER: [isNumber, 'non-number'],
+  BOOLEAN: [isBool, 'non-boolean'],
 };
 
 //
@@ -24,6 +26,7 @@ it('has correct history configuration', () => {
   validate(
     V.props({
       maxCount: V.and(Rule.REQUIRED, Rule.NUMBER),
+      pushEquals: V.and(Rule.REQUIRED, Rule.BOOLEAN),
       replacePeriod: V.and(Rule.REQUIRED, Rule.NUMBER),
     }),
     S.history,
