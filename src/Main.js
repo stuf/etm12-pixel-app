@@ -9,25 +9,30 @@ import * as T from './Main.d';
 import styles from './Main.module.scss';
 
 import SplashScene from 'scenes/Splash';
-import DrawScene from 'scenes/Draw';
+import EditorScene from 'scenes/Editor';
 
 /**
  * @param {T.Props} props
  * @return {T.Component}
  */
 function MainScene(props) {
+  const WithRootProps = (Component, extra = {}) => p => (
+    <Component {...{ ...props, ...p, ...extra }} />
+  );
+
   return (
     <main className={styles.root}>
       <Router>
         <Switch>
+          <Route path="/editor" component={WithRootProps(EditorScene)} />
           <Route
-            path="/draw"
-            render={p => <DrawScene {...{ ...p, ...props }} />}
+            exact
+            path="/"
+            component={WithRootProps(SplashScene, { redirectTo: '/editor' })}
           />
           <Route
-            path="/"
             render={p => (
-              <SplashScene {...{ ...p, ...props, redirectTo: '/draw' }} />
+              <div>Now why'd you have to go and come to this address.</div>
             )}
           />
         </Switch>
