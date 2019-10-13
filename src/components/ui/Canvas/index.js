@@ -65,7 +65,11 @@ function Canvas({ size, scale, color, canvasData }) {
   //
 
   const updateDataOnDraw = U.thru(
-    K.combine([movementXY.sampledBy(ev.onDrag)], [colorHex, width], H.takeAll),
+    K.combine(
+      [movementXY.sampledBy(U.parallel([ev.onButtonDown, ev.onDrag]))],
+      [colorHex, width],
+      H.takeAll,
+    ),
     U.toProperty,
     U.consume(([[x, y], rgba, w]) => {
       const [start, end] = H.getIx([x, y], w);
@@ -79,6 +83,7 @@ function Canvas({ size, scale, color, canvasData }) {
         .take(1)
         .map(takePerf);
 
+      // eslint-disable-next-line
       const tdiff = K.combine([t1, t2], (a, b) => b - a).toProperty();
 
       // tdiff.observe({
