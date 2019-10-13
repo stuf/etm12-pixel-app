@@ -1,4 +1,3 @@
-/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
 /**
  * @module canvas-data
  * @namespace core
@@ -21,7 +20,11 @@ const initValue = [];
 
 const state = U.atom(
   H.init(
-    { maxCount: S.history.maxCount, replacePeriod: S.history.replacePeriod },
+    {
+      maxCount: S.history.maxCount,
+      pushEquals: S.history.pushEquals,
+      replacePeriod: S.history.replacePeriod,
+    },
     initValue,
   ),
 );
