@@ -1,5 +1,10 @@
 import { FunctionComponent } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
-export interface Props { }
+import { MaybeObservable } from 'types';
 
-export interface Component extends FunctionComponent<Props> { }
+export interface Props extends RouteComponentProps {
+  redirectTo: MaybeObservable<string>;
+}
+
+export interface Component extends FunctionComponent<Props> {}
