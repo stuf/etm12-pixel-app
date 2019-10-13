@@ -1,8 +1,7 @@
 import { FunctionComponent } from 'react';
 
-export interface Props {
-  state: any;
-  canvasData: any;
-}
+import { RootProps } from 'types';
 
-export interface Component extends FunctionComponent<Props> { }
+export interface Props extends RootProps {}
+
+export interface Component extends FunctionComponent<Props> {}
