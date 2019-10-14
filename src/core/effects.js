@@ -8,7 +8,6 @@
 import { saveAs } from 'file-saver';
 
 /**
- *
  * @param {HTMLCanvasElement} canvas
  */
 export const saveImageFromCanvas = canvas => {

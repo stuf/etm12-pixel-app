@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
 /**
  * @module canvas-data
  * @namespace core
