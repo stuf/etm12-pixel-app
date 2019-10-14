@@ -10,6 +10,7 @@ import styles from './Main.module.scss';
 
 import SplashScene from 'scenes/Splash';
 import EditorScene from 'scenes/Editor';
+import NotFoundScene from 'scenes/NotFound';
 
 /**
  * @param {T.Props} props
@@ -30,11 +31,7 @@ function MainScene(props) {
             path="/"
             component={WithRootProps(SplashScene, { redirectTo: '/editor' })}
           />
-          <Route
-            render={p => (
-              <div>Now why'd you have to go and come to this address.</div>
-            )}
-          />
+          <Route component={WithRootProps(NotFoundScene)} />
         </Switch>
       </Router>
     </main>
