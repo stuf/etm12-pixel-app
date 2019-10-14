@@ -1,3 +1,4 @@
+import { FunctionComponent } from 'react';
 import { Property } from 'kefir';
 
 export interface Props {
@@ -5,3 +6,5 @@ export interface Props {
   items: Property<string[], any>;
   currentColor: Property<number, any>;
 }
+
+export interface Component extends FunctionComponent<Props> { }

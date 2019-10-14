@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T|Model]"}] */
 /**
  * @module Bitmap
- * @namespace components
+ * @namespace components.ui
  */
 import * as React from 'karet';
 import * as U from 'karet.util';
@@ -11,11 +11,11 @@ import * as K from 'kefir';
 import * as T from './index.d';
 import styles from './index.module.scss';
 
-import { takeAll, scaleSize, fstOf, sndOf, getContext } from '../../../shared';
+import { takeAll, scaleSize, fstOf, sndOf, getContext } from 'shared';
 
 /**
- *
  * @param {T.Props} props
+ * @return {T.Component}
  */
 function Bitmap({ size, scale, data }) {
   const dom = U.variable();

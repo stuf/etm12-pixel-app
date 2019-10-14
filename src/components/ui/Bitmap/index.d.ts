@@ -1,4 +1,9 @@
+import { FunctionComponent } from 'react';
+import { MaybeObservable } from 'types';
+
 export interface Props {
-  size: [number, number];
-  scale: number;
+  size: MaybeObservable<[number, number]>;
+  scale: MaybeObservable<number>;
 }
+
+export interface Component extends FunctionComponent<Props> { }

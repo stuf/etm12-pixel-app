@@ -1,4 +1,8 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
+/**
+ * @module Canvas
+ * @namespace components.ui
+ */
 import * as React from 'karet';
 import * as L from 'kefir.partial.lenses';
 import * as U from 'karet.util';
@@ -33,6 +37,7 @@ const resizeImageData = state => ([[w, h], n]) => {
 
 /**
  * @param {T.Props} props
+ * @return {T.Component}
  */
 function Canvas({ size, scale, color, canvasData }) {
   const actions = U.serializer();

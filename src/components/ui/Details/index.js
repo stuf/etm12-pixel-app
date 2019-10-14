@@ -6,6 +6,7 @@ import styles from './index.module.scss';
 
 /**
  * @param {T.Props} props
+ * @return {T.Component}
  */
 function Details({ title, children, open = true }) {
   return (

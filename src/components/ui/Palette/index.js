@@ -9,8 +9,8 @@ import * as T from './index.d';
 import style from './index.module.scss';
 
 /**
- *
  * @param {T.Props} props
+ * @return {T.Component}
  */
 function Palette({ name, items, currentColor }) {
   return (

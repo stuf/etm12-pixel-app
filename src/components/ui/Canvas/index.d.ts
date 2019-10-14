@@ -1,5 +1,6 @@
+import { FunctionComponent } from 'react';
 import { Property } from 'kefir';
-import { IColorState } from '../core/state.d';
+import { IColorState } from 'core/state.d';
 
 export interface Props {
   size: Property<[number, number], any>;
@@ -7,6 +8,8 @@ export interface Props {
   color: Property<IColorState, any>;
   canvasData: Property<number[], any>;
 }
+
+export interface Component extends FunctionComponent<Props> { }
 
 export interface Tool {
   name: string;

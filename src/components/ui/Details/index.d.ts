@@ -1,7 +1,9 @@
-import * as R from 'react';
+import { ReactElement, FunctionComponent } from 'react';
 
 export interface Props {
   title: string;
-  children: R.ReactElement[];
+  children: ReactElement[];
   open: boolean;
 }
+
+export interface Component extends FunctionComponent<Props> { }
