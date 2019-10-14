@@ -15,6 +15,26 @@ const setName = process.env.NODE_ENV === 'production' ? a => a : I.defineNameU;
 
 export const takeAll = R.unapply(R.identity);
 
+// OBSERVABLES
+
+export const isProperty = x => x instanceof K.Property;
+export const isObservable = x => x instanceof K.Observable;
+
+/**
+ * @template T
+ * @param {T | K.Observable<T, any>} x
+ * @return {K.Property<T, any>}
+ */
+export const toProperty = x => {
+  if (isProperty(x)) {
+    return x;
+  } else if (isObservable(x)) {
+    return x.toProperty();
+  } else {
+    return K.constant(x);
+  }
+};
+
 // CONSTANTS
 
 const Pos = {
