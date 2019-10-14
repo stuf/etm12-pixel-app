@@ -5,7 +5,6 @@
  */
 import * as React from 'karet';
 import * as U from 'karet.util';
-import * as K from 'kefir';
 
 import * as T from './index.d';
 import styles from './index.module.scss';
@@ -17,22 +16,27 @@ import logo from 'assets/logo.svg';
  * @param {T.Props} props
  * @return {T.Component}
  */
-function SplashScene({ redirectTo, history }) {
-  const redirectDelay = K.later(5000).toProperty();
-
-  const redirectEff = U.thru(
-    U.combine([redirectTo, redirectDelay], takeAll),
-    U.consume(([path]) => {
-      history.replace(path);
-    }),
+function SplashScene({ redirectTo, redirectDelay = 2000, history }) {
+  const delay = U.thru(
+    redirectDelay,
+    U.flatMapLatest(n => U.later(n, null)),
+    U.toProperty,
   );
 
-  const sinkEff = U.sink(U.parallel([redirectEff]));
+  const redirectEff = U.thru(
+    U.combine([redirectTo, delay], takeAll),
+    U.consume(([path]) => history.replace(path)),
+  );
+
+  const sinkEff = U.sink(redirectEff);
 
   return (
     <div className={U.cns('scene-root', styles.root)} data-scene-name="splash">
       <>{sinkEff}</>
-      <img src={logo} className={styles.logo} alt="pixel" />
+      <div className={styles.logo}>
+        <img src={logo} alt="pixel" />
+        <h1>pixel</h1>
+      </div>
     </div>
   );
 }

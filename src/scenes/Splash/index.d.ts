@@ -5,6 +5,7 @@ import { MaybeObservable } from 'types';
 
 export interface Props extends RouteComponentProps {
   redirectTo: MaybeObservable<string>;
+  redirectDelay: MaybeObservable<number>;
 }
 
-export interface Component extends FunctionComponent<Props> {}
+export interface Component extends FunctionComponent<Props> { }
