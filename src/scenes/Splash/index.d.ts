@@ -1,9 +1,9 @@
 import { FunctionComponent } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
-import { MaybeObservable } from 'types';
+import { RootProps, MaybeObservable } from 'types';
 
-export interface Props extends RouteComponentProps {
+export interface Props extends RouteComponentProps, RootProps {
   redirectTo: MaybeObservable<string>;
   redirectDelay: MaybeObservable<number>;
 }

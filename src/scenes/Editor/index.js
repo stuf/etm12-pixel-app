@@ -29,7 +29,7 @@ import * as M from 'meta';
  * @return {T.Component}
  */
 function EditorScene(props) {
-  const { state, canvasData, menuItems } = props;
+  const { state, canvasData, menuItems, env } = props;
 
   const { canvas, color, currentFile, tool } = U.destructure(state);
   const { size, scale } = U.destructure(canvas);
@@ -43,6 +43,7 @@ function EditorScene(props) {
     <div className={U.cns('scene-root', styles.root)} data-scene-name="editor">
       <LayoutHeader
         {...{
+          env,
           menuItems,
           className: styles.top,
           name: M.nameIn(currentFile),
