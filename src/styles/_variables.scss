@@ -8,3 +8,10 @@ $text-primary: rgba(0, 0, 0, 0.87) !default;
 $text-secondary: rgba(0, 0, 0, 0.54) !default;
 
 $color-divider: rgba(0, 0, 0, 0.3) !default;
+
+$text-size-small: $font-size-base * 0.85 !default;
+$text-size-normal: $font-size-base !default;
+
+// SPACING
+
+$spacing-base: 0.5rem !default;

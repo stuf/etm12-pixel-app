@@ -61,3 +61,54 @@ fieldset {
   height: 100%;
   // border: dotted 4px #00f;
 }
+
+// SPACING
+
+.pad {
+  &.-p-right {
+    padding-right: $spacing-base;
+  }
+}
+
+// TEXT
+
+.text {
+  &.-small {
+    font-size: $text-size-small;
+  }
+
+  &.-normal {
+    font-size: $text-size-normal;
+  }
+
+  &.-left {
+    text-align: left;
+  }
+
+  &.-center {
+    text-align: center;
+  }
+
+  &.-right {
+    text-align: right;
+  }
+}
+
+// FLEX
+
+.flex-horizontal {
+  display: flex;
+  &.-vertical-center {
+    align-items: center;
+  }
+
+  &.-justify-end {
+    justify-content: flex-end;
+  }
+}
+
+// DEV
+
+.debug {
+  border: dashed 1px #f00;
+}
