@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly: with env 1`] = `
+<div
+  className="flex-horizontal -vertical-center -justify-end pad -p-right"
+>
+  <div
+    className="text -right -small"
+  >
+    1
+     (
+    2
+    ) – env:
+     
+    3
+     – branch: 
+    4
+  </div>
+</div>
+`;
+
+exports[`renders correctly: without env 1`] = `
+<div
+  className="flex-horizontal -vertical-center -justify-end pad -p-right"
+/>
+`;
