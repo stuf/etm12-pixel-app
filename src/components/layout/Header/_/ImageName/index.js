@@ -18,8 +18,7 @@ function ImageName({ name, isEditing }) {
   const toggleFlag = U.doModify(isEditing, R.not);
 
   return (
-    <div className={styles.root}>
-      {U.stringify({ isEditing })}
+    <div className={U.cns(styles.root, 'flex-horizontal', '-vertical-center')}>
       {U.ifElse(
         isEditing,
         <div>

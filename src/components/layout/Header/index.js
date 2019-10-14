@@ -4,6 +4,7 @@ import * as U from 'karet.util';
 
 import Menu from 'components/ui/Menu';
 import ImageName from './_/ImageName';
+import BuildInfo from './_/BuildInfo';
 
 import * as T from './index.d';
 import styles from './index.module.scss';
@@ -11,10 +12,10 @@ import styles from './index.module.scss';
 import logo from 'assets/logo.svg';
 
 /**
- * @type {T.Props} props
+ * @param {T.Props} props
  * @return {T.Component}
  */
-function Header({ menuItems, className, name, isEditing }) {
+function Header({ menuItems, className, name, isEditing, env }) {
   return (
     <header className={U.cns(styles.root, className)}>
       <div className={styles.logoWrapper}>
@@ -25,6 +26,8 @@ function Header({ menuItems, className, name, isEditing }) {
         <Menu items={menuItems} />
 
         <ImageName {...{ name, isEditing }} />
+
+        <BuildInfo {...{ env }} />
       </div>
     </header>
   );
