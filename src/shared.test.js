@@ -1,8 +1,26 @@
+import * as K from 'kefir';
+
 import * as H from './shared';
 import * as T from './tests';
 
 describe('shared', () => {
   T.testEq([1, 2, 3], () => H.takeAll(1, 2, 3));
+
+  describe('observable', () => {
+    it('toProperty(x) -> Property(x)', () => {
+      expect(H.toProperty(123)).toBeInstanceOf(K.Property);
+    });
+
+    it('toProperty(Stream(x)) -> Property(x)', () => {
+      expect(H.toProperty(K.constant(123).changes())).toBeInstanceOf(
+        K.Property,
+      );
+    });
+
+    it('toProperty(Property(x)) -> Property(x)', () => {
+      expect(H.toProperty(K.constant(123))).toBeInstanceOf(K.Property);
+    });
+  });
 
   describe('arithmetic', () => {
     T.testEq(0.125, () => H.reciprocal(8));
