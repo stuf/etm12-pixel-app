@@ -5,6 +5,11 @@ import * as R from 'kefir.ramda';
 
 import * as T from './index.d';
 
+const buildCommitIn = U.view('REACT_APP_BUILD_COMMIT');
+const buildBranchIn = U.view('REACT_APP_BUILD_BRANCH');
+const buildVersionIn = U.view('REACT_APP_BUILD_VERSION');
+const buildEnvIn = U.view('REACT_APP_BUILD_ENV');
+
 /**
  * @param {T.Props} props
  * @return {T.Component}
@@ -15,8 +20,8 @@ function BuildInfo({ env = {} }) {
       {U.unless(
         R.isEmpty(env),
         <div className="text -right -small">
-          {env.REACT_APP_BUILD_VERSION} ({env.REACT_APP_BUILD_COMMIT}) – env:{' '}
-          {env.REACT_APP_BUILD_ENV} – branch: {env.REACT_APP_BUILD_BRANCH}
+          {buildVersionIn(env)} ({buildCommitIn(env)}) – env: {buildEnvIn(env)}{' '}
+          – branch: {buildBranchIn(env)}
         </div>,
       )}
     </div>

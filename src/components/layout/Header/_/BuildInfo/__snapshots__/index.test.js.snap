@@ -10,10 +10,10 @@ exports[`renders correctly: with env 1`] = `
     1
      (
     2
-    ) – env:
-     
+    ) – env: 
     3
-     – branch: 
+     
+    – branch: 
     4
   </div>
 </div>
