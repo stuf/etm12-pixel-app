@@ -1,35 +1,20 @@
-import * as R from 'ramda';
-import * as V from 'partial.lenses.validation';
+import { nullable, props, and, getErrors, Rule } from 'validation-rules';
 
 import * as S from 'settings';
-
-const isNonEmpty = R.identity;
-const isNumber = R.is(Number);
-const isBool = R.is(Boolean);
-const isDefined = R.isNil;
-
-//
-
-const Rule = {
-  DEFINED: [isDefined, 'required'],
-  REQUIRED: [isNonEmpty, 'required'],
-  NUMBER: [isNumber, 'non-number'],
-  BOOLEAN: [isBool, 'non-boolean'],
-};
 
 //
 
 const validate = (rules, actual) =>
-  expect(V.errors(rules, actual)).toBeUndefined();
+  expect(getErrors(rules, actual)).toBeUndefined();
 
 //
 
 it('has correct history configuration', () => {
   validate(
-    V.props({
-      maxCount: V.optional(V.and(Rule.REQUIRED, Rule.NUMBER)),
-      pushEquals: V.optional(Rule.BOOLEAN),
-      replacePeriod: V.optional(V.and(Rule.REQUIRED, Rule.NUMBER)),
+    props({
+      maxCount: nullable(and(Rule.REQUIRED, Rule.NUMBER)),
+      pushEquals: nullable(Rule.BOOLEAN),
+      replacePeriod: nullable(and(Rule.REQUIRED, Rule.NUMBER)),
     }),
     S.history,
   );
@@ -37,8 +22,8 @@ it('has correct history configuration', () => {
 
 it('has correct canvas configuration', () => {
   validate(
-    V.props({
-      colorChannels: V.and(Rule.REQUIRED, Rule.NUMBER),
+    props({
+      colorChannels: and(Rule.REQUIRED, Rule.NUMBER),
     }),
     S.canvas,
   );
