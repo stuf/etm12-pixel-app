@@ -1,7 +1,7 @@
 import * as K from 'kefir';
 
 import * as H from './shared';
-import * as T from './tests';
+import * as T from './test-utils';
 
 describe('shared', () => {
   T.testEq([1, 2, 3], () => H.takeAll(1, 2, 3));

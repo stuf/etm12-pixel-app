@@ -50,6 +50,7 @@ function Bitmap({ size, scale, data }) {
   return (
     <div className={styles.root}>
       <>{effSink}</>
+
       <div>
         {U.thru(
           U.combine([fstOf(size), sndOf(size), scale], takeAll),

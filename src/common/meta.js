@@ -14,7 +14,7 @@ const toInt = n => parseInt(n, 10);
 
 export const nameIn = U.view('name');
 
-export const itemsIn = U.view('items');
+export const itemsIn = U.view(['items', L.valueOr([])]);
 
 export const currentIn = U.view('current');
 

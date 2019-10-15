@@ -25,10 +25,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prebuild": "npm run test -- --watchAll=false --collectCoverage && codecov",
+    "prebuild": "npm run test:cov && codecov",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:simple": "npm run test -- --watchAll=false",
+    "test:cov": "npm run test -- --watchAll=false --collectCoverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -51,6 +52,12 @@
   "jest": {
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/tests/**",
+      "!src/test-utils.js",
+      "!src/typedef.js"
     ]
   },
   "browserslist": {
