@@ -8,8 +8,9 @@ import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 
 import * as T from './index.d';
+import styles from './index.module.scss';
 
-import { fstOf, sndOf } from '../../../../../shared';
+import { fstOf, sndOf } from 'shared';
 
 /**
  * @param {T.Props} props
@@ -22,17 +23,13 @@ function Cursor({ pos, scale }) {
 
   return (
     <div
+      className={styles.root}
       style={{
-        position: 'absolute',
-        left: 0,
-        top: 0,
         width: scale,
         height: scale,
         transform: U.string`translateX(${fstOf(
           scaledPos,
         )}px) translateY(${sndOf(scaledPos)}px)`,
-        border: 'solid 1px #f00',
-        pointerEvents: 'none',
       }}
     />
   );

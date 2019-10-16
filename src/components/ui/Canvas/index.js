@@ -49,9 +49,10 @@ function Canvas({ size, scale, color, canvasData }) {
   const scaledSize = H.scaleSize(size, scale);
   const ev = E.mouseEventsFor(dom);
 
-  const movementXY = H.scaleSize(H.layerPos(ev.onMove), scaleInverse)
-    .map(R.map(Math.trunc))
-    .skipDuplicates(R.equals);
+  const movementXY = H.scaleSize(H.layerPos(ev.onMove), scaleInverse).map(
+    R.map(Math.trunc),
+  );
+  // .skipDuplicates(R.equals);
 
   const width = H.fstOf(size);
   const height = H.sndOf(size);
@@ -147,6 +148,7 @@ function Canvas({ size, scale, color, canvasData }) {
         />
       </div>
 
+      {/** @todo Extract saving of image out from the canvas itself */}
       <fieldset>
         <legend>File</legend>
 
