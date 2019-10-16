@@ -8,3 +8,15 @@ export interface IPalette {
   source: string;
   items: string[];
 }
+
+export interface IPaletteColor {
+  name?: string;
+  value?: string;
+}
+
+export interface IPaletteSpecial {
+  name?: string;
+  type: string;
+}
+
+export type IPaletteItem = IPaletteColor | IPaletteSpecial;
