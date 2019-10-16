@@ -7,7 +7,7 @@
   padding: 0;
   display: grid;
   grid-gap: 1px;
-  grid-auto-rows: 1.5rem;
+  grid-auto-rows: 2rem;
   grid-template-columns: repeat(4, 1fr);
 
   button {
@@ -20,9 +20,11 @@
 }
 
 .active {
-  border: dashed 1px #fff;
+  // border: dashed 1px #fff;
+  padding: 2px;
 
   button {
     font-weight: 700;
+    border: solid 4px rgba(0, 0, 0, 0.3);
   }
 }
