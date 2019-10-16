@@ -1,9 +1,10 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
 import * as React from 'karet';
 import * as U from 'karet.util';
-import * as R from 'ramda';
+import * as R from 'kefir.ramda';
+import * as L from 'kefir.partial.lenses';
 
-import * as H from '../../../shared';
+import * as H from 'shared';
 
 import * as T from './index.d';
 import style from './index.module.scss';
@@ -20,11 +21,15 @@ function Palette({ name, items, currentColor }) {
         {U.thru(
           items,
           U.mapElems((it, i) => {
+            const c = U.view(L.dropPrefix('#'), it);
             const isActive = U.combine([i, currentColor], R.equals);
+            const color = c.map(H.fromHex);
+            const backgroundColor = color.map(x => `rgba(${x.join()})`);
+
             return (
               <li key={`color-${i}`} className={U.when(isActive, style.active)}>
                 <button
-                  style={{ backgroundColor: it, color: H.yiqFor(it) }}
+                  style={{ backgroundColor }}
                   onClick={U.doSet(currentColor, i)}
                 />
               </li>
