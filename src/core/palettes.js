@@ -5,6 +5,10 @@ import { IPalette } from './models.d';
  * @type {IPalette[]}
  */
 const palettes = [
+  {
+    name: 'test palette',
+    items: ['#ff0000', '#00ff00', '#0000ff', '#0000007d'],
+  },
   { name: 'bgb', items: ['#081820', '#346856', '#88c070', '#e0f8d0'] },
   {
     name: 'pear36',
