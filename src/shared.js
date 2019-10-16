@@ -145,6 +145,15 @@ export const getIx = U.lift(([x, y], w) => {
  */
 export const fromHex = U.lift(x => {
   const n = parseInt(x, 16);
+  if (x.length > 6) {
+    return [
+      (n & 0xff000000) >> 24,
+      (n & 0xff0000) >> 16,
+      (n & 0xff00) >> 8,
+      n & 0xff,
+    ];
+  }
+
   return [(n & 0xff0000) >> 16, (n & 0xff00) >> 8, n & 0xff, 255];
 });
 
