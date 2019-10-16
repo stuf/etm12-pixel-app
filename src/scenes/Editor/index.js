@@ -12,8 +12,7 @@ import * as Z from 'kefir.partial.lenses.history';
 import * as T from './index.d';
 import styles from './index.module.scss';
 
-import Field from 'components/form/Field';
-import Range from 'components/form/Range';
+import { Field, Range, Dropdown } from 'components/form';
 import Canvas from 'components/ui/Canvas';
 import Palette from 'components/ui/Palette';
 import Details from 'components/ui/Details';
@@ -38,6 +37,11 @@ function EditorScene(props) {
   const selectedPalette = U.view(currentPalette, palettes);
 
   const currentTool = M.currentIn(tool);
+  const currentColorValue = U.view(
+    [currentPalette, 'items', currentColor],
+    palettes,
+  );
+  currentColorValue.log();
 
   return (
     <div className={U.cns('scene-root', styles.root)} data-scene-name="editor">
@@ -50,42 +54,15 @@ function EditorScene(props) {
           isEditing: M.isEditingIn(currentFile),
         }}
       />
-      <div className={U.cns(styles.left, styles.panel)}>
-        <Details title="Tools">
-          <ul className={U.cns(styles.toolgrid, 'unstyled-list')}>
-            {U.thru(
-              M.itemsIn(tool),
-              U.mapElems((t, i) => (
-                <li
-                  key={`tool-${i}`}
-                  className={U.cns(
-                    U.when(R.equals(i, M.currentIn(tool)), 'active'),
-                  )}
-                >
-                  <button onClick={U.actions(U.doSet(currentTool, i))}>
-                    {M.nameIn(t)}
-                  </button>
-                </li>
-              )),
-            )}
-          </ul>
-        </Details>
 
+      <div className={U.cns(styles.left, styles.panel)}>
         <Details title="Palette">
           <fieldset>
-            <legend>Switcher</legend>
+            <legend>Palettes</legend>
 
-            <select onChange={e => currentPalette.set(e.target.value)}>
-              {U.thru(
-                palettes,
-                U.mapElems((it, i) => (
-                  <option key={`palette-item-${i}`} value={i}>
-                    {M.nameIn(it)}
-                  </option>
-                )),
-              )}
-            </select>
+            <Dropdown {...{ items: palettes, value: currentPalette }} />
           </fieldset>
+
           <Palette
             {...{
               currentColor,
@@ -93,8 +70,12 @@ function EditorScene(props) {
               items: U.view('items', selectedPalette),
             }}
           />
-          <hr />
-          Current color
+
+          <fieldset>
+            <legend>Current color</legend>
+
+            <div></div>
+          </fieldset>
         </Details>
       </div>
       <div className="relative-pos">
