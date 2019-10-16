@@ -2,8 +2,6 @@
 import * as React from 'karet';
 import * as U from 'karet.util';
 
-import Menu from 'components/ui/Menu';
-import ImageName from './_/ImageName';
 import BuildInfo from './_/BuildInfo';
 
 import * as T from './index.d';
@@ -23,10 +21,6 @@ export default function Header({ menuItems, className, name, isEditing, env }) {
       </div>
 
       <div className={styles.wrapper}>
-        <Menu items={menuItems} />
-
-        <ImageName {...{ name, isEditing }} />
-
         <BuildInfo {...{ env }} />
       </div>
     </header>
