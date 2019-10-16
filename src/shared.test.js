@@ -73,5 +73,9 @@ describe('shared', () => {
   it.todo('rangeScaled');
 
   T.testEq([255, 0, 0, 255], () => H.fromHex('ff0000'));
+  it.todo(
+    "H.fromHex('ff0000ff') (support 32 bit color values without JS restrictions)",
+  );
+  T.testEq([0, 0, 255, 125], () => H.fromHex('0000ff7d'));
   it.todo('yiqFor');
 });
