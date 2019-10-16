@@ -6,6 +6,7 @@ import style from './index.module.scss';
 
 /**
  * @param {T.Props} props
+ * @return {T.Component}
  */
 function Button({ children }) {
   return <button className={style.root}>{children}</button>;
