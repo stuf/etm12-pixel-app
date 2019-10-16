@@ -23,18 +23,15 @@ function Palette({ name, items, currentColor }) {
           U.mapElems((it, i) => {
             const c = U.view(L.dropPrefix('#'), it);
             const isActive = U.combine([i, currentColor], R.equals);
-            const color = c.map(H.fromHex);
-            const backgroundColor = color.map(
-              x => `rgb(${x.slice(0, 3).join()})`,
-            );
-            backgroundColor.log();
+            const color = U.mapValue(H.fromHex, c);
+            const backgroundColor = U.mapValue(x => `rgb(${x.slice(0, 3).join()})`, color);
 
             return (
               <li key={`color-${i}`} className={U.when(isActive, style.active)}>
                 <button
                   style={{
                     backgroundColor,
-                    opacity: U.view(3, color).map(x => x / 255),
+                    opacity: U.mapValue(x => x / 255, U.view(3, color)),
                   }}
                   onClick={U.doSet(currentColor, i)}
                 />
