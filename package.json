@@ -61,7 +61,8 @@
       "src/**/*.js",
       "!src/tests/**",
       "!src/test-utils.js",
-      "!src/typedef.js"
+      "!src/typedef.js",
+      "!src/components/form/index.js"
     ]
   },
   "browserslist": {
