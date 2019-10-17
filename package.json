@@ -59,6 +59,7 @@
     ],
     "collectCoverageFrom": [
       "src/**/*.js",
+      "!src/index.js",
       "!src/tests/**",
       "!src/test-utils.js",
       "!src/typedef.js",
