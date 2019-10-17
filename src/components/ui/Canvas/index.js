@@ -129,7 +129,7 @@ function Canvas({ size, scale, color, canvasData }) {
     U.toProperty,
     R.tap(H.logObsType('resize')),
     U.consume(resizeImageData(canvasData)),
-  ).spy('resize');
+  );
 
   const effSink = U.sink(
     U.parallel([resize, updateDataOnDraw, updateCanvas, actions]),
