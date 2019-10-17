@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<div
+  className="root"
+  style={
+    Object {
+      "height": 16,
+      "transform": "translateX(32px) translateY(64px)",
+      "width": 16,
+    }
+  }
+/>
+`;
