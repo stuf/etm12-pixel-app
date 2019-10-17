@@ -41,7 +41,7 @@ const resizeImageData = state => ([[w, h], n]) => {
 function Canvas({ size, scale, color, canvasData }) {
   const actions = U.serializer();
 
-  const scaleInverse = scale.map(R.divide(1));
+  const scaleInverse = U.mapValue(R.divide(1), scale);
 
   const dom = U.variable();
   const ctx = H.getContext(dom);
