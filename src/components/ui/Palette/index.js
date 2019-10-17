@@ -4,10 +4,11 @@ import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 import * as L from 'kefir.partial.lenses';
 
-import * as H from 'shared';
-
 import * as T from './index.d';
 import style from './index.module.scss';
+
+import * as H from 'shared';
+import backgroundImage from 'assets/transparency.png';
 
 /**
  * @param {T.Props} props
@@ -15,19 +16,28 @@ import style from './index.module.scss';
  */
 function Palette({ name, items, currentColor }) {
   return (
-    <section className={style.root}>
-      <header>{name}</header>
-      <ul className={style.items}>
+    <section className={U.cns(style.root, 'M-group')}>
+      <header className="A-group__child">{name}</header>
+      <ul className={U.cns(style.items, 'A-group__child')}>
         {U.thru(
           items,
           U.mapElems((it, i) => {
             const c = U.view(L.dropPrefix('#'), it);
             const isActive = U.combine([i, currentColor], R.equals);
             const color = U.mapValue(H.fromHex, c);
-            const backgroundColor = U.mapValue(x => `rgb(${x.slice(0, 3).join()})`, color);
+            const backgroundColor = U.mapValue(
+              x => `rgb(${x.slice(0, 3).join()})`,
+              color,
+            );
 
             return (
-              <li key={`color-${i}`} className={U.when(isActive, style.active)}>
+              <li
+                key={`color-${i}`}
+                style={{
+                  backgroundImage: `url(${backgroundImage})`,
+                }}
+                className={U.when(isActive, style.active)}
+              >
                 <button
                   style={{
                     backgroundColor,
