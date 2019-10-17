@@ -16,10 +16,13 @@ import { fstOf, sndOf } from 'shared';
  * @param {T.Props} props
  */
 function Cursor({ pos, scale }) {
-  const scaledPos = U.combine([pos, scale], ([x, y], m) => [
-    Math.trunc(x * m),
-    Math.trunc(y * m),
-  ]).skipDuplicates(R.equals);
+  const scaledPos = U.thru(
+    U.combine([pos, scale], ([x, y], m) => [
+      Math.trunc(x * m),
+      Math.trunc(y * m),
+    ]),
+    U.skipDuplicates(R.equals),
+  );
 
   return (
     <div
