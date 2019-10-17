@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot: empty dropdown 1`] = `
+<Dropdown>
+  <div
+    className="root"
+  >
+    <select
+      onChange={[Function]}
+    />
+  </div>
+</Dropdown>
+`;
+
+exports[`matches snapshot: non-empty dropdown (plain) 1`] = `
+<Dropdown
+  items={
+    Array [
+      Object {
+        "name": "top",
+      },
+      Object {
+        "name": "kek",
+      },
+    ]
+  }
+>
+  <div
+    className="root"
+  />
+</Dropdown>
+`;
+
+exports[`matches snapshot: non-empty dropdown 1`] = `
+<Dropdown
+  items={
+    P {
+      "_currentEvent": Object {
+        "current": true,
+        "type": "value",
+        "value": Array [
+          Object {
+            "name": "top",
+          },
+          Object {
+            "name": "kek",
+          },
+        ],
+      },
+    }
+  }
+>
+  <FromClass
+    args={
+      Array [
+        "div",
+        Object {
+          "__self": undefined,
+          "__source": Object {
+            "fileName": "/home/stuf/Projects/Lab/etm12-pixel-app/src/components/form/Dropdown/index.js",
+            "lineNumber": 17,
+          },
+          "className": "root",
+        },
+        AnonymousObservable {
+          "_$handleAny": null,
+          "_activating": false,
+          "_active": false,
+          "_alive": false,
+          "_currentEvent": Object {
+            "type": "value",
+            "value": undefined,
+          },
+          "_dispatcher": null,
+          "_getInitialCurrent": null,
+          "_logHandlers": null,
+          "_name": "constant.flatMapLatest.toProperty",
+          "_source": null,
+          "_spyHandlers": null,
+        },
+      ]
+    }
+  >
+    <div
+      className="root"
+    />
+  </FromClass>
+</Dropdown>
+`;
