@@ -21,7 +21,7 @@ import TimeControlButton from 'components/ui/TimeControlButton';
 
 import LayoutHeader from 'components/layout/Header';
 
-import * as M from 'meta';
+import * as M from 'common/meta';
 
 /**
  * @param {T.Props} props
@@ -137,9 +137,9 @@ function EditorScene(props) {
         </Details>
 
         <Details title="Canvas">
-          <Field label="Width" value={U.view([0, M.wNumber], size)} />
-          <Field label="Height" value={U.view([1, M.wNumber], size)} />
-          <Field label="Scale" value={U.view(M.wNumber, scale)} />
+          <Field label="Width" value={U.view([0, M.fmt.wNumber], size)} />
+          <Field label="Height" value={U.view([1, M.fmt.wNumber], size)} />
+          <Field label="Scale" value={U.view(M.fmt.wNumber, scale)} />
         </Details>
       </div>
     </div>

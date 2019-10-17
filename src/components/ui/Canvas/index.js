@@ -9,7 +9,6 @@ import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 import * as K from 'kefir';
 
-import * as M from 'meta';
 import * as E from 'core/mouse';
 import * as H from 'shared';
 import * as S from 'settings';
@@ -52,7 +51,6 @@ function Canvas({ size, scale, color, canvasData }) {
   const movementXY = H.scaleSize(H.layerPos(ev.onMove), scaleInverse).map(
     R.map(Math.trunc),
   );
-  // .skipDuplicates(R.equals);
 
   const width = H.fstOf(size);
   const height = H.sndOf(size);
@@ -64,7 +62,16 @@ function Canvas({ size, scale, color, canvasData }) {
     height: H.sndOf(scaledSize),
   };
 
-  const currentColor = M.selectedColorIn(color);
+  const currentColor = U.view(
+    L.choose(x => [
+      'palettes',
+      x.currentPalette,
+      'items',
+      x.currentColor,
+      L.dropPrefix('#'),
+    ]),
+    color,
+  );
 
   const colorHex = H.fromHex(currentColor);
 
