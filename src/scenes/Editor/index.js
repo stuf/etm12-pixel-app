@@ -36,13 +36,6 @@ function EditorScene(props) {
 
   const selectedPalette = U.view(currentPalette, palettes);
 
-  const currentTool = M.currentIn(tool);
-  const currentColorValue = U.view(
-    [currentPalette, 'items', currentColor],
-    palettes,
-  );
-  currentColorValue.log();
-
   return (
     <div className={U.cns('scene-root', styles.root)} data-scene-name="editor">
       <LayoutHeader
@@ -108,7 +101,7 @@ function EditorScene(props) {
         </Details>
 
         <Details title="History">
-          <div>{U.view(Z.count, canvasData).map(x => x - 1)}</div>
+          <div>{U.mapValue(x => x - 1, U.view(Z.count, canvasData))}</div>
 
           <Range
             {...{
