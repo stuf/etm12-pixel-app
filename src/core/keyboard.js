@@ -6,9 +6,9 @@ import { takeEvents } from './_shared';
 /**
  * @type {K.Property<KeyboardEvent, any>}
  */
-export const onKeyDown = takeEvents('keydown', document);
+export const onKeyDown = src => takeEvents('keydown', src);
 
 /**
  * @type {K.Property<KeyboardEvent, any>}
  */
-export const onKeyUp = takeEvents('keyup', document);
+export const onKeyUp = src => takeEvents('keyup', src);
