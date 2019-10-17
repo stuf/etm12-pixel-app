@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test 1`] = `
+<div
+  className="root flex-horizontal -vertical-center"
+>
+  <span
+    className="nameLabel"
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`snapshot test: with empty data 1`] = `
+<div
+  className="root flex-horizontal -vertical-center"
+>
+  <span
+    className="nameLabel"
+    onClick={[Function]}
+  />
+</div>
+`;

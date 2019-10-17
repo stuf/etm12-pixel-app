@@ -21,7 +21,7 @@ function ImageName({ name, isEditing }) {
     <div className={U.cns(styles.root, 'flex-horizontal', '-vertical-center')}>
       {U.ifElse(
         isEditing,
-        <div>
+        <div className="is-editing">
           <U.Input value={name} />
         </div>,
         <span className={styles.nameLabel} onClick={toggleFlag}>
