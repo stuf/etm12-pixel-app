@@ -12,7 +12,7 @@ it('snapshot test', () => {
   expect(toJson(w)).toMatchSnapshot('with empty data');
 });
 
-it('works', () => {
+it('displays correct element based on isEditing prop', () => {
   const w = shallow(<Index {...{ isEditing: false, name: 'Untitled 123' }} />);
   expect(w.find('.nameLabel').text()).toBe('Untitled 123');
 
