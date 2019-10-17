@@ -13,7 +13,7 @@ import logo from 'assets/logo.svg';
  * @param {T.Props} props
  * @return {T.Component}
  */
-export default function Header({ menuItems, className, name, isEditing, env }) {
+export default function Header({ className, env }) {
   return (
     <header className={U.cns(styles.root, className)}>
       <div className={styles.logoWrapper}>
