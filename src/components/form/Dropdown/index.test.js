@@ -1,5 +1,5 @@
-import * as React from 'karet';
-import { mount } from 'enzyme';
+import React from 'react';
+import { mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
 import Index from './index';
@@ -12,4 +12,14 @@ it('matches snapshot', () => {
 
   expect(toJson(w1)).toMatchSnapshot('empty dropdown');
   expect(toJson(w2)).toMatchSnapshot('non-empty dropdown');
+});
+
+it('allows setting a value to an atom', () => {
+  const value = { set: jest.fn() };
+  const xs = [{ name: 'top' }, { name: 'kek' }];
+
+  const w = mount(<Index items={xs} value={value} />);
+  w.find('select').simulate('change', { target: { value: 123 } });
+
+  expect(value.set).toHaveBeenCalled();
 });

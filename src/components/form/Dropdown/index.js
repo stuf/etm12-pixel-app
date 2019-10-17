@@ -12,12 +12,16 @@ import * as M from 'common/meta';
  * @param {T.Props} props
  * @return {T.Component}
  */
-export default function Dropdown({ items, value }) {
+export default function Dropdown({
+  items,
+  value,
+  onChange = e => value.set(e.target.value),
+}) {
   return (
     <div className={styles.root}>
-      {U.unless(
+      {U.when(
         items,
-        <select onChange={e => value.set(e.target.value)}>
+        <select {...{ onChange }}>
           {U.thru(
             U.view(L.valueOr([]), items),
             U.mapElems((it, i) => (

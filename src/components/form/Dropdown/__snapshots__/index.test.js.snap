@@ -4,11 +4,7 @@ exports[`matches snapshot: empty dropdown 1`] = `
 <Dropdown>
   <div
     className="root"
-  >
-    <select
-      onChange={[Function]}
-    />
-  </div>
+  />
 </Dropdown>
 `;
 
@@ -27,6 +23,23 @@ exports[`matches snapshot: non-empty dropdown 1`] = `
 >
   <div
     className="root"
-  />
+  >
+    <select
+      onChange={[Function]}
+    >
+      <option
+        key="0"
+        value={0}
+      >
+        top
+      </option>
+      <option
+        key="1"
+        value={1}
+      >
+        kek
+      </option>
+    </select>
+  </div>
 </Dropdown>
 `;
