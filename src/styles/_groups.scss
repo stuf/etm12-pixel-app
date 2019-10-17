@@ -1,0 +1,10 @@
+.M-group {
+}
+
+.A-group__child {
+  margin-bottom: 0.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
