@@ -4,7 +4,7 @@
  */
 export const arrayToCanvas = (xs, w, h) => {
   // Convert the given data into an ImageData instance
-  const ys = new Uint8Array(xs);
+  const ys = new Uint8ClampedArray(xs);
   const id = new ImageData(ys, w, h);
 
   // Create a canvas element, ensure it has the correct size,
