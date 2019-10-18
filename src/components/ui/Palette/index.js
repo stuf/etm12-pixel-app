@@ -16,9 +16,8 @@ import backgroundImage from 'assets/transparency.png';
  */
 function Palette({ name, items, currentColor }) {
   return (
-    <section className={U.cns(style.root, 'M-group')}>
-      <header className="A-group__child">{name}</header>
-      <ul className={U.cns(style.items, 'A-group__child')}>
+    <section className={U.cns(style.root)}>
+      <ul className={U.cns(style.items)}>
         {U.thru(
           items,
           U.mapElems((it, i) => {
