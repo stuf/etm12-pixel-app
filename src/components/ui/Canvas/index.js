@@ -41,12 +41,11 @@ const resizeImageData = state => ([[w, h], n]) => {
  * @param {T.Props} props
  * @return {T.Component}
  */
-function Canvas({ size, scale, color, canvasData }) {
+function Canvas({ size, scale, color, canvasData, dom = U.variable() }) {
   const actions = U.serializer();
 
   const scaleInverse = U.mapValue(R.divide(1), scale);
 
-  const dom = U.variable();
   const ctx = H.getContext(dom);
   const scaledSize = H.scaleSize(size, scale);
   const ev = E.mouseEventsFor(dom);
