@@ -96,6 +96,7 @@
     "enzyme-to-json": "^3.4.2",
     "husky": "^3.0.9",
     "jest-canvas-mock": "^2.1.2",
+    "jest-kefir": "^1.0.0",
     "jsverify": "^0.8.4",
     "node-sass": "^4.12.0",
     "react-test-renderer": "^16.10.2",
