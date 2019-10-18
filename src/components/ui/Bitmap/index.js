@@ -17,8 +17,7 @@ import { takeAll, scaleSize, fstOf, sndOf, getContext } from 'shared';
  * @param {T.Props} props
  * @return {T.Component}
  */
-function Bitmap({ size, scale, data }) {
-  const dom = U.variable();
+function Bitmap({ size, scale, data, dom = U.variable() }) {
   const ctx = getContext(dom);
 
   const scaledSize = scaleSize(size, scale);
