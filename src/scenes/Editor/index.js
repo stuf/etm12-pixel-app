@@ -15,9 +15,9 @@ import styles from './index.module.scss';
 import { Field, Range, Dropdown } from 'components/form';
 import Canvas from 'components/ui/Canvas';
 import Palette from 'components/ui/Palette';
-import Details from 'components/ui/Details';
 import Bitmap from 'components/ui/Bitmap';
 import TimeControlButton from 'components/ui/TimeControlButton';
+import Group from 'components/ui/Group';
 
 import LayoutHeader from 'components/layout/Header';
 
@@ -49,13 +49,8 @@ function EditorScene(props) {
       />
 
       <div className={U.cns(styles.left, styles.panel)}>
-        <Details title="Palette">
-          <fieldset>
-            <legend>Palettes</legend>
-
-            <Dropdown {...{ items: palettes, value: currentPalette }} />
-          </fieldset>
-
+        <Group title="Palette">
+          <Dropdown {...{ items: palettes, value: currentPalette }} />
           <Palette
             {...{
               currentColor,
@@ -63,21 +58,17 @@ function EditorScene(props) {
               items: U.view('items', selectedPalette),
             }}
           />
-
-          <fieldset>
-            <legend>Current color</legend>
-
-            <div></div>
-          </fieldset>
-        </Details>
+        </Group>
       </div>
+
       <div className="relative-pos">
         <Canvas
           {...{ size, scale, color, canvasData: U.view(Z.present, canvasData) }}
         />
       </div>
+
       <div className={U.cns(styles.right, styles.panel)}>
-        <Details title="Preview">
+        <Group title="Preview">
           <Bitmap
             {...{
               size,
@@ -85,22 +76,18 @@ function EditorScene(props) {
               data: U.view(Z.present, U.skipUnless(R.identity, canvasData)),
             }}
           />
-        </Details>
+        </Group>
 
-        <Details title="Image">
+        <Group title="Image">
           <Field
             label="Name"
             value={U.view(['currentFile', 'name', L.valueOr('')], state)}
           />
 
-          <fieldset>
-            <legend>Controls</legend>
+          <button>Clear image</button>
+        </Group>
 
-            <button>Clear image</button>
-          </fieldset>
-        </Details>
-
-        <Details title="History">
+        <Group title="History">
           <div>{U.mapValue(x => x - 1, U.view(Z.count, canvasData))}</div>
 
           <Range
@@ -114,26 +101,22 @@ function EditorScene(props) {
             }}
           />
 
-          <fieldset>
-            <legend>Controls</legend>
+          <TimeControlButton count={U.view(Z.undoIndex, canvasData)}>
+            Undo
+          </TimeControlButton>
+          <TimeControlButton count={U.view(Z.redoIndex, canvasData)}>
+            Redo
+          </TimeControlButton>
+          <button onClick={U.doModify(canvasData, Z.undoForget)}>
+            Purge history
+          </button>
+        </Group>
 
-            <TimeControlButton count={U.view(Z.undoIndex, canvasData)}>
-              Undo
-            </TimeControlButton>
-            <TimeControlButton count={U.view(Z.redoIndex, canvasData)}>
-              Redo
-            </TimeControlButton>
-            <button onClick={U.doModify(canvasData, Z.undoForget)}>
-              Purge history
-            </button>
-          </fieldset>
-        </Details>
-
-        <Details title="Canvas">
+        <Group title="Canvas">
           <Field label="Width" value={U.view([0, M.fmt.wNumber], size)} />
           <Field label="Height" value={U.view([1, M.fmt.wNumber], size)} />
           <Field label="Scale" value={U.view(M.fmt.wNumber, scale)} />
-        </Details>
+        </Group>
       </div>
     </div>
   );

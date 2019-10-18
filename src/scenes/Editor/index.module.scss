@@ -1,3 +1,12 @@
+@import '~styles/variables';
+
+$top-bg-color: $color-gray-800 !default;
+$top-text-color: $text-color-white !default;
+
+$left-bg-color: $color-gray-200 !default;
+$right-bg-color: $color-gray-200 !default;
+$sidebar-text-color: $text-color-black !default;
+
 $border-color: rgba(0, 0, 0, 0.3) !default;
 $border-thick: solid 2px $border-color;
 
@@ -13,26 +22,22 @@ $border-thick: solid 2px $border-color;
 .top {
   grid-column: span 3;
   border-bottom: $border-thick;
-}
-
-.panel {
-  > * + * {
-    margin-top: 0.5rem;
-  }
+  background-color: $top-bg-color;
+  color: $top-text-color;
 }
 
 .left,
 .right {
-  padding: 0.5rem;
+  background-color: $color-gray-200;
   overflow: auto;
 }
 
 .left {
-  border-right: $border-thick;
+  // border-right: $border-thick;
 }
 
 .right {
-  border-left: $border-thick;
+  // border-left: $border-thick;
 }
 
 .toolgrid {
