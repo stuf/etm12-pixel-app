@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<Group
+  title="Group title"
+>
+  <section
+    className="root"
+  >
+    <header
+      className="header"
+    >
+      Group title
+    </header>
+    <div
+      className="content"
+    >
+      Group content
+    </div>
+  </section>
+</Group>
+`;

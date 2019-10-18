@@ -1,0 +1,25 @@
+@import '~styles/variables';
+
+$group-header-font-weight: 600;
+
+.root {
+  border-bottom: dotted 1px $color-gray-400;
+}
+
+.header {
+  padding: $spacing-base;
+  font-weight: $group-header-font-weight;
+}
+
+.content {
+  padding: $spacing-base;
+
+  > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  > * + * {
+    margin-top: $spacing-base;
+  }
+}
