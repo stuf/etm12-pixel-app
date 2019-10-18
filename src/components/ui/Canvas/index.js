@@ -22,15 +22,18 @@ import styles from './index.module.scss';
 
 const resizeImageData = state => ([[w, h], n]) => {
   const xs = Array(w * h * n).fill(0);
-  console.group('resizeImageData');
-  console.warn(
-    'This function is currently a no-op, due to incomplete values being set into canvas image data state.',
-  );
-  console.warn(
-    'TODO: verify `Array(w * h * n)` results in a valid value for `ImageData`.',
-  );
-  console.warn('What would be set into `canvasData`:', xs);
-  console.groupEnd();
+
+  if (process.env.NODE_ENV === 'development') {
+    console.group('resizeImageData');
+    console.warn(
+      'This function is currently a no-op, due to incomplete values being set into canvas image data state.',
+    );
+    console.warn(
+      'TODO: verify `Array(w * h * n)` results in a valid value for `ImageData`.',
+    );
+    console.warn('What would be set into `canvasData`:', xs);
+    console.groupEnd();
+  }
   state.set(xs);
 };
 
@@ -127,7 +130,6 @@ function Canvas({ size, scale, color, canvasData }) {
   const resize = U.thru(
     U.combine([size, S.canvas.colorChannels], H.takeAll),
     U.toProperty,
-    R.tap(H.logObsType('resize')),
     U.consume(resizeImageData(canvasData)),
   );
 
