@@ -48,14 +48,7 @@ function Bitmap({ size, scale, data, dom = U.variable() }) {
 
   return (
     <div className={styles.root}>
-      <>{effSink}</>
-
-      <div>
-        {U.thru(
-          U.combine([fstOf(size), sndOf(size), scale], takeAll),
-          U.mapValue(R.join(' x ')),
-        )}
-      </div>
+      <>{U.unless(R.isEmpty(data), effSink)}</>
 
       <canvas
         {...{
