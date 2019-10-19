@@ -17,6 +17,8 @@ export const itemsIn = U.view(['items', L.valueOr([])]);
 
 export const currentIn = U.view('current');
 
+export const offsetIn = U.view('offset');
+
 export const isEditingIn = U.view('isEditing');
 
 //
