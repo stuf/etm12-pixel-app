@@ -1,5 +1,20 @@
-import { elementOffsetFor } from './position';
+import { testEq } from 'test-utils';
+import * as P from './position';
 
-it('elementOffsetFor', () => {
-  expect(elementOffsetFor(document.createElement('div'))).toEqual([0, 0]);
+let el;
+let bbox;
+
+beforeEach(() => {
+  el = document.createElement('div');
+  bbox = [[10, 10], [100, 100]];
 });
+
+testEq([0, 0], () => P.elementOffsetFor(el));
+testEq([[0, 0], [0, 0]], () => P.elementBoundingBoxFor(el));
+
+testEq(false, () => P.insideBoundingBox(bbox, [9, 9]));
+testEq(true, () => P.insideBoundingBox(bbox, [10, 10]));
+testEq(true, () => P.insideBoundingBox(bbox, [11, 11]));
+testEq(true, () => P.insideBoundingBox(bbox, [99, 99]));
+testEq(true, () => P.insideBoundingBox(bbox, [100, 100]));
+testEq(false, () => P.insideBoundingBox(bbox, [101, 101]));
