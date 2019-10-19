@@ -66,5 +66,8 @@ export interface LiftedAry1Fn<A, R> {
 
 export interface LiftedAry2Fn<A, B, R> {
   (a: MaybeObservable<A>, b: MaybeObservable<B>): MaybeObservable<R>;
-  (a: MaybeObservable<A>): (b: MaybeObservable<B>) => MaybeObservable<R>;
+}
+
+export interface LiftedAry3Fn<A, B, C, R> {
+  (a: MaybeObservable<A>, b: MaybeObservable<B>, c: MaybeObservable<C>): MaybeObservable<R>;
 }
