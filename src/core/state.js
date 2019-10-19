@@ -19,6 +19,7 @@ const initialState = {
   },
   drawable: {
     offset: [0, 0],
+    bbox: [[0, 0], [0, 0]],
   },
   currentFile: {
     name: 'Untitled',
