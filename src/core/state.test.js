@@ -22,6 +22,7 @@ it('contains valid state', () => {
           scale: Rule.REQUIRED,
         }),
       ),
+      drawable: nullable(Rule.IS_OBJECT),
       color: nullable(Rule.IS_OBJECT),
       currentFile: nullable(Rule.IS_OBJECT),
       tool: nullable(Rule.IS_OBJECT),
