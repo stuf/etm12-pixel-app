@@ -9,11 +9,14 @@ import style from './index.module.scss';
  * @param {T.Props} props
  * @return {T.Component}
  */
-function Button({ children, action }) {
+function Button({ children, disabled, action, group }) {
   return (
     <button
-      className={style.root}
-      onClick={U.actions(U.preventDefault, action)}
+      {...{
+        className: U.cns(style.root, U.when(group, style.group)),
+        disabled,
+        onClick: U.actions(U.preventDefault, action),
+      }}
     >
       {children}
     </button>

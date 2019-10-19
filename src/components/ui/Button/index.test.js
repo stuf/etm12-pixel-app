@@ -12,3 +12,12 @@ it('renders and behaves correctly', () => {
 
   expect(action).toHaveBeenCalled();
 });
+
+it('renders grouped buttons', () => {
+  mount(
+    <>
+      <Button group>top</Button>
+      <Button group>kek</Button>
+    </>,
+  );
+});

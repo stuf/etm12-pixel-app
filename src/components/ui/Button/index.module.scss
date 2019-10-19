@@ -1,7 +1,29 @@
+$radius: 0.25rem;
+$radius-left: $radius 0 0 $radius;
+$radius-right: 0 $radius $radius 0;
+
 .root {
-  border: dashed 1px #f00;
-  padding: .5rem;
-  height: 2rem;
+  // border: dashed 1px #f00;
+  background-color: rgba(0, 0, 0, 0.15);
+  border: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
   text-align: center;
   line-height: auto;
+  border-radius: $radius;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.group {
+  border-radius: 0;
+  &:first-of-type {
+    border-radius: $radius-left;
+  }
+
+  &:last-of-type {
+    border-radius: $radius-right;
+  }
 }
