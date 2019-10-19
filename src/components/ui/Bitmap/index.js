@@ -11,20 +11,21 @@ import * as K from 'kefir';
 import * as T from './index.d';
 import styles from './index.module.scss';
 
-import { takeAll, scaleSize, fstOf, sndOf, getContext } from 'shared';
+import { takeAll } from 'shared';
+import { scaleSize, getContext } from 'common/canvas';
+import { fstIn, sndIn } from 'common/meta';
 
 /**
  * @param {T.Props} props
- * @return {T.Component}
  */
-function Bitmap({ size, scale, data, dom = U.variable() }) {
+function Bitmap({ size, className, scale, data, dom = U.variable() }) {
   const ctx = getContext(dom);
 
   const scaledSize = scaleSize(size, scale);
 
   const style = {
-    width: fstOf(scaledSize),
-    height: sndOf(scaledSize),
+    width: fstIn(scaledSize),
+    height: sndIn(scaledSize),
   };
 
   const imageData = U.thru(
@@ -44,19 +45,21 @@ function Bitmap({ size, scale, data, dom = U.variable() }) {
 
   //
 
-  const effSink = U.sink(U.parallel([drawImageData]));
+  const effSink = U.sink(
+    U.unless(R.isEmpty(data), U.parallel([drawImageData])),
+  );
 
   return (
-    <div className={styles.root}>
-      <>{U.unless(R.isEmpty(data), effSink)}</>
+    <div className={U.cns(styles.root, className)}>
+      {effSink}
 
       <canvas
         {...{
+          style,
           className: styles.canvas,
           ref: U.refTo(dom),
-          style,
-          width: fstOf(size),
-          height: sndOf(size),
+          width: fstIn(size),
+          height: sndIn(size),
         }}
       />
     </div>
