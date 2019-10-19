@@ -28,8 +28,8 @@ function Cursor({ pos, scale }) {
     <div
       className={styles.root}
       style={{
-        width: scale,
-        height: scale,
+        width: R.add(1, scale),
+        height: R.add(1, scale),
         transform: U.string`translateX(${fstOf(
           scaledPos,
         )}px) translateY(${sndOf(scaledPos)}px)`,
