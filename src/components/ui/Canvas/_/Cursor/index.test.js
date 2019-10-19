@@ -11,8 +11,8 @@ it('calculates the correct position', () => {
   const wrap = shallow(<Index {...{ pos, scale }} />);
 
   expect(wrap.prop('style')).toEqual({
-    width: scale,
-    height: scale,
+    width: scale + 1,
+    height: scale + 1,
     transform: `translateX(${pos[0] * scale}px) translateY(${pos[1] *
       scale}px)`,
   });
