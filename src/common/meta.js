@@ -23,6 +23,12 @@ export const isEditingIn = U.view('isEditing');
 
 //
 
+export const fstIn = U.view(0);
+
+export const sndIn = U.view(1);
+
+//
+
 export const fmt = {
   rNumber: L.reread(toInt),
   wNumber: L.rewrite(toInt),

@@ -11,5 +11,8 @@ testEq(['top'], () => M.itemsIn({ items: ['top'] }));
 testEq([], () => M.itemsIn({ items: [] }));
 testEq([], () => M.itemsIn());
 
+testEq(1, () => M.fstIn([1, 2]));
+testEq(2, () => M.sndIn([1, 2]));
+
 testEq(123, () => L.get(M.fmt.rNumber, '123'));
 testEq(123, () => L.set(M.fmt.wNumber, '123', undefined));
