@@ -1,5 +1,5 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[LiftedAry1Fn]"}] */
 import * as U from 'karet.util';
-import * as K from 'kefir';
 
 import { LiftedAry1Fn } from 'types.d';
 
