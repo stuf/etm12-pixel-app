@@ -51,6 +51,9 @@ export type Tuple2<A, B> = [A, B];
 //
 
 export type Size = Tuple2<number, number>;
+export type Coord = Tuple2<number, number>;
+
+export type BBox = [Coord, Coord];
 
 //
 
