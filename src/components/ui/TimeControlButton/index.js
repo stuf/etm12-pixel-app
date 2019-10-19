@@ -4,16 +4,22 @@ import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 
 import * as T from './index.d';
+
+import Button from 'components/ui/Button';
 /**
  *
  * @param {T.Props} props
  */
 function TimeControlButton({ count, children }) {
   return (
-    <button onClick={U.doModify(count, R.dec)} disabled={R.equals(count, 0)}>
+    <Button
+      group
+      action={U.doModify(count, R.dec)}
+      disabled={R.equals(count, 0)}
+    >
       {children}
       {U.when(count, U.string`(${count})`)}
-    </button>
+    </Button>
   );
 }
 
