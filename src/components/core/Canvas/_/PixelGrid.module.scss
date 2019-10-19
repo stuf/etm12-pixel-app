@@ -1,0 +1,19 @@
+$grid-line-color: rgba(0, 0, 0, 0.2) !default;
+
+.root {
+}
+
+.svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  border: solid 1px $grid-line-color;
+  z-index: 1;
+  shape-rendering: crispEdges;
+
+  line {
+    stroke: $grid-line-color;
+    stroke-width: 1px;
+  }
+}
