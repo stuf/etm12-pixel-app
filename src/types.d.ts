@@ -46,6 +46,14 @@ export interface RootProps {
 
 //
 
+export type Tuple2<A, B> = [A, B];
+
+//
+
+export type Size = Tuple2<number, number>;
+
+//
+
 export type Value<T> = Property<T, any>;
 
 export type MaybeObservable<T> = T | Observable<T, any>;
@@ -54,4 +62,9 @@ export type MaybeObservable<T> = T | Observable<T, any>;
 
 export interface LiftedAry1Fn<A, R> {
   (a: MaybeObservable<A>): MaybeObservable<R>;
+}
+
+export interface LiftedAry2Fn<A, B, R> {
+  (a: MaybeObservable<A>, b: MaybeObservable<B>): MaybeObservable<R>;
+  (a: MaybeObservable<A>): (b: MaybeObservable<B>) => MaybeObservable<R>;
 }
