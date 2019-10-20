@@ -14,26 +14,26 @@ import * as H from 'shared';
 import * as S from 'settings';
 import { saveImageFromCanvas } from 'core/effects';
 
-import PixelGrid from './_/PixelGrid';
-import Cursor from './_/Cursor';
+import Bitmap from 'components/ui/Bitmap';
 
 import * as T from './index.d';
 import styles from './index.module.scss';
+import { mouseEventsFor } from 'core/mouse';
 
 const resizeImageData = state => ([[w, h], n]) => {
   const xs = Array(w * h * n).fill(0);
 
-  if (process.env.NODE_ENV === 'development') {
-    console.group('resizeImageData');
-    console.warn(
-      'This function is currently a no-op, due to incomplete values being set into canvas image data state.',
-    );
-    console.warn(
-      'TODO: verify `Array(w * h * n)` results in a valid value for `ImageData`.',
-    );
-    console.warn('What would be set into `canvasData`:', xs);
-    console.groupEnd();
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   console.group('resizeImageData');
+  //   console.warn(
+  //     'This function is currently a no-op, due to incomplete values being set into canvas image data state.',
+  //   );
+  //   console.warn(
+  //     'TODO: verify `Array(w * h * n)` results in a valid value for `ImageData`.',
+  //   );
+  //   console.warn('What would be set into `canvasData`:', xs);
+  //   console.groupEnd();
+  // }
   state.set(xs);
 };
 
@@ -41,7 +41,17 @@ const resizeImageData = state => ([[w, h], n]) => {
  * @param {T.Props} props
  * @return {T.Component}
  */
-function Canvas({ size, scale, color, canvasData, dom = U.variable() }) {
+function Canvas({
+  size,
+  scale,
+  color,
+  drawable,
+  canvasData,
+  dom = U.variable(),
+}) {
+  const eventRoot = U.variable();
+  const rootEvent = mouseEventsFor(eventRoot);
+
   const actions = U.serializer();
 
   const scaleInverse = U.mapValue(R.divide(1), scale);
@@ -139,25 +149,22 @@ function Canvas({ size, scale, color, canvasData, dom = U.variable() }) {
   //
 
   return (
-    <div {...{ className: U.cns(styles.root, 'flow') }}>
+    <div
+      {...{ className: U.cns(styles.root, 'flow'), ref: U.refTo(eventRoot) }}
+    >
       <>{effSink}</>
 
-      <div className="relative-pos">
-        <Cursor {...{ pos: movementXY, scale }} />
-        <PixelGrid {...{ size, scale }} />
-        <canvas
-          {...{
-            width,
-            height,
-            style,
-            className: styles.canvas,
-            ref: U.refTo(dom),
-          }}
-        />
+      <div className="relative-pos" style={{ height: '100%' }}>
+        {/* <Cursor {...{ pos: movementXY, scale }} />
+        <PixelGrid {...{ size, scale }} /> */}
+
+        <div className={styles.center}>
+          <Bitmap {...{ size, scale, data: canvasData }} />
+        </div>
       </div>
 
       {/** @todo Extract saving of image out from the canvas itself */}
-      <fieldset>
+      {/* <fieldset>
         <legend>File</legend>
 
         <button
@@ -168,9 +175,9 @@ function Canvas({ size, scale, color, canvasData, dom = U.variable() }) {
         >
           Save image
         </button>
-      </fieldset>
+      </fieldset> */}
 
-      <fieldset className="debug">
+      {/* <fieldset className="debug">
         <legend>Debug</legend>
 
         <dl>
@@ -179,7 +186,7 @@ function Canvas({ size, scale, color, canvasData, dom = U.variable() }) {
           </dt>
           <dd>{U.stringify(ix)}</dd>
         </dl>
-      </fieldset>
+      </fieldset> */}
     </div>
   );
 }
