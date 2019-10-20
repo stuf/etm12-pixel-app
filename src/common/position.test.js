@@ -18,3 +18,6 @@ testEq(true, () => P.insideBoundingBox(bbox, [11, 11]));
 testEq(true, () => P.insideBoundingBox(bbox, [99, 99]));
 testEq(true, () => P.insideBoundingBox(bbox, [100, 100]));
 testEq(false, () => P.insideBoundingBox(bbox, [101, 101]));
+
+testEq([8, 8], () => P.scalePositionWith(8, [1, 1]));
+testEq([2, 3], () => P.truncPosition([2.5, 3.5]));
