@@ -14,7 +14,7 @@ import backgroundImage from 'assets/transparency.png';
  * @param {T.Props} props
  * @return {T.Component}
  */
-function Palette({ name, items, currentColor }) {
+function Palette({ items, currentColor }) {
   return (
     <section className={U.cns(style.root)}>
       <ul className={U.cns(style.items)}>
