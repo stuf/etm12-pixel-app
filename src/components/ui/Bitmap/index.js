@@ -18,8 +18,8 @@ import { fstIn, sndIn } from 'common/meta';
 /**
  * @param {T.Props} props
  */
-function Bitmap({ size, className, scale, data, dom = U.variable() }) {
-  const ctx = getContext(dom);
+function Bitmap({ size, className, scale, data, domRef = U.variable() }) {
+  const ctx = getContext(domRef);
 
   const scaledSize = scaleSize(size, scale);
 
@@ -30,11 +30,10 @@ function Bitmap({ size, className, scale, data, dom = U.variable() }) {
 
   const imageData = U.thru(
     K.combine([data, size], takeAll),
-    U.flatMapLatest(([ps, [w, h]]) =>
-      !ps || !ps.length || ps.length % 4 !== 0
-        ? K.constantError(new Error('image data invalid'))
-        : new ImageData(new Uint8ClampedArray(ps), w, h),
-    ),
+    U.flatMapLatest(([pixels, [w, h]]) => {
+      const xs = new Uint8ClampedArray(pixels);
+      return new ImageData(xs, w, h);
+    }),
   );
 
   const drawImageData = U.thru(
@@ -57,7 +56,7 @@ function Bitmap({ size, className, scale, data, dom = U.variable() }) {
         {...{
           style,
           className: styles.canvas,
-          ref: U.refTo(dom),
+          ref: U.refTo(domRef),
           width: fstIn(size),
           height: sndIn(size),
         }}
