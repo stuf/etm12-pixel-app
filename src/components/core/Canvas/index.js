@@ -30,10 +30,7 @@ import OffsetGuide from './_/OffsetGuide';
 export default function Canvas({ size, color, scale, data, drawable }) {
   /** @type {ObsElement} */
   const dom = U.variable();
-  const ctx = getContext(dom);
   const rgba = L.get([L.dropPrefix('#'), L.reread(fromHex)], color);
-
-  data.log();
 
   const scaledSize = scaleSize(size, scale);
 
