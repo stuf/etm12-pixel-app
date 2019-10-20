@@ -46,8 +46,8 @@ function EditorScene(props) {
   const ensureEmptyImage = U.thru(
     empty(size),
     U.consume(data => {
-      if (canvasData instanceof K.Property) {
-        console.warn('`canvasData` is not observable!');
+      if (!(canvasData instanceof K.Property)) {
+        console.warn('`canvasData` is not observable!', canvasData);
         console.trace();
 
         U.view(Z.present, canvasData).set(data);
