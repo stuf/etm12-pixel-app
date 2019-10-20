@@ -78,4 +78,7 @@ export const fromHexColor = U.lift(x => {
   return [(n & 0xff0000) >> 16, (n & 0xff00) >> 8, n & 0xff, 255];
 });
 
+/**
+ * @type {LiftedAry1Fn<[number, number], number[]>}
+ */
 export const empty = U.lift(([w, h]) => Array(w * h * COLOR_CHANNELS).fill(0));
