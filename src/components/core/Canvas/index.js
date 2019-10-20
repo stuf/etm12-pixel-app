@@ -1,29 +1,64 @@
 import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
+import * as L from 'kefir.partial.lenses';
 import * as K from 'kefir';
-import { mouseEventsFor } from 'core/mouse';
 
 import styles from './index.module.scss';
 
-import { offsetIn, fstIn, sndIn } from 'common/meta';
-import { elementOffsetFor } from 'common/position';
-import { scaleSize } from 'common/canvas';
+import { layerPos, pagePos } from 'common/events';
+import { fstIn, sndIn } from 'common/meta';
+import {
+  elementOffsetFor,
+  offsetPositionWith,
+  scalePositionWith,
+} from 'common/position';
+import {
+  scaleSize,
+  drawingEvents,
+  getContext,
+  getIxRange,
+  rgbFromHex,
+} from 'common/canvas';
+import { reciprocal } from 'common/util';
+import { fromHex } from 'shared';
 
 import Bitmap from 'components/ui/Bitmap';
-import Drawable from './_/Drawable';
 import PixelGrid from './_/PixelGrid';
+import OffsetGuide from './_/OffsetGuide';
 
-export default function Canvas({ size, scale, data, drawable }) {
-  /** @type {ObsElement>} */
+export default function Canvas({ size, color, scale, data, drawable }) {
+  /** @type {ObsElement} */
   const dom = U.variable();
+  const ctx = getContext(dom);
+  const rgba = L.get([L.dropPrefix('#'), L.reread(fromHex)], color);
 
-  const { offset, bbox } = U.destructure(drawable);
+  data.log();
 
-  const domOffset = elementOffsetFor(dom);
   const scaledSize = scaleSize(size, scale);
 
-  const bus = U.bus();
+  const pixelXY = drawingEvents(dom);
+  const offset = elementOffsetFor(dom);
+  const offsetXY = offsetPositionWith(elementOffsetFor(dom), pagePos(pixelXY));
+  const scaledXY = scalePositionWith(reciprocal(scale), offsetXY);
+
+  const posIx = U.thru(
+    getIxRange(scaledXY, fstIn(size)),
+    U.skipDuplicates(R.equals),
+  );
+
+  const colorXY = K.combine([posIx], [rgba]);
+
+  //
+
+  const updateData = U.thru(
+    colorXY,
+    U.consume(([[ia, ib], c]) => {
+      data.view(L.slice(ia, ib)).set(c);
+    }),
+  );
+
+  //
 
   return (
     <div
@@ -34,9 +69,15 @@ export default function Canvas({ size, scale, data, drawable }) {
         height: sndIn(scaledSize),
       }}
     >
-      <Drawable offset={offset} bbox={bbox} bus={bus} />
+      <>{U.sink(updateData)}</>
       <PixelGrid size={size} scale={scale} />
-      <Bitmap size={size} scale={scale} data={data} />
+      <OffsetGuide offset={offset} size={scaledSize} />
+      <Bitmap
+        className={styles.ignorePointerEvents}
+        size={size}
+        scale={scale}
+        data={data}
+      />
     </div>
   );
 }

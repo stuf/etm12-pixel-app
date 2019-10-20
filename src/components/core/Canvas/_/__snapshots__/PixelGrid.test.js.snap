@@ -236,13 +236,6 @@ exports[`matches snapshot 1`] = `
         y1={495.5}
         y2={495.5}
       />
-      <line
-        key="y-32"
-        x1={0}
-        x2="100%"
-        y1={511.5}
-        y2={511.5}
-      />
     </g>
     <g
       className="x-range"
@@ -468,13 +461,6 @@ exports[`matches snapshot 1`] = `
         key="x-31"
         x1={495.5}
         x2={495.5}
-        y1={0}
-        y2="100%"
-      />
-      <line
-        key="x-32"
-        x1={511.5}
-        x2={511.5}
         y1={0}
         y2="100%"
       />
