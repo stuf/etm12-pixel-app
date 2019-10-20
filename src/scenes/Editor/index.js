@@ -4,6 +4,7 @@
  * @namespace scenes
  */
 import * as React from 'karet';
+import * as K from 'kefir';
 import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 import * as L from 'kefir.partial.lenses';
@@ -12,8 +13,10 @@ import * as Z from 'kefir.partial.lenses.history';
 import * as T from './index.d';
 import styles from './index.module.scss';
 
+import Canvas from 'components/core/Canvas';
+
 import { Field, Range, Dropdown } from 'components/form';
-import Canvas from 'components/ui/Canvas';
+import Button from 'components/ui/Button';
 import Palette from 'components/ui/Palette';
 import Bitmap from 'components/ui/Bitmap';
 import TimeControlButton from 'components/ui/TimeControlButton';
@@ -22,6 +25,7 @@ import Group from 'components/ui/Group';
 import LayoutHeader from 'components/layout/Header';
 
 import * as M from 'common/meta';
+import { empty } from 'common/canvas';
 
 /**
  * @param {T.Props} props
@@ -30,14 +34,30 @@ import * as M from 'common/meta';
 function EditorScene(props) {
   const { state, canvasData, menuItems, env } = props;
 
-  const { canvas, color, currentFile, tool } = U.destructure(state);
+  const { canvas, drawable, color, currentFile, tool } = U.destructure(state);
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette, palettes } = U.destructure(color);
 
+  const data = U.view(Z.present, canvasData);
+
   const selectedPalette = U.view(currentPalette, palettes);
+  const selectedColor = U.view(currentColor, M.itemsIn(selectedPalette));
+
+  const ensureEmptyImage = U.thru(
+    empty(size),
+    U.consume(data => {
+      if (canvasData instanceof K.Property) {
+        console.warn('`canvasData` is not observable!');
+        console.trace();
+
+        U.view(Z.present, canvasData).set(data);
+      }
+    }),
+  );
 
   return (
     <div className={U.cns('scene-root', styles.root)} data-scene-name="editor">
+      <>{U.sink(ensureEmptyImage)}</>
       <LayoutHeader
         {...{
           env,
@@ -63,7 +83,13 @@ function EditorScene(props) {
 
       <div className="relative-pos">
         <Canvas
-          {...{ size, scale, color, canvasData: U.view(Z.present, canvasData) }}
+          {...{
+            size,
+            scale,
+            drawable,
+            data,
+            color: selectedColor,
+          }}
         />
       </div>
 
@@ -84,7 +110,7 @@ function EditorScene(props) {
             value={U.view(['currentFile', 'name', L.valueOr('')], state)}
           />
 
-          <button>Clear image</button>
+          <Button>Clear image</Button>
         </Group>
 
         <Group title="History">
@@ -107,9 +133,9 @@ function EditorScene(props) {
           <TimeControlButton count={U.view(Z.redoIndex, canvasData)}>
             Redo
           </TimeControlButton>
-          <button onClick={U.doModify(canvasData, Z.undoForget)}>
+          <Button group onClick={U.doModify(canvasData, Z.undoForget)}>
             Purge history
-          </button>
+          </Button>
         </Group>
 
         <Group title="Canvas">
