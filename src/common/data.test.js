@@ -19,6 +19,5 @@ it('mkImageData', () => {
 
 //
 
-testEq([0, 1, 2, 3, 4, 5], () => D.rangeScaled(0, 5, 1));
-testEq([0, 5, 10, 15, 20, 25], () => D.rangeScaled(0, 25, 5));
-testEq([10, 20, 30, 40, 50], () => D.rangeScaled(10, 50, 10));
+testEq([0, 5, 10, 15, 20], () => D.rangeScaled(0, 25, 5));
+testEq([10, 20, 30, 40], () => D.rangeScaled(10, 50, 10));

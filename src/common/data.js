@@ -22,11 +22,14 @@ export const mkImageData = R.constructN(3, ImageData);
 // Utility functions
 
 /**
+ * Create a range of `a` (start) and `b` (end, exclusive) with
+ * an element every `s` steps.
+ *
  * @type {LiftedAry3Fn<number, number, number, number[]>}
  */
 export const rangeScaled = U.lift((start, end, step) =>
   U.combine([start, end, step], (a, b, s) =>
-    Array(((b - a) / s + 1))
+    Array((b - a) / s)
       .fill(a)
       .map((_, i) => a + i * s),
   ),
