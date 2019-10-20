@@ -1,6 +1,12 @@
+import { constant as C } from 'kefir';
 import { testEq } from 'test-utils';
 
 import * as H from './util';
+
+testEq('(123)', () => H.surroundWith('(', ')', 123));
+testEq('(123)', () => H.surroundWith(C('('), ')', 123));
+testEq('(123)', () => H.parenthesize(123));
+testEq('(123)', () => H.parenthesize(C(123)));
 
 testEq('ab', () => H.withSuffix('b', 'a'));
 testEq('someunit', () => H.toUnit('unit')('some'));

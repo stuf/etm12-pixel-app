@@ -1,6 +1,11 @@
+import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 
 import { LiftedAry1Fn } from 'types.d';
+
+export const surroundWith = R.curry((l, r, v) => R.join('', [l, v, r]));
+
+export const parenthesize = v => surroundWith('(', ')', v);
 
 /**
  *
