@@ -10,6 +10,7 @@
     "karet": "^4.1.0",
     "karet.util": "^0.19.1",
     "kefir": "^3.8.6",
+    "kefir.atom": "^5.5.2",
     "kefir.partial.lenses": "^14.17.0",
     "kefir.partial.lenses.history": "^1.2.0",
     "kefir.partial.lenses.validation": "^2.0.0",

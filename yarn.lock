@@ -6775,7 +6775,7 @@ kefir-test-utils@^1.0.0:
   dependencies:
     lolex "^2.2.0"
 
-kefir.atom@^5.5.1:
+kefir.atom@^5.5.1, kefir.atom@^5.5.2:
   version "5.5.2"
   resolved "https://registry.yarnpkg.com/kefir.atom/-/kefir.atom-5.5.2.tgz#808912d7c674162ef7a6c019b85e5e4f7ca55f7f"
   integrity sha512-V1j2KODdsBxMdoW2MGgr6EqXzv36rFGxQ0tpiq9J60f/XprIGeuHrTMEA2LTD6hlbm9J/1+UVgKN329b77moTw==
