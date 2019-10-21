@@ -37,4 +37,6 @@ export const offsetPositionWith = U.lift(function offsetPositionWith(axy, bxy) {
 
 export const scalePositionWith = U.lift((m, [x, y]) => [x * m, y * m]);
 
-export const truncPosition = U.lift(([x, y]) => [Math.trunc(x), Math.trunc(y)]);
+export const truncPosition = U.lift(([x, y]) => [x, y].map(Math.trunc));
+
+export const roundPosition = U.lift(([x, y]) => [x, y].map(Math.round));
