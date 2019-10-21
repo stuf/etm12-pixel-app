@@ -12,6 +12,7 @@
     "kefir": "^3.8.6",
     "kefir.partial.lenses": "^14.17.0",
     "kefir.partial.lenses.history": "^1.2.0",
+    "kefir.partial.lenses.validation": "^2.0.0",
     "kefir.ramda": "^0.26.0",
     "normalize.css": "^8.0.1",
     "partial.lenses": "^14.17.0",
