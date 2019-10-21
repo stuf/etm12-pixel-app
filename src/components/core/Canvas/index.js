@@ -6,20 +6,14 @@ import * as K from 'kefir';
 
 import styles from './index.module.scss';
 
-import { layerPos, pagePos } from 'common/events';
+import { pagePos } from 'common/events';
 import { fstIn, sndIn } from 'common/meta';
 import {
   elementOffsetFor,
   offsetPositionWith,
   scalePositionWith,
 } from 'common/position';
-import {
-  scaleSize,
-  drawingEvents,
-  getContext,
-  getIxRange,
-  rgbFromHex,
-} from 'common/canvas';
+import { scaleSize, drawingEvents, getIxRange } from 'common/canvas';
 import { reciprocal } from 'common/util';
 import { fromHex } from 'shared';
 

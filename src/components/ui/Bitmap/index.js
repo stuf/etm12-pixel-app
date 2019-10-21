@@ -30,9 +30,15 @@ function Bitmap({ size, className, scale, data, domRef = U.variable() }) {
 
   const imageData = U.thru(
     K.combine([data, size], takeAll),
+    U.toProperty,
     U.flatMapLatest(([pixels, [w, h]]) => {
       const xs = new Uint8ClampedArray(pixels);
-      return new ImageData(xs, w, h);
+      try {
+        return new ImageData(xs, w, h);
+      } catch (e) {
+        console.log({ e, xs });
+        return { e, xs };
+      }
     }),
   );
 

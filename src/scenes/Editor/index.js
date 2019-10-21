@@ -6,7 +6,6 @@
 import * as React from 'karet';
 import * as K from 'kefir';
 import * as U from 'karet.util';
-import * as R from 'kefir.ramda';
 import * as L from 'kefir.partial.lenses';
 import * as Z from 'kefir.partial.lenses.history';
 
@@ -99,7 +98,7 @@ function EditorScene(props) {
             {...{
               size,
               scale: 2,
-              data: U.view(Z.present, U.skipUnless(R.identity, canvasData)),
+              data: U.view(Z.present, canvasData),
             }}
           />
         </Group>
