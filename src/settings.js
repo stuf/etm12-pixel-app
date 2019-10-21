@@ -33,4 +33,14 @@ export const canvas = {
    * color channels per pixel.
    */
   colorChannels: 4,
+
+  /**
+   * Default image size indicated as `[width, height]`.
+   */
+  initialSize: [32, 32],
+
+  /**
+   * Default scaling factor
+   */
+  initialScale: 16,
 };

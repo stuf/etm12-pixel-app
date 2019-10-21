@@ -1,4 +1,4 @@
-import { nullable, props, and, getErrors, Rule } from 'validation-rules';
+import { nullable, props, tuple, and, getErrors, Rule } from 'validation-rules';
 
 import * as S from 'settings';
 
@@ -24,6 +24,8 @@ it('has correct canvas configuration', () => {
   validate(
     props({
       colorChannels: and(Rule.REQUIRED, Rule.NUMBER),
+      initialSize: tuple(Rule.NUMBER, Rule.NUMBER),
+      initialScale: and(Rule.REQUIRED, Rule.NUMBER),
     }),
     S.canvas,
   );
