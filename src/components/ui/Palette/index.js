@@ -19,7 +19,7 @@ function Palette({ items, currentColor }) {
     <section className={U.cns(style.root)}>
       <ul className={U.cns(style.items)}>
         {U.thru(
-          items,
+          U.view(L.valueOr([]), items),
           U.mapElems((it, i) => {
             const c = U.view(L.dropPrefix('#'), it);
             const isActive = U.combine([i, currentColor], R.equals);
