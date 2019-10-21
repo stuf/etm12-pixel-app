@@ -13,14 +13,18 @@ const setName = process.env.NODE_ENV === 'production' ? a => a : I.defineNameU;
 
 // FUNCTIONS
 
+/** @deprecated */
 export const takeAll = R.unapply(R.identity);
 
 // OBSERVABLES
 
+/** @deprecated */
 export const isProperty = x => x instanceof K.Property;
+/** @deprecated */
 export const isObservable = x => x instanceof K.Observable;
 
 /**
+ * @deprecated
  * @template T
  * @param {T | K.Observable<T, any>} x
  * @return {K.Property<T, any>}
@@ -37,6 +41,7 @@ export const toProperty = x => {
 
 // CONSTANTS
 
+/** @deprecated */
 const Pos = {
   PAGE: ['pageX', 'pageY'],
   OFFSET: ['offsetX', 'offsetY'],
@@ -47,22 +52,26 @@ const Pos = {
 // ARITHMETIC
 
 /**
+ * @deprecated
  * @param {number} n
  * @return {number}
  */
 export const reciprocal = n => Math.pow(n, -1);
 
 /**
+ * @deprecated
  * @type {Ary1Lift<number, number>}
  */
 export const reciprocalU = setName(U.lift(reciprocal), 'reciprocalU');
 
 /**
+ * @deprecated
  * @type {(size: MaybeObservable<[number, number]>, scale: MaybeObservable<number>) => K.Observable<[number, number]>}
  */
 export const scaleSize = U.lift(([w, h], m) => [w * m, h * m]);
 
 /**
+ * @deprecated
  * @param {number[]} xs
  * @return {number}
  */
@@ -72,7 +81,7 @@ export const mean = xs => {
 };
 
 /**
- *
+ * @deprecated
  * @param {number[]} xs
  * @return {number[]}
  */
@@ -83,7 +92,7 @@ export const difference = xs => {
 };
 
 /**
- *
+ * @deprecated
  * @param {number[]} xs
  * @return {number[]}
  */
@@ -93,13 +102,14 @@ export const squaredDifference = xs => {
 };
 
 /**
+ * @deprecated
  * @param {number[]} xs
  * @return {number}
  */
 export const meanSquaredDifference = xs => mean(squaredDifference(xs));
 
 /**
- *
+ * @deprecated
  * @param {number[]} xs
  * @return {number}
  */
@@ -108,21 +118,25 @@ export const stdDev = xs => Math.sqrt(meanSquaredDifference(xs));
 // COORDINATES
 
 /**
+ * @deprecated
  * @type {PosTransform}
  */
 export const layerPos = U.mapValue(R.props(Pos.LAYER));
 
 /**
+ * @deprecated
  * @type {PosTransform}
  */
 export const screenPos = U.mapValue(R.props(Pos.SCREEN));
 
 /**
+ * @deprecated
  * @type {PosTransform}
  */
 export const pagePos = U.mapValue(R.props(Pos.PAGE));
 
 /**
+ * @deprecated
  * @type {(pos: [number, number], w: number) => number}
  */
 export const computeIx = U.lift(([x, y], w) => {
@@ -130,6 +144,7 @@ export const computeIx = U.lift(([x, y], w) => {
 });
 
 /**
+ * @deprecated
  * @type {(pos: [number, number], w: number) => [number, number]}
  */
 export const getIx = U.lift(([x, y], w) => {
@@ -141,6 +156,8 @@ export const getIx = U.lift(([x, y], w) => {
 
 /**
  * Convert a hexadecimal color into an `[r, g, b, a]` tuple.
+ *
+ * @deprecated
  * @type {Ary1Lift<string, RGBA>}
  */
 export const fromHex = U.lift(x => {
@@ -157,6 +174,9 @@ export const fromHex = U.lift(x => {
   return [(n & 0xff0000) >> 16, (n & 0xff00) >> 8, n & 0xff, 255];
 });
 
+/**
+ * @deprecated
+ */
 export const toHex = U.lift(x => {
   const y = x.slice(0, 3);
 
@@ -167,11 +187,13 @@ export const toHex = U.lift(x => {
 // CANVAS
 
 /**
+ * @deprecated
  * @type {Ary1Lift<HTMLCanvasElement, CanvasRenderingContext2D>}
  */
 export const getContext = U.lift(el => el.getContext('2d'));
 
 /**
+ * @deprecated
  * @type {Ary2Lift<[number, number], CanvasRenderingContext2D, ImageData>}
  */
 export const getImageData = U.lift(([w, h], ctx) =>
@@ -193,29 +215,13 @@ export const rangeScaled = (start, end, step) =>
       .map((_, i) => i * s + a),
   );
 
+/** @deprecated */
 const yiq_ = (opts = {}) => c => yiq(c, opts);
 
+/** @deprecated */
 export const yiqFor = c => U.thru(c, U.mapValue(yiq_()));
 
 // DEBUG
-
-export const logObsType = name => obs => {
-  if (process.env.NODE_ENV === 'production') {
-    return;
-  }
-
-  console.group(name);
-  console.log('instanceof Stream =>', obs instanceof K.Stream);
-  console.log('instanceof Property =>', obs instanceof K.Property);
-  console.log('instanceof Observable =>', obs instanceof K.Observable);
-
-  if (obs instanceof K.Property) {
-    console.log('Property =>', obs);
-  }
-  console.groupEnd();
-};
-
-//
 
 /**
  * @typedef {[number, number, number]} RGB
