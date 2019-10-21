@@ -3,10 +3,17 @@
  * @module data
  * @namespace common
  */
+import * as K from 'kefir';
 import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
+import * as A from 'kefir.atom';
 
 import { LiftedAry1Fn, LiftedAry3Fn } from 'types.d';
+
+// Type guards
+
+export const isObservable = x => x instanceof K.Observable;
+export const isAbstractMutable = x => x instanceof A.AbstractMutable;
 
 // Data structures
 
