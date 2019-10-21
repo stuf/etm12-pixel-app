@@ -12,12 +12,14 @@ import * as S from '../settings';
 
 import * as T from './canvas-data.d';
 
+import { empty } from 'common/canvas';
+
 //
 
 /**
  * @type {T.CanvasData}
  */
-const initValue = [];
+const initValue = empty(S.canvas.initialSize);
 
 const state = U.atom(
   H.init(
