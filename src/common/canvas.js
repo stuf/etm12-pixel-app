@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "(LiftedAry[1-3]Fn|Size)"}] */
 import * as U from 'karet.util';
 import * as K from 'kefir';
 import { takeEvents } from 'common/events';

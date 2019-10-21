@@ -1,8 +1,7 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[LiftedAry1Fn]"}] */
 import * as U from 'karet.util';
-import * as R from 'kefir.ramda';
 
-import { LiftedAry1Fn, LiftedAry2Fn, BBox, Coord } from 'types.d';
+import { LiftedAry1Fn, LiftedAry2Fn, Coord } from 'types.d';
 
 /**
  * @type {LiftedAry1Fn<HTMLElement, Coord>}

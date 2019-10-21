@@ -1,3 +1,4 @@
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "(LiftedAry[1-3]Fn)"}] */
 /**
  * @module data
  * @namespace common

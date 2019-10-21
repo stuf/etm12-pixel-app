@@ -1,4 +1,4 @@
-import * as U from 'karet.util';
+/* eslint no-unused-vars: [1, {"varsIgnorePattern": "(LiftedAry[1-3]Fn|Size)"}] */
 import * as R from 'kefir.ramda';
 
 import { LiftedAry1Fn } from 'types.d';
