@@ -10,7 +10,6 @@ html,
 body,
 #root {
   height: 100vh;
-  // overflow: hidden;
 }
 
 html,
@@ -21,7 +20,7 @@ option,
 input {
   font-family: $font-family-base;
   font-weight: $font-weight-base;
-  font-size: $font-size-base;
+  font-size: $text-size-small;
 }
 
 select,
