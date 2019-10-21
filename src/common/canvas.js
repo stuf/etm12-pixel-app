@@ -63,6 +63,7 @@ export const rgbFromHex = U.lift(x => {
 
 /**
  * Convert a hexadecimal color into an `[r, g, b, a]` tuple.
+ * @todo Requires support for full 0xffffffff support
  * @type {LiftedAry1Fn<string, number[]>}
  */
 export const fromHexColor = U.lift(x => {
