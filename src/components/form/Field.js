@@ -1,19 +1,17 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
+/**
+ * @module Field
+ * @namespace components.form
+ */
 import * as React from 'karet';
 import * as U from 'karet.util';
 
-import * as T from './index.d';
-import styles from './index.module.scss';
-
-/**
- * @param {T.Props} props
- */
-function Field({ label, value }) {
+function Field({ label, value, className }) {
   return (
-    <div className={styles.root}>
+    <div className={U.cns('formField--field', className)}>
       <label>{label}</label>
 
-      <U.Input value={value} />
+      <U.Input value={value} type="text" />
     </div>
   );
 }

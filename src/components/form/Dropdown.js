@@ -1,24 +1,22 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
+/**
+ * @module Dropdown
+ * @namespace components.form
+ */
 import * as React from 'karet';
 import * as U from 'karet.util';
 import * as L from 'kefir.partial.lenses';
 
-import * as T from './index.d';
-import styles from './index.module.scss';
-
 import * as M from 'common/meta';
 
-/**
- * @param {T.Props} props
- * @return {T.Component}
- */
 export default function Dropdown({
   items,
   value,
   onChange = e => value.set(e.target.value),
+  className,
 }) {
   return (
-    <div className={styles.root}>
+    <div className={U.cns('formField--dropdown', className)}>
       {U.when(
         items,
         <select {...{ onChange }}>

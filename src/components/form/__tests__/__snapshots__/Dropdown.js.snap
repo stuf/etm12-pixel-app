@@ -3,7 +3,7 @@
 exports[`matches snapshot: empty dropdown 1`] = `
 <Dropdown>
   <div
-    className="root"
+    className="formField--dropdown"
   />
 </Dropdown>
 `;
@@ -22,7 +22,7 @@ exports[`matches snapshot: non-empty dropdown 1`] = `
   }
 >
   <div
-    className="root"
+    className="formField--dropdown"
   >
     <select
       onChange={[Function]}
