@@ -1,7 +1,7 @@
 import * as A from 'kefir.atom';
 import * as K from 'kefir';
 
-import * as D from './data';
+import * as D from 'common/data';
 import { testEq } from 'test-utils';
 
 // Guards

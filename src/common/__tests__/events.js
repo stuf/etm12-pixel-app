@@ -1,4 +1,4 @@
-import * as E from './events';
+import * as E from 'common/events';
 
 it('takeEvents(<div />) => Observable(Event)', done => {
   const div = document.createElement('div');

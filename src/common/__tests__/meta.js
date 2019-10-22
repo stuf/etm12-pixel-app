@@ -1,7 +1,7 @@
 import { testEq } from 'test-utils';
 import * as L from 'partial.lenses';
 
-import * as M from './meta';
+import * as M from 'common/meta';
 
 testEq('foo', () => M.nameIn({ name: 'foo' }));
 testEq('bar', () => M.currentIn({ current: 'bar' }));

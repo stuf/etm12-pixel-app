@@ -1,4 +1,4 @@
-import * as A from './canvas';
+import * as A from 'common/canvas';
 
 import { testEq } from 'test-utils';
 

@@ -1,7 +1,7 @@
 import { constant as C } from 'kefir';
 import { testEq } from 'test-utils';
 
-import * as H from './util';
+import * as H from 'common/util';
 
 testEq('(123)', () => H.surroundWith('(', ')', 123));
 testEq('(123)', () => H.surroundWith(C('('), ')', 123));

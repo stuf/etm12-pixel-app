@@ -1,5 +1,5 @@
 import { testEq } from 'test-utils';
-import * as P from './position';
+import * as P from 'common/position';
 
 let el;
 let bbox;
