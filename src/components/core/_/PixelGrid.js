@@ -2,8 +2,6 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 
-import styles from './PixelGrid.module.scss';
-
 import { rangeScaled } from 'common/data';
 import { scaleSize } from 'common/canvas';
 import { fstIn, sndIn } from 'common/meta';
@@ -15,9 +13,9 @@ export default function PixelGrid({ size, scale }) {
   const yRange = rangeScaled(0, sndIn(scaledSize), scale);
 
   return (
-    <div className={styles.root}>
+    <div className="core-canvas__pixelGrid">
       <svg
-        className={styles.svg}
+        className="core-canvas__pixelGrid-svg"
         width={fstIn(scaledSize)}
         height={sndIn(scaledSize)}
       >

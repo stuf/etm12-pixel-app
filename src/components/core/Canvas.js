@@ -4,8 +4,6 @@ import * as R from 'kefir.ramda';
 import * as L from 'kefir.partial.lenses';
 import * as K from 'kefir';
 
-import styles from './index.module.scss';
-
 import { pagePos } from 'common/events';
 import { fstIn, sndIn } from 'common/meta';
 import {
@@ -21,7 +19,14 @@ import Bitmap from 'components/ui/Bitmap';
 import PixelGrid from './_/PixelGrid';
 import OffsetGuide from './_/OffsetGuide';
 
-export default function Canvas({ size, color, scale, data, drawable }) {
+export default function Canvas({
+  size,
+  color,
+  scale,
+  data,
+  drawable,
+  devtool,
+}) {
   /** @type {ObsElement} */
   const dom = U.variable();
   const rgba = L.get([L.dropPrefix('#'), L.reread(fromHex)], color);
@@ -53,7 +58,7 @@ export default function Canvas({ size, color, scale, data, drawable }) {
 
   return (
     <div
-      className={styles.root}
+      className="core-canvas"
       ref={U.refTo(dom)}
       style={{
         width: fstIn(scaledSize),
@@ -62,9 +67,12 @@ export default function Canvas({ size, color, scale, data, drawable }) {
     >
       <>{U.sink(updateData)}</>
       <PixelGrid size={size} scale={scale} />
-      <OffsetGuide offset={offset} size={scaledSize} />
+      {U.when(
+        U.view(['flags', 'offsetGuide'], devtool),
+        <OffsetGuide offset={offset} size={scaledSize} />,
+      )}
       <Bitmap
-        className={styles.ignorePointerEvents}
+        className="core-canvas--ignorePointerEvents"
         size={size}
         scale={scale}
         data={data}

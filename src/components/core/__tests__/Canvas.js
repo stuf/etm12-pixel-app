@@ -2,7 +2,7 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import { shallow, mount } from 'enzyme';
 
-import Canvas from './index';
+import Canvas from 'components/core/Canvas';
 
 it('renders correctly', () => {
   const state = U.atom({

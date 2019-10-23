@@ -2,7 +2,7 @@ import * as React from 'karet';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import PixelGrid from './PixelGrid';
+import PixelGrid from 'components/core/_/PixelGrid';
 
 it('matches snapshot', () => {
   const wrap = shallow(<PixelGrid {...{ size: [32, 32], scale: 16 }} />);

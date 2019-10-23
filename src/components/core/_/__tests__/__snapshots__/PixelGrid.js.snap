@@ -2,10 +2,10 @@
 
 exports[`matches snapshot 1`] = `
 <div
-  className="root"
+  className="core-canvas__pixelGrid"
 >
   <svg
-    className="svg"
+    className="core-canvas__pixelGrid-svg"
     height={512}
     width={512}
   >
