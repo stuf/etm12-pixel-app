@@ -7,6 +7,7 @@ import * as U from 'karet.util';
 
 import palettes from './palettes';
 
+import * as S from 'settings';
 import * as T from './state.d';
 
 /**
@@ -31,9 +32,13 @@ const initialState = {
     currentPalette: 0,
     palettes,
   },
-  tool: {
-    current: 0,
-    items: [{ name: 'eyedropper' }, { name: 'pencil' }, { name: 'eraser' }],
+  app: {
+    devMode: S.app.devMode,
+  },
+  devtool: {
+    flags: {
+      offsetGuide: true,
+    },
   },
 };
 

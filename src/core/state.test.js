@@ -26,6 +26,8 @@ it('contains valid state', () => {
       color: nullable(Rule.IS_OBJECT),
       currentFile: nullable(Rule.IS_OBJECT),
       tool: nullable(Rule.IS_OBJECT),
+      app: nullable(Rule.IS_OBJECT),
+      devtool: nullable(Rule.IS_OBJECT),
     }),
     state.get(),
   );
