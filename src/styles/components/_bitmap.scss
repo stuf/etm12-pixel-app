@@ -1,0 +1,6 @@
+.bitmap {
+  &__canvas {
+    image-rendering: pixelated;
+    box-sizing: content-box;
+  }
+}

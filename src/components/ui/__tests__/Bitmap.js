@@ -2,7 +2,7 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import { mount, shallow } from 'enzyme';
 
-import Bitmap from './index';
+import Bitmap from 'components/ui/Button';
 
 let state;
 let data;
