@@ -1,8 +1,7 @@
 import * as K from 'kefir';
-import * as R from 'ramda';
 
-import * as H from './shared';
-import * as T from './test-utils';
+import * as H from '../shared';
+import * as T from '../test-utils';
 
 const mkDummyEvent = () => ({
   pageX: 234,

@@ -2,7 +2,7 @@
 
 exports[`matches snapshot 1`] = `
 <main
-  className="root"
+  className="layout--main"
 >
   <BrowserRouter>
     <Switch>
