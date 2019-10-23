@@ -33,22 +33,3 @@ const state = U.atom(
 );
 
 export default state;
-
-//
-
-export const clearImage_ = () => U.view(L.elems, state).modify(R.always(0));
-
-export const clearImage = () => clearImage_() || state;
-
-/**
- * @param {number} w
- * @param {number} h
- */
-export const resizeImage_ = (w, h) =>
-  state.set(Array(w * h * S.canvas.colorChannels).fill(0));
-
-/**
- * @param {number} w
- * @param {number} h
- */
-export const resizeImage = (w, h) => resizeImage_(w, h) || state;
