@@ -2,7 +2,7 @@ import * as A from 'kefir.atom';
 import * as V from 'partial.lenses.validation';
 
 import { props, and, Rule, nullable, getErrors } from 'validation-rules';
-import state from './state';
+import state from 'core/state';
 
 const validate = (rules, actual) =>
   expect(getErrors(rules, actual)).toBeUndefined();

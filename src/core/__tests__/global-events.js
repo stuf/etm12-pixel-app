@@ -1,4 +1,4 @@
-import { Document, Window } from './global-events';
+import { Document, Window } from 'core/global-events';
 
 const testSingleEvent = ({ title, type, Ctor, source, obs }) => {
   it(title, done => {

@@ -1,4 +1,4 @@
-import { mouseEventsFor } from './mouse';
+import { mouseEventsFor } from 'core/mouse';
 
 let dom;
 let fn;
