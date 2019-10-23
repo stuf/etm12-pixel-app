@@ -2,7 +2,7 @@ import * as React from 'karet';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import Index from './index';
+import BuildInfo from 'components/layout/_/BuildInfo';
 
 const getEnv = () => ({
   REACT_APP_BUILD_VERSION: '1',
@@ -12,8 +12,8 @@ const getEnv = () => ({
 });
 
 it('renders correctly', () => {
-  const wrapper = shallow(<Index />);
-  const wrapper2 = shallow(<Index env={getEnv()} />);
+  const wrapper = shallow(<BuildInfo />);
+  const wrapper2 = shallow(<BuildInfo env={getEnv()} />);
 
   expect(toJson(wrapper)).toMatchSnapshot('without env');
   expect(toJson(wrapper2)).toMatchSnapshot('with env');

@@ -2,11 +2,11 @@ import * as React from 'karet';
 import { render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import Index from './index';
+import LayoutHeader from 'components/layout/Header';
 
 it('matches snapshot', () => {
   const w = render(
-    <Index
+    <LayoutHeader
       {...{ menuItems: [], isEditing: false, env: {}, name: 'From test' }}
     />,
   );

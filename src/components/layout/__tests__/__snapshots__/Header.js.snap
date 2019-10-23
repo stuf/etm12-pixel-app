@@ -2,19 +2,19 @@
 
 exports[`matches snapshot: LayoutHeader minimal data 1`] = `
 <header
-  class="root"
+  class="layoutHeader"
 >
   <div
-    class="logoWrapper"
+    class="layoutHeader__logoWrapper"
   >
     <img
       alt="Logo"
-      class="logo"
+      class="layoutHeader__logo"
       src="logo.svg"
     />
   </div>
   <div
-    class="wrapper"
+    class="layoutHeader__wrapper"
   >
     <div
       class="flex-horizontal -vertical-center -justify-end pad -p-right"

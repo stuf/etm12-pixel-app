@@ -4,23 +4,16 @@ import * as U from 'karet.util';
 
 import BuildInfo from './_/BuildInfo';
 
-import * as T from './index.d';
-import styles from './index.module.scss';
-
 import logo from 'assets/logo.svg';
 
-/**
- * @param {T.Props} props
- * @return {T.Component}
- */
 export default function Header({ className, env }) {
   return (
-    <header className={U.cns(styles.root, className)}>
-      <div className={styles.logoWrapper}>
-        <img className={styles.logo} src={logo} alt="Logo" />
+    <header className={U.cns('layoutHeader', className)}>
+      <div className="layoutHeader__logoWrapper">
+        <img className="layoutHeader__logo" src={logo} alt="Logo" />
       </div>
 
-      <div className={styles.wrapper}>
+      <div className="layoutHeader__wrapper">
         <BuildInfo {...{ env }} />
       </div>
     </header>

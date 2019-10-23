@@ -7,24 +7,17 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 
-import * as T from './index.d';
-import styles from './index.module.scss';
-
-/**
- * @param {T.Props} props
- * @return {T.Component}
- */
 function ImageName({ name, isEditing }) {
   const toggleFlag = U.doModify(isEditing, R.not);
 
   return (
-    <div className={U.cns(styles.root, 'flex-horizontal', '-vertical-center')}>
+    <div className={U.cns('imageName', 'flex-horizontal', '-vertical-center')}>
       {U.ifElse(
         isEditing,
-        <div className="is-editing">
+        <div className="imageName__nameDisplay is-editing">
           <U.Input value={name} />
         </div>,
-        <span className={styles.nameLabel} onClick={toggleFlag}>
+        <span className="imageName__nameLabel" onClick={toggleFlag}>
           {name}
         </span>,
       )}
