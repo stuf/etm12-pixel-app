@@ -1,0 +1,34 @@
+$side-spacing: 0.5rem !default;
+$corder-spacing: 1.5rem;
+
+.core-canvas {
+  &__guide {
+    font-family: $font-family-monospace;
+    font-size: $text-size-small;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    top: 0;
+    transform: translate(-100%, -100%);
+    border: solid rgba(0, 0, 0, 0.5);
+    border-width: 0 1px 1px 0;
+  }
+
+  &__offsetGuide {
+    position: absolute;
+    font-weight: bold;
+
+    &.-x {
+      right: $corder-spacing;
+      bottom: $side-spacing;
+    }
+
+    &.-y {
+      right: $side-spacing;
+      bottom: $corder-spacing - 0.5;
+
+      transform-origin: top right;
+      transform: rotate(90deg);
+    }
+  }
+}

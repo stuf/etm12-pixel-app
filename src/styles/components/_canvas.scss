@@ -1,0 +1,14 @@
+.core-canvas {
+  border: solid 1px #f00;
+  height: 100%;
+  position: relative;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.core-canvas--ignorePointerEvents {
+  pointer-events: none;
+}

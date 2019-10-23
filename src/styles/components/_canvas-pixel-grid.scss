@@ -1,0 +1,19 @@
+$grid-line-color: rgba(0, 0, 0, 0.2) !default;
+
+.core-canvas__pixelGrid {
+  pointer-events: none;
+}
+
+.core-canvas__pixelGrid-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 1;
+  shape-rendering: crispEdges;
+
+  line {
+    stroke: $grid-line-color;
+    stroke-width: 1px;
+  }
+}
