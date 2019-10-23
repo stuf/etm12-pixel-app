@@ -5,25 +5,18 @@
 import * as React from 'karet';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import * as T from './Main.d';
-import styles from './Main.module.scss';
-
 import SplashScene from 'scenes/Splash';
 import EditorScene from 'scenes/Editor';
 import NotFoundScene from 'scenes/NotFound';
 
-/**
- * @param {T.Props} props
- * @return {T.Component}
- */
-function MainScene(props) {
+function MainScene({ routerProps = {}, ...props }) {
   const WithRootProps = (Component, extra = {}) => p => (
     <Component {...{ ...props, ...p, ...extra }} />
   );
 
   return (
-    <main className={styles.root}>
-      <Router>
+    <main className="layout--main">
+      <Router {...routerProps}>
         <Switch>
           <Route path="/editor" component={WithRootProps(EditorScene)} />
           <Route
