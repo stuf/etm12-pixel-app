@@ -44,3 +44,10 @@ export const canvas = {
    */
   initialScale: 16,
 };
+
+export const app = {
+  /**
+   * Is dev mode enabled?
+   */
+  devMode: true,
+};
