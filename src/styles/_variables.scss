@@ -23,6 +23,27 @@ $color-gray-300: #e0e0e0 !default;
 $color-gray-400: #bdbdbd !default;
 $color-gray-800: #424242 !default;
 
+// SIZING & SPACING
+
+$mini-unit: 8px !default;
+
+$unit-1x: $mini-unit !default;
+$unit-2x: $mini-unit * 2 !default;
+$unit-3x: $mini-unit * 3 !default;
+$unit-4x: $mini-unit * 4 !default;
+$unit-6x: $mini-unit * 6 !default;
+$unit-8x: $mini-unit * 8 !default;
+$unit-10x: $mini-unit * 10 !default;
+
 // SPACING
 
 $spacing-base: 0.5rem !default;
+
+// FORMS & INPUTS
+
+$input-border-width: 1px !default;
+$input-border-style: solid !default;
+$input-border-color: rgba($color-gray-800, 0.5) !default;
+
+$input-border-normal: $input-border-style $input-border-width
+  $input-border-color !default;

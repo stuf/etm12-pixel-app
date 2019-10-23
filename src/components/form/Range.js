@@ -8,7 +8,7 @@ import * as U from 'karet.util';
 
 function Range({ value, min, max, step, onChange, className }) {
   return (
-    <div className={U.cns('formField--range', className)}>
+    <div className={U.cns('formField', '--range', className)}>
       <U.Input {...{ type: 'range', value, min, max, step, onChange }} />
     </div>
   );

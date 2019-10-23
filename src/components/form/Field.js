@@ -8,10 +8,10 @@ import * as U from 'karet.util';
 
 function Field({ label, value, className }) {
   return (
-    <div className={U.cns('formField--field', className)}>
-      <label>{label}</label>
+    <div className={U.cns('formField --field', className)}>
+      <label className="formField__label">{label}</label>
 
-      <U.Input value={value} type="text" />
+      <U.Input className="formField__textInput" value={value} type="text" />
     </div>
   );
 }

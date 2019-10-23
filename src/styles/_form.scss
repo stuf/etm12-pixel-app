@@ -1,18 +1,33 @@
 .formField {
-  &--field {
-    border: dashed 1px #f00;
+  &__textInput {
+    padding: $unit-1x;
+    border-radius: 4px;
+    // border: $input-border-normal;
+    border: 0;
+  }
+}
+
+.formField {
+  &.--field {
+    // border: dashed 1px #f00;
   }
 
-  &--range {
+  &.--range {
     border: solid 1px #f00;
   }
 
-  &--checkbox {
+  &.--checkbox {
     border: dotted 1px #f00;
 
-    label {
+    .formField__label {
       display: grid;
       grid-template-columns: 2rem auto;
     }
+  }
+}
+
+.formField {
+  & + & {
+    margin-top: $unit-1x;
   }
 }

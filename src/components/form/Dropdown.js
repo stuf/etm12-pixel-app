@@ -16,7 +16,7 @@ export default function Dropdown({
   className,
 }) {
   return (
-    <div className={U.cns('formField--dropdown', className)}>
+    <div className={U.cns('formField', '--dropdown', className)}>
       {U.when(
         items,
         <select {...{ onChange }}>
