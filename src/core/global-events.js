@@ -1,11 +1,10 @@
-// @ts-check
 /**
  * @module global-events
  * @namespace core
  */
 import * as U from 'karet.util';
 import * as K from 'kefir';
-import { takeEvents } from './_shared';
+import { takeEvents } from 'common/events';
 
 import { Value } from 'types.d';
 

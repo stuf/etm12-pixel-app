@@ -1,7 +1,7 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
 import * as K from 'kefir';
 
-import { takeEvents } from './_shared';
+import { takeEvents } from 'common/events';
 
 /**
  * @type {K.Property<KeyboardEvent, any>}

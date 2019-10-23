@@ -4,9 +4,8 @@
  * @namespace core
  */
 import * as K from 'kefir';
-import * as T from './mouse.d';
 
-import { takeEvents } from './_shared';
+import { takeEvents } from 'common/events';
 
 /**
  *
