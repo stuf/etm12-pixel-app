@@ -4,20 +4,13 @@ import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 import * as L from 'kefir.partial.lenses';
 
-import * as T from './index.d';
-import style from './index.module.scss';
-
 import * as H from 'shared';
 import backgroundImage from 'assets/transparency.png';
 
-/**
- * @param {T.Props} props
- * @return {T.Component}
- */
 function Palette({ items, currentColor }) {
   return (
-    <section className={U.cns(style.root)}>
-      <ul className={U.cns(style.items)}>
+    <section className={'palette'}>
+      <ul className={'palette__itemList'}>
         {U.thru(
           U.view(L.valueOr([]), items),
           U.mapElems((it, i) => {
@@ -35,7 +28,7 @@ function Palette({ items, currentColor }) {
                 style={{
                   backgroundImage: `url(${backgroundImage})`,
                 }}
-                className={U.when(isActive, style.active)}
+                className={U.cns('itemList__item', U.when(isActive, '-active'))}
               >
                 <button
                   style={{
@@ -52,5 +45,7 @@ function Palette({ items, currentColor }) {
     </section>
   );
 }
+
+//
 
 export default Palette;

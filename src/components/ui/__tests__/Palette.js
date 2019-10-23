@@ -1,7 +1,7 @@
 import * as React from 'karet';
 import { shallow } from 'enzyme';
 
-import Palette from './index';
+import Palette from 'components/ui/Palette';
 
 it('renders without crashing', () => {
   shallow(<Palette items={[]} />);
