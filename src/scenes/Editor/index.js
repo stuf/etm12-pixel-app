@@ -14,12 +14,13 @@ import styles from './index.module.scss';
 
 import Canvas from 'components/core/Canvas';
 
-import { Field, Range, Dropdown } from 'components/form';
+import { Field, Range, Dropdown, Checkbox } from 'components/form';
 import Button from 'components/ui/Button';
 import Palette from 'components/ui/Palette';
 import Bitmap from 'components/ui/Bitmap';
 import TimeControlButton from 'components/ui/TimeControlButton';
 import Group from 'components/ui/Group';
+import Devtool from 'components/molecules/panel/Devtool';
 
 import LayoutHeader from 'components/layout/Header';
 
@@ -32,7 +33,15 @@ import { empty } from 'common/canvas';
 function EditorScene(props) {
   const { state, canvasData, menuItems, env } = props;
 
-  const { canvas, drawable, color, currentFile, tool } = U.destructure(state);
+  const {
+    canvas,
+    drawable,
+    color,
+    currentFile,
+    app,
+    devtool,
+    tool,
+  } = U.destructure(state);
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette, palettes } = U.destructure(color);
 
@@ -75,11 +84,19 @@ function EditorScene(props) {
                 }}
               />
             </Group>
+
+            {U.when(
+              U.view('devMode', app),
+              <Group title="Dev tools">
+                <Devtool flags={U.view('flags', devtool)} />
+              </Group>,
+            )}
           </div>
 
           <div className="relative-pos">
             <Canvas
               {...{
+                devtool,
                 size,
                 scale,
                 drawable,
