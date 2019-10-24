@@ -3,7 +3,7 @@ import * as K from 'kefir';
 import { mount, shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import SplashScene from './index';
+import SplashScene from 'scenes/Splash';
 
 it('renders correctly', () => {
   const wrapper = shallow(<SplashScene />);
