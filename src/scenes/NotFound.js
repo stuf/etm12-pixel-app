@@ -2,12 +2,6 @@
 import * as React from 'karet';
 import * as U from 'karet.util';
 
-import * as T from './index.d';
-import styles from './index.module.scss';
-
-/**
- * @return {T.Component}
- */
 function NotFoundScene() {
   return (
     <article className={U.cns(styles.root, 'scene-root')}>
