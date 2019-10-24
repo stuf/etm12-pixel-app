@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="scene-root splash-root"
+  data-scene-name="splash"
+>
+  <FromClass
+    args={
+      Array [
+        Symbol(react.fragment),
+        Object {},
+        Combine {
+          "_activating": false,
+          "_active": false,
+          "_alive": true,
+          "_currentEvent": null,
+          "_dispatcher": Dispatcher {
+            "_inLoop": 0,
+            "_items": Array [],
+            "_removedItems": null,
+            "_spies": Array [],
+          },
+          "_f": [Function],
+          "_h": null,
+          "_logHandlers": null,
+          "_n": 1,
+          "_spyHandlers": null,
+          "_x": Array [
+            AnonymousObservable {
+              "_$handleAny": [Function],
+              "_activating": false,
+              "_active": false,
+              "_alive": true,
+              "_currentEvent": null,
+              "_dispatcher": Dispatcher {
+                "_inLoop": 0,
+                "_items": Array [],
+                "_removedItems": null,
+                "_spies": Array [],
+              },
+              "_getInitialCurrent": [Function],
+              "_logHandlers": null,
+              "_name": "property.toProperty",
+              "_source": Combine {
+                "_activating": false,
+                "_active": false,
+                "_alive": true,
+                "_currentEvent": null,
+                "_dispatcher": Dispatcher {
+                  "_inLoop": 0,
+                  "_items": Array [],
+                  "_removedItems": null,
+                  "_spies": Array [],
+                },
+                "_f": [Function],
+                "_h": null,
+                "_logHandlers": null,
+                "_n": 1,
+                "_spyHandlers": null,
+                "_x": Array [
+                  AnonymousObservable {
+                    "_$handleAny": [Function],
+                    "_activating": false,
+                    "_active": false,
+                    "_alive": true,
+                    "_currentEvent": null,
+                    "_dispatcher": Dispatcher {
+                      "_inLoop": 0,
+                      "_items": Array [],
+                      "_removedItems": null,
+                      "_spies": Array [],
+                    },
+                    "_getInitialCurrent": [Function],
+                    "_logHandlers": null,
+                    "_name": "property.map.toProperty",
+                    "_source": AnonymousObservable {
+                      "_$handleAny": [Function],
+                      "_activating": false,
+                      "_active": false,
+                      "_alive": true,
+                      "_currentEvent": null,
+                      "_dispatcher": Dispatcher {
+                        "_inLoop": 0,
+                        "_items": Array [],
+                        "_removedItems": null,
+                        "_spies": Array [],
+                      },
+                      "_fn": [Function],
+                      "_logHandlers": null,
+                      "_name": "property.map",
+                      "_source": Combine {
+                        "_activating": false,
+                        "_active": false,
+                        "_alive": true,
+                        "_currentEvent": null,
+                        "_dispatcher": Dispatcher {
+                          "_inLoop": 0,
+                          "_items": Array [],
+                          "_removedItems": null,
+                          "_spies": Array [],
+                        },
+                        "_f": [Function],
+                        "_h": null,
+                        "_logHandlers": null,
+                        "_n": 1,
+                        "_spyHandlers": null,
+                        "_x": Array [
+                          undefined,
+                          AnonymousObservable {
+                            "_$handleAny": [Function],
+                            "_activating": false,
+                            "_active": false,
+                            "_alive": true,
+                            "_currentEvent": null,
+                            "_dispatcher": Dispatcher {
+                              "_inLoop": 0,
+                              "_items": Array [],
+                              "_removedItems": null,
+                              "_spies": Array [],
+                            },
+                            "_getInitialCurrent": null,
+                            "_logHandlers": null,
+                            "_name": "later.toProperty",
+                            "_source": AnonymousStream {
+                              "_$onTick": [Function],
+                              "_activating": false,
+                              "_active": false,
+                              "_alive": true,
+                              "_dispatcher": Dispatcher {
+                                "_inLoop": 0,
+                                "_items": Array [],
+                                "_removedItems": null,
+                                "_spies": Array [],
+                              },
+                              "_intervalId": null,
+                              "_logHandlers": null,
+                              "_spyHandlers": null,
+                              "_wait": 2000,
+                              "_x": null,
+                            },
+                            "_spyHandlers": null,
+                          },
+                        ],
+                      },
+                      "_spyHandlers": null,
+                    },
+                    "_spyHandlers": null,
+                  },
+                ],
+              },
+              "_spyHandlers": null,
+            },
+          ],
+        },
+      ]
+    }
+  />
+  <div
+    className="splash-logo"
+  >
+    <img
+      alt="pixel"
+      src="logo.svg"
+    />
+    <h1>
+      pixel
+    </h1>
+  </div>
+</div>
+`;
