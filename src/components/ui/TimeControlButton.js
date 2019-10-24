@@ -3,8 +3,6 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 
-import * as T from './index.d';
-
 import Button from 'components/ui/Button';
 /**
  *
