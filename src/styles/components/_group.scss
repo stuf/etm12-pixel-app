@@ -1,17 +1,16 @@
-@import '~styles/variables';
-
 $group-header-font-weight: 600;
+$group-separator: solid 2px $color-gray-100 !default;
 
-.root {
-  border-bottom: dotted 1px $color-gray-400;
+.group {
+  border-bottom: $group-separator;
 }
 
-.header {
+.group__header {
   padding: $spacing-base;
   font-weight: $group-header-font-weight;
 }
 
-.content {
+.group__content {
   padding: $spacing-base;
 
   > * {

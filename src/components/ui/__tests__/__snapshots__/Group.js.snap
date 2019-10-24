@@ -5,15 +5,15 @@ exports[`matches snapshot 1`] = `
   title="Group title"
 >
   <section
-    className="root"
+    className="group"
   >
     <header
-      className="header"
+      className="group__header"
     >
       Group title
     </header>
     <div
-      className="content"
+      className="group__content"
     >
       Group content
     </div>
