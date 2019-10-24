@@ -4,7 +4,7 @@ import * as H from 'kefir.partial.lenses.history';
 import { shallow, mount } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import Index from './index';
+import EditorScene from 'scenes/Editor';
 
 it('matches snapshot', () => {
   const state = U.atom({
@@ -14,9 +14,11 @@ it('matches snapshot', () => {
 
   const canvasData = U.atom(H.init({ maxCount: 10, replacePeriod: 200 }, []));
 
-  const w = mount(<Index {...{ state, canvasData }} />);
+  const w = mount(<EditorScene {...{ state, canvasData }} />);
 
-  const w2 = mount(<Index {...{ state, canvasData: canvasData.get() }} />);
+  const w2 = mount(
+    <EditorScene {...{ state, canvasData: canvasData.get() }} />,
+  );
 
   state.view('size').set([16, 16]);
 });

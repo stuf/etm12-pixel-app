@@ -9,9 +9,6 @@ import * as U from 'karet.util';
 import * as L from 'kefir.partial.lenses';
 import * as Z from 'kefir.partial.lenses.history';
 
-import * as T from './index.d';
-import styles from './index.module.scss';
-
 import Canvas from 'components/core/Canvas';
 
 import { Field, Range, Dropdown, Checkbox } from 'components/form';
@@ -58,7 +55,10 @@ function EditorScene(props) {
   );
 
   return (
-    <div className={U.cns('scene-root', styles.root)} data-scene-name="editor">
+    <div
+      className={U.cns('scene-root', 'editor-root')}
+      data-scene-name="editor"
+    >
       {U.ifElse(
         imageDataValid,
         <>
@@ -67,13 +67,13 @@ function EditorScene(props) {
             {...{
               env,
               menuItems,
-              className: styles.top,
+              className: 'editor-top',
               name: M.nameIn(currentFile),
               isEditing: M.isEditingIn(currentFile),
             }}
           />
 
-          <div className={U.cns(styles.left, styles.panel)}>
+          <div className={U.cns('editor-left')}>
             <Group title="Palette">
               <Dropdown {...{ items: palettes, value: currentPalette }} />
               <Palette
@@ -83,47 +83,6 @@ function EditorScene(props) {
                   items: U.view('items', selectedPalette),
                 }}
               />
-            </Group>
-
-            {U.when(
-              U.view('devMode', app),
-              <Group title="Dev tools">
-                <Devtool flags={U.view('flags', devtool)} />
-              </Group>,
-            )}
-          </div>
-
-          <div className="relative-pos">
-            <Canvas
-              {...{
-                devtool,
-                size,
-                scale,
-                drawable,
-                data,
-                color: selectedColor,
-              }}
-            />
-          </div>
-
-          <div className={U.cns(styles.right, styles.panel)}>
-            <Group title="Preview">
-              <Bitmap
-                {...{
-                  size,
-                  scale: 2,
-                  data: U.view(Z.present, canvasData),
-                }}
-              />
-            </Group>
-
-            <Group title="Image">
-              <Field
-                label="Name"
-                value={U.view(['currentFile', 'name', L.valueOr('')], state)}
-              />
-
-              <Button>Clear image</Button>
             </Group>
 
             <Group title="History">
@@ -152,6 +111,47 @@ function EditorScene(props) {
               <Button onClick={U.doModify(canvasData, Z.undoForget)}>
                 Purge history
               </Button>
+            </Group>
+
+            {U.when(
+              U.view('devMode', app),
+              <Group title="Dev tools">
+                <Devtool flags={U.view('flags', devtool)} />
+              </Group>,
+            )}
+          </div>
+
+          <div className="relative-pos">
+            <Canvas
+              {...{
+                devtool,
+                size,
+                scale,
+                drawable,
+                data,
+                color: selectedColor,
+              }}
+            />
+          </div>
+
+          <div className={U.cns('editor-right')}>
+            <Group title="Preview">
+              <Bitmap
+                {...{
+                  size,
+                  scale: 2,
+                  data: U.view(Z.present, canvasData),
+                }}
+              />
+            </Group>
+
+            <Group title="Image">
+              <Field
+                label="Name"
+                value={U.view(['currentFile', 'name', L.valueOr('')], state)}
+              />
+
+              <Button>Clear image</Button>
             </Group>
 
             <Group title="Canvas">
