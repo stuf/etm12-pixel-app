@@ -1,0 +1,28 @@
+$radius: 0.25rem !default;
+$radius-left: $radius 0 0 $radius !default;
+$radius-right: 0 $radius $radius 0 !default;
+
+.button {
+  background-color: rgba(0, 0, 0, 0.15);
+  border: 0;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  text-align: center;
+  line-height: auto;
+  border-radius: $radius;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  &.--group {
+    border-radius: 0;
+    &:first-of-type {
+      border-radius: $radius-left;
+    }
+
+    &:last-of-type {
+      border-radius: $radius-right;
+    }
+  }
+}

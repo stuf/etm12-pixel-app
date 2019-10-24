@@ -1,7 +1,7 @@
 import * as React from 'karet';
 import { mount } from 'enzyme';
 
-import Button from './index';
+import Button from 'components/ui/Button';
 
 it('renders and behaves correctly', () => {
   const action = jest.fn();
