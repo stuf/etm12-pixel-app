@@ -18,10 +18,14 @@ describe('components/ui/Panel', () => {
 
   it('renders correctly with observable data', () => {
     const verticalWrapper = mount(
-      <Panel direction={C('vertical')}>content</Panel>,
+      <Panel direction={C('vertical')} size={C(50)}>
+        content
+      </Panel>,
     );
 
-    const children = verticalWrapper.childAt(0);
-    expect(children.children('div').hasClass('vertical')).toBe(true);
+    const children = verticalWrapper.childAt(0).children('div');
+    expect(children.hasClass('vertical')).toBe(true);
+
+    console.log(children.prop('style'));
   });
 });
