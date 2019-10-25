@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TestPanelsScene renders and matches snapshot 1`] = `
+<TestPanelsScene>
+  <div
+    style={
+      Object {
+        "height": "100%",
+      }
+    }
+  >
+    <Panel>
+      <div
+        className="panelRoot vertical"
+        style={
+          Object {
+            "gridTemplateRows": "30px auto 50px",
+          }
+        }
+      >
+        <Panel
+          direction="horizontal"
+          size={30}
+        >
+          <div
+            className="panelRoot horizontal"
+            style={
+              Object {
+                "gridTemplateColumns": "auto",
+              }
+            }
+          >
+            main top
+          </div>
+        </Panel>
+        <Panel
+          direction="horizontal"
+        >
+          <div
+            className="panelRoot horizontal"
+            style={
+              Object {
+                "gridTemplateColumns": "200px auto 200px",
+              }
+            }
+          >
+            <Panel
+              size={200}
+            >
+              <div
+                className="panelRoot vertical"
+                style={
+                  Object {
+                    "gridTemplateRows": "50px auto",
+                  }
+                }
+              >
+                <Panel
+                  size={50}
+                >
+                  <div
+                    className="panelRoot vertical"
+                    style={
+                      Object {
+                        "gridTemplateRows": "auto",
+                      }
+                    }
+                  >
+                    left top (50px)
+                  </div>
+                </Panel>
+                <Panel>
+                  <div
+                    className="panelRoot vertical"
+                    style={
+                      Object {
+                        "gridTemplateRows": "auto",
+                      }
+                    }
+                  >
+                    left bottom
+                  </div>
+                </Panel>
+              </div>
+            </Panel>
+            <Panel>
+              <div
+                className="panelRoot vertical"
+                style={
+                  Object {
+                    "gridTemplateRows": "auto",
+                  }
+                }
+              >
+                center auto width
+              </div>
+            </Panel>
+            <Panel
+              size={200}
+            >
+              <div
+                className="panelRoot vertical"
+                style={
+                  Object {
+                    "gridTemplateRows": "auto 100px",
+                  }
+                }
+              >
+                <Panel>
+                  <div
+                    className="panelRoot vertical"
+                    style={
+                      Object {
+                        "gridTemplateRows": "auto",
+                      }
+                    }
+                  >
+                    right top
+                  </div>
+                </Panel>
+                <Panel
+                  size={100}
+                >
+                  <div
+                    className="panelRoot vertical"
+                    style={
+                      Object {
+                        "gridTemplateRows": "auto",
+                      }
+                    }
+                  >
+                    right bottom (100px)
+                  </div>
+                </Panel>
+              </div>
+            </Panel>
+          </div>
+        </Panel>
+        <Panel
+          direction="horizontal"
+          size={50}
+        >
+          <div
+            className="panelRoot horizontal"
+            style={
+              Object {
+                "gridTemplateColumns": "auto",
+              }
+            }
+          >
+            bottom fullwidth (50px)
+          </div>
+        </Panel>
+      </div>
+    </Panel>
+  </div>
+</TestPanelsScene>
+`;

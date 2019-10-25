@@ -17,6 +17,11 @@ exports[`matches snapshot 1`] = `
       />
       <Route
         component={[Function]}
+        exact={true}
+        path="/test/panels"
+      />
+      <Route
+        component={[Function]}
       />
     </Switch>
   </BrowserRouter>

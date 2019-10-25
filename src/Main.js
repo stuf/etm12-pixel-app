@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import SplashScene from 'scenes/Splash';
 import EditorScene from 'scenes/Editor';
 import NotFoundScene from 'scenes/NotFound';
+import TestPanelsScene from 'scenes/test/TestPanels';
 
 function MainScene({ routerProps = {}, ...props }) {
   const WithRootProps = (Component, extra = {}) => p => (
@@ -24,6 +25,7 @@ function MainScene({ routerProps = {}, ...props }) {
             path="/"
             component={WithRootProps(SplashScene, { redirectTo: '/editor' })}
           />
+          <Route exact path="/test/panels" component={TestPanelsScene} />
           <Route component={WithRootProps(NotFoundScene)} />
         </Switch>
       </Router>
