@@ -1,4 +1,3 @@
-/* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
 /**
  * @module canvas-data
  * @namespace core
@@ -8,14 +7,12 @@ import * as U from 'karet.util';
 
 import * as S from '../settings';
 
-import * as T from './canvas-data.d';
-
 import { empty } from 'common/canvas';
 
 //
 
 /**
- * @type {T.CanvasData}
+ * @type {number[]}
  */
 const initValue = empty(S.canvas.initialSize);
 
