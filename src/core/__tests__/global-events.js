@@ -47,3 +47,13 @@ const tests = [
 tests.forEach(([title, type, Ctor, source, obs]) =>
   testSingleEvent({ title, type, Ctor, source, obs }),
 );
+
+it('Window.mouse.mousedrag', done => {
+  Window.mouse.mousedrag.take(2).onValue(() => {
+    done();
+  });
+
+  window.dispatchEvent(new MouseEvent('mousedown'));
+  window.dispatchEvent(new MouseEvent('mousemove'));
+  window.dispatchEvent(new MouseEvent('mouseup'));
+});
