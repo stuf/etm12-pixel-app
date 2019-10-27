@@ -11,12 +11,27 @@ it('renders correctly', () => {
   expect(toJson(wrapper)).toMatchSnapshot();
 });
 
-it('triggers configured redirect', done => {
+it("doesn't trigger redirect if no target is specified", done => {
   const history = {
     replace: jest.fn(),
   };
 
   const wrapper = mount(<SplashScene history={history} redirectDelay={0} />);
+
+  K.later(50, null).onValue(() => {
+    expect(history.replace).not.toHaveBeenCalled();
+    done();
+  });
+});
+
+it('triggers configured redirect', done => {
+  const history = {
+    replace: jest.fn(),
+  };
+
+  const wrapper = mount(
+    <SplashScene history={history} redirectTo="/foo" redirectDelay={0} />,
+  );
 
   K.later(50, null).onValue(() => {
     expect(history.replace).toHaveBeenCalled();

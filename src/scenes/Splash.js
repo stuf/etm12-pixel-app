@@ -21,7 +21,7 @@ function SplashScene({ redirectTo, redirectDelay = 2000, history }) {
     U.consume(([path]) => history.replace(path)),
   );
 
-  const sinkEff = U.sink(redirectEff);
+  const sinkEff = U.sink(U.when(redirectTo, redirectEff));
 
   return (
     <div
