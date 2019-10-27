@@ -1,7 +1,6 @@
 import * as React from 'karet';
 import { constant as C } from 'kefir';
 import { mount } from 'enzyme';
-import toJson from 'enzyme-to-json';
 
 import Panel from 'components/layout/Panel';
 
@@ -25,7 +24,5 @@ describe('components/ui/Panel', () => {
 
     const children = verticalWrapper.childAt(0).children('div');
     expect(children.hasClass('vertical')).toBe(true);
-
-    console.log(children.prop('style'));
   });
 });
