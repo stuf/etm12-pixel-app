@@ -20,3 +20,52 @@ exports[`matches snapshot 1`] = `
   </section>
 </Group>
 `;
+
+exports[`matches snapshot 2`] = `
+<Group>
+  <section
+    className="group"
+  >
+    <div
+      className="group__content"
+    >
+      no title
+    </div>
+  </section>
+</Group>
+`;
+
+exports[`matches snapshot: group, has title 1`] = `
+<Group
+  title="Group title"
+>
+  <section
+    className="group"
+  >
+    <header
+      className="group__header"
+    >
+      Group title
+    </header>
+    <div
+      className="group__content"
+    >
+      Group content
+    </div>
+  </section>
+</Group>
+`;
+
+exports[`matches snapshot: group: no title 1`] = `
+<Group>
+  <section
+    className="group"
+  >
+    <div
+      className="group__content"
+    >
+      no title
+    </div>
+  </section>
+</Group>
+`;
