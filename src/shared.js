@@ -3,7 +3,6 @@ import * as U from 'karet.util';
 import * as R from 'ramda';
 import * as I from 'infestines';
 import * as K from 'kefir';
-import yiq from 'yiq';
 import * as S from './settings';
 
 const COLOR_CHANNELS = S.canvas.colorChannels;
