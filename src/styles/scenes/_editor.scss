@@ -17,25 +17,29 @@ $border-thick: solid 2px $border-color;
   // padding: 2rem;
 }
 
-.editor-top {
+.editorTop {
   grid-column: span 3;
   border-bottom: $border-thick;
   background-color: $top-bg-color;
   color: $top-text-color;
 }
 
-.editor-left,
-.editor-right {
+.editorLeft,
+.editorRight {
   background-color: $color-gray-200;
   overflow: auto;
 }
 
-.editor-left {
+.editorLeft {
   // border-right: $border-thick;
 }
 
-.editor-right {
+.editorRight {
   // border-left: $border-thick;
+}
+
+.editorCenter {
+  overflow: hidden;
 }
 
 .editor-toolgrid {
