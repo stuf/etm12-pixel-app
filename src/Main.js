@@ -25,6 +25,15 @@ function MainScene({ routerProps = {}, ...props }) {
             path="/"
             component={WithRootProps(SplashScene, { redirectTo: '/editor' })}
           />
+          <Route path="/test">
+            <Switch>
+              <Route
+                path="/test/splash"
+                component={WithRootProps(SplashScene)}
+              />
+              <Route path="/test/panels" />
+            </Switch>
+          </Route>
           <Route exact path="/test/panels" component={TestPanelsScene} />
           <Route component={WithRootProps(NotFoundScene)} />
         </Switch>
