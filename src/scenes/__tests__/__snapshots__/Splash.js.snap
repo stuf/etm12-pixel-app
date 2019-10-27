@@ -56,16 +56,18 @@ exports[`renders correctly 1`] = `
       ]
     }
   />
-  <div
-    className="splash-logo"
-  >
-    <img
-      alt="pixel"
-      src="logo.svg"
-    />
-    <h1>
-      pixel
-    </h1>
-  </div>
+  <Panel>
+    <div
+      className="splash-logo"
+    >
+      <img
+        alt="pixel"
+        src="logo.svg"
+      />
+      <h1>
+        pixel
+      </h1>
+    </div>
+  </Panel>
 </div>
 `;

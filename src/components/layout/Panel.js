@@ -20,7 +20,7 @@ export default function Panel({ direction = 'vertical', size, children }) {
       className={U.cns('panelRoot', direction)}
       style={{ [gridDirection]: gridTemplate.join(' ') }}
     >
-      {children}
+      <div className="panelRoot__children">{children}</div>
     </div>
   );
 }

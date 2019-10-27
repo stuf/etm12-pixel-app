@@ -18,55 +18,91 @@ exports[`TestPanelsScene renders and matches snapshot 1`] = `
           }
         }
       >
-        <Panel
-          direction="horizontal"
-          size={30}
+        <div
+          className="panelRoot__children"
         >
-          <div
-            className="panelRoot horizontal"
-            style={
-              Object {
-                "gridTemplateColumns": "auto",
-              }
-            }
+          <Panel
+            direction="horizontal"
+            size={30}
           >
-            main top
-          </div>
-        </Panel>
-        <Panel
-          direction="horizontal"
-        >
-          <div
-            className="panelRoot horizontal"
-            style={
-              Object {
-                "gridTemplateColumns": "200px auto 200px",
+            <div
+              className="panelRoot horizontal"
+              style={
+                Object {
+                  "gridTemplateColumns": "auto",
+                }
               }
-            }
-          >
-            <Panel
-              size={200}
             >
               <div
-                className="panelRoot vertical"
-                style={
-                  Object {
-                    "gridTemplateRows": "50px auto",
-                  }
+                className="panelRoot__children"
+              >
+                main top
+              </div>
+            </div>
+          </Panel>
+          <Panel
+            direction="horizontal"
+          >
+            <div
+              className="panelRoot horizontal"
+              style={
+                Object {
+                  "gridTemplateColumns": "200px auto 200px",
                 }
+              }
+            >
+              <div
+                className="panelRoot__children"
               >
                 <Panel
-                  size={50}
+                  size={200}
                 >
                   <div
                     className="panelRoot vertical"
                     style={
                       Object {
-                        "gridTemplateRows": "auto",
+                        "gridTemplateRows": "50px auto",
                       }
                     }
                   >
-                    left top (50px)
+                    <div
+                      className="panelRoot__children"
+                    >
+                      <Panel
+                        size={50}
+                      >
+                        <div
+                          className="panelRoot vertical"
+                          style={
+                            Object {
+                              "gridTemplateRows": "auto",
+                            }
+                          }
+                        >
+                          <div
+                            className="panelRoot__children"
+                          >
+                            left top (50px)
+                          </div>
+                        </div>
+                      </Panel>
+                      <Panel>
+                        <div
+                          className="panelRoot vertical"
+                          style={
+                            Object {
+                              "gridTemplateRows": "auto",
+                            }
+                          }
+                        >
+                          <div
+                            className="panelRoot__children"
+                          >
+                            left bottom
+                          </div>
+                        </div>
+                      </Panel>
+                    </div>
                   </div>
                 </Panel>
                 <Panel>
@@ -78,79 +114,87 @@ exports[`TestPanelsScene renders and matches snapshot 1`] = `
                       }
                     }
                   >
-                    left bottom
-                  </div>
-                </Panel>
-              </div>
-            </Panel>
-            <Panel>
-              <div
-                className="panelRoot vertical"
-                style={
-                  Object {
-                    "gridTemplateRows": "auto",
-                  }
-                }
-              >
-                center auto width
-              </div>
-            </Panel>
-            <Panel
-              size={200}
-            >
-              <div
-                className="panelRoot vertical"
-                style={
-                  Object {
-                    "gridTemplateRows": "auto 100px",
-                  }
-                }
-              >
-                <Panel>
-                  <div
-                    className="panelRoot vertical"
-                    style={
-                      Object {
-                        "gridTemplateRows": "auto",
-                      }
-                    }
-                  >
-                    right top
+                    <div
+                      className="panelRoot__children"
+                    >
+                      center auto width
+                    </div>
                   </div>
                 </Panel>
                 <Panel
-                  size={100}
+                  size={200}
                 >
                   <div
                     className="panelRoot vertical"
                     style={
                       Object {
-                        "gridTemplateRows": "auto",
+                        "gridTemplateRows": "auto 100px",
                       }
                     }
                   >
-                    right bottom (100px)
+                    <div
+                      className="panelRoot__children"
+                    >
+                      <Panel>
+                        <div
+                          className="panelRoot vertical"
+                          style={
+                            Object {
+                              "gridTemplateRows": "auto",
+                            }
+                          }
+                        >
+                          <div
+                            className="panelRoot__children"
+                          >
+                            right top
+                          </div>
+                        </div>
+                      </Panel>
+                      <Panel
+                        size={100}
+                      >
+                        <div
+                          className="panelRoot vertical"
+                          style={
+                            Object {
+                              "gridTemplateRows": "auto",
+                            }
+                          }
+                        >
+                          <div
+                            className="panelRoot__children"
+                          >
+                            right bottom (100px)
+                          </div>
+                        </div>
+                      </Panel>
+                    </div>
                   </div>
                 </Panel>
               </div>
-            </Panel>
-          </div>
-        </Panel>
-        <Panel
-          direction="horizontal"
-          size={50}
-        >
-          <div
-            className="panelRoot horizontal"
-            style={
-              Object {
-                "gridTemplateColumns": "auto",
-              }
-            }
+            </div>
+          </Panel>
+          <Panel
+            direction="horizontal"
+            size={50}
           >
-            bottom fullwidth (50px)
-          </div>
-        </Panel>
+            <div
+              className="panelRoot horizontal"
+              style={
+                Object {
+                  "gridTemplateColumns": "auto",
+                }
+              }
+            >
+              <div
+                className="panelRoot__children"
+              >
+                bottom fullwidth (50px)
+              </div>
+            </div>
+          </Panel>
+        </div>
       </div>
     </Panel>
   </div>
