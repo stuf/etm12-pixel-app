@@ -58,23 +58,9 @@ describe('shared', () => {
     T.testEq([80, 84], () => H.getIx([0, 2], 10));
   });
 
-  describe('canvas', () => {
-    it('getContext', () => {
-      expect(H.getContext(document.createElement('canvas'))).toBeInstanceOf(
-        CanvasRenderingContext2D,
-      );
-    });
-  });
-
-  T.testEq('a', () => H.fstOf(['a', 'b']));
-  T.testEq('b', () => H.sndOf(['a', 'b']));
-
-  it.todo('rangeScaled');
-
   T.testEq([255, 0, 0, 255], () => H.fromHex('ff0000'));
   it.todo(
     "H.fromHex('ff0000ff') (support 32 bit color values without JS restrictions)",
   );
   T.testEq([0, 0, 255, 125], () => H.fromHex('0000ff7d'));
-  it.todo('yiqFor');
 });

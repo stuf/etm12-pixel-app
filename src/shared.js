@@ -175,55 +175,6 @@ export const fromHex = U.lift(x => {
 });
 
 /**
- * @deprecated
- */
-export const toHex = U.lift(x => {
-  const y = x.slice(0, 3);
-
-  console.log({ y });
-  return y.join('-');
-});
-
-// CANVAS
-
-/**
- * @deprecated
- * @type {Ary1Lift<HTMLCanvasElement, CanvasRenderingContext2D>}
- */
-export const getContext = U.lift(el => el.getContext('2d'));
-
-/**
- * @deprecated
- * @type {Ary2Lift<[number, number], CanvasRenderingContext2D, ImageData>}
- */
-export const getImageData = U.lift(([w, h], ctx) =>
-  ctx.getImageData(0, 0, w, h),
-);
-
-// ARRAYS
-
-/**
- * @template T, U
- * @type {(v: K.Observable<T, any>) => K.Observable<T[0], any>} */
-export const fstOf = U.view(0);
-export const sndOf = U.view(1);
-
-export const rangeScaled = (start, end, step) =>
-  U.combine([start, end, step], (a, b, s) =>
-    Array(b - a)
-      .fill(0)
-      .map((_, i) => i * s + a),
-  );
-
-/** @deprecated */
-const yiq_ = (opts = {}) => c => yiq(c, opts);
-
-/** @deprecated */
-export const yiqFor = c => U.thru(c, U.mapValue(yiq_()));
-
-// DEBUG
-
-/**
  * @typedef {[number, number, number]} RGB
  */
 
