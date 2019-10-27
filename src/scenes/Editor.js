@@ -142,13 +142,20 @@ function EditorScene(props) {
               />
             </Group>
 
+            <Group>
+              <Button group>Save image</Button>
+              <Button group disabled>
+                Load image
+              </Button>
+            </Group>
+
             <Group title="Image">
               <Field
                 label="Name"
                 value={U.view(['currentFile', 'name', L.valueOr('')], state)}
               />
 
-              <Button>Clear image</Button>
+              <Button disabled>Clear image</Button>
             </Group>
 
             <Group title="Canvas">
