@@ -7,6 +7,7 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 
 import { takeAll } from 'shared';
+import Panel from 'components/layout/Panel';
 import logo from 'assets/logo.svg';
 
 function SplashScene({ redirectTo, redirectDelay = 2000, history }) {
@@ -29,10 +30,12 @@ function SplashScene({ redirectTo, redirectDelay = 2000, history }) {
       data-scene-name="splash"
     >
       <>{sinkEff}</>
-      <div className="splash-logo">
-        <img src={logo} alt="pixel" />
-        <h1>pixel</h1>
-      </div>
+      <Panel>
+        <div className="splash-logo">
+          <img src={logo} alt="pixel" />
+          <h1>pixel</h1>
+        </div>
+      </Panel>
     </div>
   );
 }

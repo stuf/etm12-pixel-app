@@ -16,6 +16,19 @@ exports[`matches snapshot 1`] = `
         path="/"
       />
       <Route
+        path="/test"
+      >
+        <Switch>
+          <Route
+            component={[Function]}
+            path="/test/splash"
+          />
+          <Route
+            path="/test/panels"
+          />
+        </Switch>
+      </Route>
+      <Route
         component={[Function]}
         exact={true}
         path="/test/panels"

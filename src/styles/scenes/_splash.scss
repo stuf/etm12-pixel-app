@@ -1,11 +1,10 @@
 .splash-root {
+  text-align: center;
+  font-family: $font-family-monospace;
 }
 
 .splash-logo {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  text-align: center;
-  transform-origin: center center;
-  transform: translateX(-50%) translateY(-50%) scale(0.7);
+  h1 {
+    font-weight: normal;
+  }
 }
