@@ -4,7 +4,7 @@ import Panel from 'components/layout/Panel';
 
 export default function TestPanelsScene(props) {
   return (
-    <div style={{ height: '100%' }}>
+    <div className="scene-root">
       <Panel>
         <Panel direction="horizontal" size={30}>
           main top

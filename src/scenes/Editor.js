@@ -24,9 +24,6 @@ import LayoutHeader from 'components/layout/Header';
 import * as M from 'common/meta';
 import { empty } from 'common/canvas';
 
-/**
- * @param {T.Props} props
- */
 function EditorScene(props) {
   const { state, canvasData, menuItems, env } = props;
 
@@ -67,13 +64,13 @@ function EditorScene(props) {
             {...{
               env,
               menuItems,
-              className: 'editor-top',
+              className: 'editorTop',
               name: M.nameIn(currentFile),
               isEditing: M.isEditingIn(currentFile),
             }}
           />
 
-          <div className={U.cns('editor-left')}>
+          <div className={U.cns('editorLeft')}>
             <Group title="Palette">
               <Dropdown {...{ items: palettes, value: currentPalette }} />
               <Palette
@@ -121,7 +118,7 @@ function EditorScene(props) {
             )}
           </div>
 
-          <div className="relative-pos">
+          <div className={U.cns('relative-pos', 'editorCenter')}>
             <Canvas
               {...{
                 devtool,
@@ -134,7 +131,7 @@ function EditorScene(props) {
             />
           </div>
 
-          <div className={U.cns('editor-right')}>
+          <div className={U.cns('editorRight')}>
             <Group title="Preview">
               <Bitmap
                 {...{

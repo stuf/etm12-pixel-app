@@ -3,11 +3,7 @@
 exports[`TestPanelsScene renders and matches snapshot 1`] = `
 <TestPanelsScene>
   <div
-    style={
-      Object {
-        "height": "100%",
-      }
-    }
+    className="scene-root"
   >
     <Panel>
       <div

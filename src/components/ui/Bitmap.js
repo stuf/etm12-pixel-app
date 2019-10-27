@@ -30,8 +30,7 @@ function Bitmap({ size, className, scale, data, domRef = U.variable() }) {
       try {
         return new ImageData(xs, w, h);
       } catch (e) {
-        console.log({ e, xs });
-        return { e, xs };
+        return K.constantError(e);
       }
     }),
   );

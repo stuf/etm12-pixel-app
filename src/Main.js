@@ -16,7 +16,7 @@ function MainScene({ routerProps = {}, ...props }) {
   );
 
   return (
-    <main className="layout--main">
+    <main className="layout--main debugRoot">
       <Router {...routerProps}>
         <Switch>
           <Route path="/editor" component={WithRootProps(EditorScene)} />
@@ -31,10 +31,9 @@ function MainScene({ routerProps = {}, ...props }) {
                 path="/test/splash"
                 component={WithRootProps(SplashScene)}
               />
-              <Route path="/test/panels" />
+              <Route path="/test/panels" component={TestPanelsScene} />
             </Switch>
           </Route>
-          <Route exact path="/test/panels" component={TestPanelsScene} />
           <Route component={WithRootProps(NotFoundScene)} />
         </Switch>
       </Router>

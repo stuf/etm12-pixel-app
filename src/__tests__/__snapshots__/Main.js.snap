@@ -2,7 +2,7 @@
 
 exports[`matches snapshot 1`] = `
 <main
-  className="layout--main"
+  className="layout--main debugRoot"
 >
   <BrowserRouter>
     <Switch>
@@ -24,15 +24,11 @@ exports[`matches snapshot 1`] = `
             path="/test/splash"
           />
           <Route
+            component={[Function]}
             path="/test/panels"
           />
         </Switch>
       </Route>
-      <Route
-        component={[Function]}
-        exact={true}
-        path="/test/panels"
-      />
       <Route
         component={[Function]}
       />
