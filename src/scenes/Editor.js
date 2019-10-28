@@ -57,6 +57,18 @@ function EditorScene(props) {
 
   const canvasDataCurrent = U.view(Z.present, canvasData);
 
+  //
+
+  const saveImageEff = U.doPush(actions, () =>
+    U.thru(
+      U.template([canvasDataCurrent, size, currentFileName]),
+      U.takeFirst(1),
+      U.consume(([xs, [w, h], n]) => saveImage(xs, [w, h], n)),
+    ),
+  );
+
+  //
+
   return (
     <div
       className={U.cns('scene-root', 'editor-root')}
@@ -132,13 +144,7 @@ function EditorScene(props) {
 
               <div>
                 {/** Save current image */}
-                <Button
-                  group
-                  id="save-current-image"
-                  action={U.doPush(actions, () =>
-                    saveImage(canvasDataCurrent, size, currentFileName),
-                  )}
-                >
+                <Button group id="save-current-image" action={saveImageEff}>
                   Save Image
                 </Button>
 
