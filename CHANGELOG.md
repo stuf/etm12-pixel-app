@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/stuf/etm12-pixel-app/compare/v0.3.0...v0.3.1) (2019-10-28)
+
+
+### Features
+
+* **scenes:** editor: minor visual improvements, hide canvas size controls ([20d4dec](https://github.com/stuf/etm12-pixel-app/commit/20d4dec161ee144b628983995504b9b1c65e4778))
+
+
+
 # [0.3.0](https://github.com/stuf/etm12-pixel-app/compare/v0.2.0...v0.3.0) (2019-10-28)
 
 
