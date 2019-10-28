@@ -5,6 +5,7 @@ import { testEq } from 'test-utils';
 const {
   scaleSize,
   getContext,
+  getImageData,
   drawingEvents,
   getIx,
   getIxRange,
@@ -38,6 +39,22 @@ describe('<canvas> element', () => {
       const ctx = getContext(dom);
 
       expect(ctx).toBeInstanceOf(CanvasRenderingContext2D);
+    });
+
+    it('getImageData', () => {
+      const [w, h] = [4, 4];
+      const dom = document.createElement('canvas');
+      dom.width = w;
+      dom.height = h;
+
+      const ctx = dom.getContext('2d');
+      /** @type {ImageData} */
+      const data = getImageData(ctx, w, h);
+
+      expect(data).toBeInstanceOf(ImageData);
+      expect(data.width).toBe(w);
+      expect(data.height).toBe(h);
+      expect(Array.from(data.data)).toEqual(Array(w * h * 4).fill(0));
     });
   });
   describe('drawingEvents', () => {

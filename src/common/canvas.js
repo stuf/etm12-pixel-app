@@ -17,6 +17,11 @@ export const scaleSize = U.lift(([w, h], m) => [w * m, h * m]);
  */
 export const getContext = U.lift(el => el.getContext('2d'));
 
+/**
+ * @type {LiftedAry3Fn<CanvasRenderingContext2D, number, number, ImageData>}
+ */
+export const getImageData = U.lift((ctx, w, h) => ctx.getImageData(0, 0, w, h));
+
 //
 
 /**
