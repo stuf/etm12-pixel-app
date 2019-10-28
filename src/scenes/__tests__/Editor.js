@@ -6,6 +6,8 @@ import toJson from 'enzyme-to-json';
 
 import EditorScene from 'scenes/Editor';
 
+import Button from 'components/ui/Button';
+
 it('matches snapshot', () => {
   const state = U.atom({
     canvas: { size: [32, 32], scale: 16 },
@@ -19,6 +21,9 @@ it('matches snapshot', () => {
   const w2 = mount(
     <EditorScene {...{ state, canvasData: canvasData.get() }} />,
   );
+
+  const saveImageButton = w.find('#save-current-image').first();
+  saveImageButton.simulate('click');
 
   state.view('size').set([16, 16]);
 });

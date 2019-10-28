@@ -22,9 +22,11 @@ import Devtool from 'components/molecules/panel/Devtool';
 import LayoutHeader from 'components/layout/Header';
 
 import * as M from 'common/meta';
-import { empty } from 'common/canvas';
+import { empty, saveImage } from 'common/canvas';
 
 function EditorScene(props) {
+  const actions = U.serializer();
+
   const { state, canvasData, menuItems, env } = props;
 
   const {
@@ -36,8 +38,10 @@ function EditorScene(props) {
     devtool,
     tool,
   } = U.destructure(state);
+
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette, palettes } = U.destructure(color);
+  const currentFileName = U.view('name', currentFile);
 
   const data = U.view(Z.present, canvasData);
 
@@ -51,6 +55,8 @@ function EditorScene(props) {
     U.consume(data => U.view(Z.present, canvasData).set(data)),
   );
 
+  const canvasDataCurrent = U.view(Z.present, canvasData);
+
   return (
     <div
       className={U.cns('scene-root', 'editor-root')}
@@ -59,7 +65,7 @@ function EditorScene(props) {
       {U.ifElse(
         imageDataValid,
         <>
-          <>{U.sink(ensureEmptyImage)}</>
+          <>{U.sink(U.parallel([ensureEmptyImage, actions]))}</>
           <LayoutHeader
             {...{
               env,
@@ -138,7 +144,7 @@ function EditorScene(props) {
                 {...{
                   size,
                   scale: 2,
-                  data: U.view(Z.present, canvasData),
+                  data: canvasDataCurrent,
                 }}
               />
             </Group>
@@ -149,7 +155,26 @@ function EditorScene(props) {
                 value={U.view(['currentFile', 'name', L.valueOr('')], state)}
               />
 
-              <Button>Clear image</Button>
+              <div>
+                <Button>Clear image</Button>
+              </div>
+
+              <div>
+                {/** Save current image */}
+                <Button
+                  group
+                  id="save-current-image"
+                  action={U.doPush(actions, () =>
+                    saveImage(canvasDataCurrent, size, currentFileName),
+                  )}
+                >
+                  Save Image
+                </Button>
+
+                <Button group disabled>
+                  Load Image
+                </Button>
+              </div>
             </Group>
 
             <Group title="Canvas">
@@ -159,7 +184,10 @@ function EditorScene(props) {
             </Group>
           </div>
         </>,
-        <div>somethings wrong</div>,
+        <div>
+          {/* TODO: Error state */}
+          something went wrong
+        </div>,
       )}
     </div>
   );
