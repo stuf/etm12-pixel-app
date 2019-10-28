@@ -1,3 +1,17 @@
+## [0.3.3](https://github.com/stuf/etm12-pixel-app/compare/v0.3.2...v0.3.3) (2019-10-28)
+
+
+### Bug Fixes
+
+* **scenes:** editor: terminate stream of image data when saving correctly ([1fb51a4](https://github.com/stuf/etm12-pixel-app/commit/1fb51a463b082ebb7c2b72de417b2e08d4413a7b))
+
+
+### Features
+
+* **core:** palette: add alpha palette ([5922efc](https://github.com/stuf/etm12-pixel-app/commit/5922efcaeb45a19444892205a6288f5350e57eba))
+
+
+
 ## [0.3.2](https://github.com/stuf/etm12-pixel-app/compare/v0.3.1...v0.3.2) (2019-10-28)
 
 
