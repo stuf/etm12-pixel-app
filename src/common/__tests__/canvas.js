@@ -2,6 +2,8 @@ import * as A from 'common/canvas';
 
 import { testEq } from 'test-utils';
 
+jest.mock('file-saver');
+
 const {
   scaleSize,
   getContext,
@@ -12,6 +14,7 @@ const {
   rgbFromHex,
   fromHexColor,
   empty,
+  saveImage,
 } = A;
 
 const mkMouseDown = () => new MouseEvent('mousedown');
@@ -57,6 +60,7 @@ describe('<canvas> element', () => {
       expect(Array.from(data.data)).toEqual(Array(w * h * 4).fill(0));
     });
   });
+
   describe('drawingEvents', () => {
     it('mousemove -> mouseup', done => {
       const dom = document.createElement('div');
@@ -84,6 +88,18 @@ describe('<canvas> element', () => {
       dom.dispatchEvent(mkMouseDown());
       dom.dispatchEvent(mkMouseMove());
       dom.dispatchEvent(mkMouseOut());
+    });
+  });
+
+  describe('File operations', () => {
+    it('saveImage', () => {
+      expect(() => {
+        saveImage([0, 0, 0, 0], [1, 1], 'foo');
+      }).not.toThrow();
+
+      expect(() => {
+        saveImage(['a'], [1, 1], 'foo');
+      }).toThrow();
     });
   });
 });

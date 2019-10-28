@@ -1,7 +1,10 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "(LiftedAry[1-3]Fn|Size)"}] */
 import * as U from 'karet.util';
 import * as K from 'kefir';
+import { saveAs } from 'file-saver';
+
 import { takeEvents } from 'common/events';
+import { mkClampedArray, mkImageData } from 'common/data';
 
 import { LiftedAry1Fn, LiftedAry2Fn, Size } from 'types.d';
 
@@ -89,3 +92,28 @@ export const fromHexColor = U.lift(x => {
  * @type {LiftedAry1Fn<[number, number], number[]>}
  */
 export const empty = U.lift(([w, h]) => Array(w * h * COLOR_CHANNELS).fill(0));
+
+//
+
+/**
+ *
+ * @param {number[]} image
+ * @param {[number, number]} size
+ * @param {string} filename
+ */
+export const saveImage = U.lift((data, size, filename) => {
+  const [width, height] = size;
+
+  const el = Object.assign(document.createElement('canvas'), {
+    width,
+    height,
+  });
+
+  const ctx = getContext(el);
+
+  const clampedData = mkClampedArray(data);
+  const imageData = mkImageData(clampedData, width, height);
+
+  ctx.putImageData(imageData, 0, 0);
+  el.toBlob(b => saveAs(b, filename));
+});
