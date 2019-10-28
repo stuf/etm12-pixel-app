@@ -87,6 +87,7 @@ function EditorScene(props) {
 
               <Range
                 {...{
+                  id: 'history-slider',
                   value: U.view(Z.index, canvasData),
                   min: 0,
                   max: Z.indexMax(canvasData),
