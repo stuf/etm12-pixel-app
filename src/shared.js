@@ -1,7 +1,6 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K]"}] */
 import * as U from 'karet.util';
 import * as R from 'ramda';
-import * as I from 'infestines';
 import * as K from 'kefir';
 import * as S from './settings';
 

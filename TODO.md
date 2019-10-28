@@ -3,10 +3,14 @@
 ## ASAP
 
 - Core
-  - [ ] Extract common validation functions
-  - [ ] Extract common validation rules
+  - [x] Extract common validation functions
+  - [x] Extract common validation rules
 - UI
   - [ ] Add eraser brush
+- Editor
+  - [x] Allow saving the canvas image
+  - [x] Save Image
+  - [ ] Load Image
 
 ## To-do, but not yet
 
