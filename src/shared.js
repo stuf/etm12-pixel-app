@@ -7,9 +7,6 @@ import * as S from './settings';
 
 const COLOR_CHANNELS = S.canvas.colorChannels;
 
-// eslint-disable-next-line
-const setName = process.env.NODE_ENV === 'production' ? a => a : I.defineNameU;
-
 // FUNCTIONS
 
 /** @deprecated */
@@ -61,7 +58,7 @@ export const reciprocal = n => Math.pow(n, -1);
  * @deprecated
  * @type {Ary1Lift<number, number>}
  */
-export const reciprocalU = setName(U.lift(reciprocal), 'reciprocalU');
+export const reciprocalU = U.lift(reciprocal);
 
 /**
  * @deprecated
