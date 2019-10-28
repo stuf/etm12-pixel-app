@@ -11,11 +11,11 @@ import * as Z from 'kefir.partial.lenses.history';
 
 import Canvas from 'components/core/Canvas';
 
-import { Field, Range, Dropdown, Checkbox } from 'components/form';
+import { ClearHistoryButton, TimeControlButton } from 'components/core/History';
+import { Field, Range, Dropdown } from 'components/form';
 import Button from 'components/ui/Button';
 import Palette from 'components/ui/Palette';
 import Bitmap from 'components/ui/Bitmap';
-import TimeControlButton from 'components/ui/TimeControlButton';
 import Group from 'components/ui/Group';
 import Devtool from 'components/molecules/panel/Devtool';
 
@@ -88,35 +88,6 @@ function EditorScene(props) {
               />
             </Group>
 
-            <Group title="History">
-              <div>{U.mapValue(x => x - 1, U.view(Z.count, canvasData))}</div>
-
-              <Range
-                {...{
-                  id: 'history-slider',
-                  value: U.view(Z.index, canvasData),
-                  min: 0,
-                  max: Z.indexMax(canvasData),
-                  onChange: U.getProps({
-                    valueAsNumber: U.view(Z.index, canvasData),
-                  }),
-                }}
-              />
-
-              <div>
-                <TimeControlButton count={U.view(Z.undoIndex, canvasData)}>
-                  Undo
-                </TimeControlButton>
-                <TimeControlButton count={U.view(Z.redoIndex, canvasData)}>
-                  Redo
-                </TimeControlButton>
-              </div>
-
-              <Button onClick={U.doModify(canvasData, Z.undoForget)}>
-                Purge history
-              </Button>
-            </Group>
-
             {U.when(
               U.view('devMode', app),
               <Group title="Dev tools">
@@ -175,6 +146,35 @@ function EditorScene(props) {
                   Load Image
                 </Button>
               </div>
+            </Group>
+
+            <Group title="History">
+              <div>{U.mapValue(x => x - 1, U.view(Z.count, canvasData))}</div>
+
+              <Range
+                {...{
+                  id: 'history-slider',
+                  value: U.view(Z.index, canvasData),
+                  min: 0,
+                  max: Z.indexMax(canvasData),
+                  onChange: U.getProps({
+                    valueAsNumber: U.view(Z.index, canvasData),
+                  }),
+                }}
+              />
+
+              <div>
+                <TimeControlButton group direction="undo" history={canvasData}>
+                  Undo
+                </TimeControlButton>
+                <TimeControlButton group direction="redo" history={canvasData}>
+                  Redo
+                </TimeControlButton>
+              </div>
+
+              <ClearHistoryButton history={canvasData}>
+                Purge it all
+              </ClearHistoryButton>
             </Group>
           </div>
         </>,
