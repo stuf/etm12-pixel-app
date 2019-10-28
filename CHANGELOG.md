@@ -1,3 +1,18 @@
+## [0.3.2](https://github.com/stuf/etm12-pixel-app/compare/v0.3.1...v0.3.2) (2019-10-28)
+
+
+### Bug Fixes
+
+* **scenes:** editor: remove snapshot testing ([f5318d0](https://github.com/stuf/etm12-pixel-app/commit/f5318d0c51336b57d273704ff0d51b09d84eb916))
+
+
+### Features
+
+* **components:** history: add controls related to history control ([aeb4ec4](https://github.com/stuf/etm12-pixel-app/commit/aeb4ec4d87c0213dc54a3e9b9af5eba97b2f86f1))
+* **scenes:** editor: use new history controls for undo/redo ([15a2d80](https://github.com/stuf/etm12-pixel-app/commit/15a2d80598d0f7c4713a2a5c24ea2b0040cb6dda))
+
+
+
 ## [0.3.1](https://github.com/stuf/etm12-pixel-app/compare/v0.3.0...v0.3.1) (2019-10-28)
 
 
