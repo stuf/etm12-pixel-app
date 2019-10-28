@@ -176,12 +176,6 @@ function EditorScene(props) {
                 </Button>
               </div>
             </Group>
-
-            <Group title="Canvas">
-              <Field label="Width" value={U.view([0, M.fmt.wNumber], size)} />
-              <Field label="Height" value={U.view([1, M.fmt.wNumber], size)} />
-              <Field label="Scale" value={U.view(M.fmt.wNumber, scale)} />
-            </Group>
           </div>
         </>,
         <div>

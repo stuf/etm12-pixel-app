@@ -10,7 +10,7 @@ import Button from 'components/ui/Button';
 
 it('matches snapshot', () => {
   const state = U.atom({
-    canvas: { size: [32, 32], scale: 16 },
+    canvas: { size: [4, 4], scale: 16 },
     color: { currentPalette: 0, currentColor: 0, palettes: [] },
   });
 
@@ -26,4 +26,6 @@ it('matches snapshot', () => {
   saveImageButton.simulate('click');
 
   state.view('size').set([16, 16]);
+
+  expect(toJson(w2)).toMatchSnapshot();
 });
