@@ -26,6 +26,4 @@ it('matches snapshot', () => {
   saveImageButton.simulate('click');
 
   state.view('size').set([16, 16]);
-
-  expect(toJson(w2)).toMatchSnapshot();
 });
