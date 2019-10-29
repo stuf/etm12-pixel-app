@@ -120,5 +120,6 @@ describe('Coordinate conversion', () => {
 });
 
 describe('Color conversion', () => {
+  testEq([255, 0, 0, 255], () => convertFromHexColor('ff0000'));
   testEq([255, 0, 0, 125], () => convertFromHexColor('ff00007d'));
 });
