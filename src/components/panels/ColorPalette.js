@@ -1,5 +1,6 @@
 import * as React from 'karet';
 import * as U from 'karet.util';
+import * as L from 'kefir.partial.lenses';
 
 import { nameIn, itemsIn } from 'common/meta';
 
@@ -14,14 +15,14 @@ export default function Palette(props) {
         {currentPalette}, {currentColor}
       </code>
       {U.thru(
-        palettes,
+        U.view(L.valueOr([]), palettes),
         U.mapElems((p, pi) => (
           <div key={pi}>
             {nameIn(p)}
 
             <ul className="colorPalette__colorList">
               {U.thru(
-                itemsIn(p),
+                U.view(L.valueOr([]), itemsIn(p)),
                 U.mapElems((c, ci) => (
                   <li key={ci} className="colorPalette__colorListItem">
                     <button className="colorPalette__colorButton" />
