@@ -18,10 +18,6 @@ const initialState = {
     size: [32, 32],
     scale: 16,
   },
-  drawable: {
-    offset: [0, 0],
-    bbox: [[0, 0], [0, 0]],
-  },
   currentFile: {
     name: 'Untitled',
     createdAt: new Date(),
@@ -38,6 +34,7 @@ const initialState = {
   devtool: {
     flags: {
       offsetGuide: true,
+      showBuildInfo: true,
     },
   },
 };
