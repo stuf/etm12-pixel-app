@@ -33,3 +33,15 @@ export const fmt = {
   rNumber: L.reread(toInt),
   wNumber: L.rewrite(toInt),
 };
+
+//
+
+export const buildEnvIn = U.view([
+  'env',
+  L.pick({
+    env: 'REACT_APP_BUILD_ENV',
+    version: 'REACT_APP_BUILD_VERSION',
+    branch: 'REACT_APP_BUILD_BRANCH',
+    commit: 'REACT_APP_BUILD_COMMIT',
+  }),
+]);

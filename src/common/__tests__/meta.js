@@ -16,3 +16,14 @@ testEq(2, () => M.sndIn([1, 2]));
 
 testEq(123, () => L.get(M.fmt.rNumber, '123'));
 testEq(123, () => L.set(M.fmt.wNumber, '123', undefined));
+
+testEq({ env: 1, version: 2, commit: 3, branch: 4 }, () =>
+  M.buildEnvIn({
+    env: {
+      REACT_APP_BUILD_ENV: 1,
+      REACT_APP_BUILD_VERSION: 2,
+      REACT_APP_BUILD_COMMIT: 3,
+      REACT_APP_BUILD_BRANCH: 4,
+    },
+  }),
+);
