@@ -1,6 +1,7 @@
 ![Codecov](https://img.shields.io/codecov/c/github/stuf/etm12-pixel-app?style=for-the-badge)
 ![Netlify](https://img.shields.io/netlify/8bfc2ad0-a348-4395-960e-c3331f794428?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/stuf/etm12-pixel-app?style=for-the-badge)
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/stuf/etm12-pixel-app?style=for-the-badge)
 
 # `etm12-pixel-app`
 
