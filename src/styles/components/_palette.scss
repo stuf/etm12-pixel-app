@@ -19,13 +19,16 @@
 
   .itemList__item {
     &.-active {
-      // border: dashed 1px #fff;
-      padding: 2px;
+      border: solid 4px #fff;
 
       button {
         font-weight: 700;
-        border: solid 4px rgba(0, 0, 0, 0.3);
+        border: solid 4px #f00;
       }
+    }
+
+    button {
+      background: #f00;
     }
   }
 }
