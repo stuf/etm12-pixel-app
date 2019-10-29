@@ -2,6 +2,7 @@
 import * as U from 'karet.util';
 import * as K from 'kefir';
 import { saveAs } from 'file-saver';
+import Long from 'long';
 
 import { takeEvents } from 'common/events';
 import { mkClampedArray, mkImageData } from 'common/data';
@@ -64,29 +65,33 @@ export const getIxRange = U.lift(([x, y], w) => {
   return [ix, ix + COLOR_CHANNELS];
 });
 
-export const rgbFromHex = U.lift(x => {
-  const n = parseInt(x, 16);
-  return [(n & 0xff0000) >> 16, (n & 0xff00) >> 8, n & 0xff, 255];
-});
+// Colors
+
+const _hexFromString = str => Long.fromString(str, null, 16);
 
 /**
- * Convert a hexadecimal color into an `[r, g, b, a]` tuple.
- * @todo Requires support for full 0xffffffff support
- * @type {LiftedAry1Fn<string, number[]>}
+ * Convert a string representing a hexadecimal color, optionally
+ * including an alpha value, into a 4-tuple (RGBA).
  */
-export const fromHexColor = U.lift(x => {
-  const n = parseInt(x, 16);
-  if (x.length > 6) {
-    return [
-      (n & 0xff000000) >> 24,
-      (n & 0xff0000) >> 16,
-      (n & 0xff00) >> 8,
-      n & 0xff,
-    ];
+export const convertFromHexColor = str => {
+  if (str.length === 6) {
+    const val = parseInt(str, 16);
+    return [(val & 0xff0000) >> 16, (val & 0xff00) >> 8, val & 0xff, 255];
   }
 
-  return [(n & 0xff0000) >> 16, (n & 0xff00) >> 8, n & 0xff, 255];
-});
+  const val = Long.fromString(str, null, 16);
+  const rmask = _hexFromString('ff000000');
+  const gmask = _hexFromString('ff0000');
+  const bmask = _hexFromString('ff00');
+  const amask = _hexFromString('ff');
+
+  return [
+    +val.and(rmask).shr(24),
+    +val.and(bmask).shr(16),
+    +val.and(gmask).shr(8),
+    +val.and(amask),
+  ];
+};
 
 /**
  * @type {LiftedAry1Fn<[number, number], number[]>}

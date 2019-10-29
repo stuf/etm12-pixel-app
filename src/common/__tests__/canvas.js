@@ -15,6 +15,7 @@ const {
   fromHexColor,
   empty,
   saveImage,
+  convertFromHexColor,
 } = A;
 
 const mkMouseDown = () => new MouseEvent('mousedown');
@@ -119,7 +120,5 @@ describe('Coordinate conversion', () => {
 });
 
 describe('Color conversion', () => {
-  testEq([255, 0, 0, 255], () => rgbFromHex('ff0000'));
-  testEq([0, 255, 0, 255], () => fromHexColor('00ff00'));
-  testEq([0, 255, 0, 125], () => fromHexColor('00ff007d'));
+  testEq([255, 0, 0, 125], () => convertFromHexColor('ff00007d'));
 });
