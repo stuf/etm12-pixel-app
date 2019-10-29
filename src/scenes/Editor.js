@@ -13,31 +13,21 @@ import Canvas from 'components/core/Canvas';
 
 import { ClearHistoryButton, TimeControlButton } from 'components/core/History';
 import { Field, Range, Dropdown } from 'components/form';
+import { FlagToggleList } from 'components/core/Devtool';
+import * as Panel from 'components/panels';
 import Button from 'components/ui/Button';
 import Palette from 'components/ui/Palette';
 import Bitmap from 'components/ui/Bitmap';
 import Group from 'components/ui/Group';
-import Devtool from 'components/molecules/panel/Devtool';
 
 import LayoutHeader from 'components/layout/Header';
 
 import * as M from 'common/meta';
 import { empty, saveImage } from 'common/canvas';
 
-function EditorScene(props) {
-  const actions = U.serializer();
-
+export default function EditorScene(props) {
   const { state, canvasData, menuItems, env } = props;
-
-  const {
-    canvas,
-    drawable,
-    color,
-    currentFile,
-    app,
-    devtool,
-    tool,
-  } = U.destructure(state);
+  const { canvas, color, currentFile, app, devtool } = U.destructure(state);
 
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette, palettes } = U.destructure(color);
@@ -58,6 +48,8 @@ function EditorScene(props) {
   const canvasDataCurrent = U.view(Z.present, canvasData);
 
   //
+
+  const actions = U.serializer();
 
   const saveImageEff = U.doPush(actions, () =>
     U.thru(
@@ -89,23 +81,20 @@ function EditorScene(props) {
           />
 
           <div className={U.cns('editorLeft')}>
-            <Group title="Palette">
-              <Dropdown {...{ items: palettes, value: currentPalette }} />
-              <Palette
-                {...{
-                  currentColor,
-                  name: U.view('name', selectedPalette),
-                  items: U.view('items', selectedPalette),
-                }}
-              />
-            </Group>
-
             {U.when(
               U.view('devMode', app),
               <Group title="Dev tools">
-                <Devtool flags={U.view('flags', devtool)} />
+                <FlagToggleList items={U.view('flags', devtool)} />
               </Group>,
             )}
+
+            <Panel.ColorPalette
+              {...{
+                currentPalette,
+                currentColor,
+                palettes,
+              }}
+            />
           </div>
 
           <div className={U.cns('relative-pos', 'editorCenter')}>
@@ -114,7 +103,6 @@ function EditorScene(props) {
                 devtool,
                 size,
                 scale,
-                drawable,
                 data,
                 color: selectedColor,
               }}
@@ -179,7 +167,7 @@ function EditorScene(props) {
               </div>
 
               <ClearHistoryButton history={canvasData}>
-                Purge it all
+                Purge history
               </ClearHistoryButton>
             </Group>
           </div>
@@ -192,5 +180,3 @@ function EditorScene(props) {
     </div>
   );
 }
-
-export default EditorScene;

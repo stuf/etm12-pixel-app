@@ -19,14 +19,7 @@ import Bitmap from 'components/ui/Bitmap';
 import PixelGrid from './_/PixelGrid';
 import OffsetGuide from './_/OffsetGuide';
 
-export default function Canvas({
-  size,
-  color,
-  scale,
-  data,
-  drawable,
-  devtool,
-}) {
+export default function Canvas({ size, color, scale, data, devtool }) {
   /** @type {ObsElement} */
   const dom = U.variable();
   const rgba = L.get([L.dropPrefix('#'), L.reread(fromHex)], color);

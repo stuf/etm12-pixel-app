@@ -25,18 +25,13 @@ function Palette({ items, currentColor }) {
             return (
               <li
                 key={`color-${i}`}
-                style={{
-                  backgroundImage: `url(${backgroundImage})`,
-                }}
                 className={U.cns('itemList__item', U.when(isActive, '-active'))}
+                style={{
+                  backgroundColor,
+                  opacity: U.mapValue(x => x / 255, U.view(3, color)),
+                }}
               >
-                <button
-                  style={{
-                    backgroundColor,
-                    opacity: U.mapValue(x => x / 255, U.view(3, color)),
-                  }}
-                  onClick={U.doSet(currentColor, i)}
-                />
+                <button style={{}} onClick={U.doSet(currentColor, i)} />
               </li>
             );
           }),
