@@ -9,6 +9,7 @@ import * as R from 'kefir.ramda';
 import * as K from 'kefir';
 
 import { takeAll } from 'shared';
+import { mkClampedArray, mkImageData } from 'common/data';
 import { scaleSize, getContext } from 'common/canvas';
 import { fstIn, sndIn } from 'common/meta';
 
@@ -26,12 +27,8 @@ function Bitmap({ size, className, scale, data, domRef = U.variable() }) {
     K.combine([data, size], takeAll),
     U.toProperty,
     U.flatMapLatest(([pixels, [w, h]]) => {
-      const xs = new Uint8ClampedArray(pixels);
-      try {
-        return new ImageData(xs, w, h);
-      } catch (e) {
-        return K.constantError(e);
-      }
+      const xs = mkClampedArray(pixels);
+      return K.constant(mkImageData(xs, w, h));
     }),
   );
 
