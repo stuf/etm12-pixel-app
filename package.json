@@ -27,6 +27,7 @@
     "kefir.partial.lenses.history": "^1.2.0",
     "kefir.partial.lenses.validation": "^2.0.0",
     "kefir.ramda": "^0.26.0",
+    "long": "^4.0.0",
     "normalize.css": "^8.0.1",
     "partial.lenses": "^14.17.0",
     "partial.lenses.validation": "^2.0.0",
@@ -65,6 +66,7 @@
     "typescript": "^3.6.3"
   },
   "optionalDependencies": {
+    "@types/long": "^4.0.0",
     "@types/prop-types": "^15.7.3",
     "@types/shelljs": "^0.8.5"
   },
