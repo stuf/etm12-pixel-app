@@ -98,7 +98,8 @@
       "!src/tests/**",
       "!src/test-utils.js",
       "!src/typedef.js",
-      "!src/components/form/index.js"
+      "!src/components/form/index.js",
+      "!src/components/panels/index.js"
     ]
   },
   "browserslist": {
