@@ -1,6 +1,13 @@
 import * as E from 'common/events';
 
-it('takeEvents(<div />) => Observable(Event)', done => {
+it('persistEvent', () => {
+  const ev = { persist: jest.fn() };
+  E.persistEvent(ev);
+
+  expect(ev.persist).toHaveBeenCalled();
+});
+
+it('takeEvents', done => {
   const div = document.createElement('div');
   const ev = new Event('someevent');
 
