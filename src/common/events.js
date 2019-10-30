@@ -20,6 +20,8 @@ export const takeEvents = (type, source) =>
     U.toProperty,
   );
 
+export const persistEvent = U.lift(e => e.persist());
+
 //
 
 export const pagePos = R.props(['pageX', 'pageY']);
