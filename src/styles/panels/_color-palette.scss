@@ -1,7 +1,9 @@
 .colorPalette__palette {
-  border-bottom: solid 1px $color-divider;
-  margin-bottom: $unit-1x;
-  padding-bottom: $unit-1x;
+  &:not(:last-child) {
+    border-bottom: solid 1px $color-divider;
+    margin-bottom: $unit-1x;
+    padding-bottom: $unit-1x;
+  }
 }
 
 .colorPalette__header {

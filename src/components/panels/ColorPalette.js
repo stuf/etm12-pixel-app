@@ -11,7 +11,7 @@ import Group from 'components/ui/Group';
 export default function Palette(props) {
   const actions = U.serializer();
 
-  const { currentPalette, currentColor, palettes } = props;
+  const { currentPalette, currentColor, palettes, showNames = false } = props;
 
   const tupleToRgba = U.lift(
     ([r, g, b, a]) => `rgba(${r},${g},${b},${a / 255})`,
