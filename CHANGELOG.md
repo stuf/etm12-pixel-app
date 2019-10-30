@@ -1,3 +1,24 @@
+## [0.3.4](https://github.com/stuf/etm12-pixel-app/compare/v0.3.3...v0.3.4) (2019-10-30)
+
+
+### Bug Fixes
+
+* **common:** canvas: correctly parse RGBA hex colors ([6f884c1](https://github.com/stuf/etm12-pixel-app/commit/6f884c13b251550d2851eb88e1c2b37625f1dbe6))
+
+
+### Features
+
+* **common:** meta: add buildInfo meta ([5923760](https://github.com/stuf/etm12-pixel-app/commit/59237601bdb0ef15088f620151808ba10d003f7f))
+* **core:** state ([cf3a34d](https://github.com/stuf/etm12-pixel-app/commit/cf3a34d04aab769e854856d1b1b99f265052bc99))
+* **core-components:** devtool: add FlagToggleList to Devtool components ([afd2661](https://github.com/stuf/etm12-pixel-app/commit/afd26610795bc1b8e76af625edbd8d5c7c5de2a3))
+* **panel-component:** color-palette: implement color selection, color preview ([cead56c](https://github.com/stuf/etm12-pixel-app/commit/cead56c3bde290bfee81cc64cecc7d08dc75084f))
+* **panel-components:** color-palette: add component ([c0bf756](https://github.com/stuf/etm12-pixel-app/commit/c0bf7563f10efe4b762db747d7f396a714ee35c6))
+* **panel-components:** color-palette: allow color-palette to work on empty data gracefully ([b1bec12](https://github.com/stuf/etm12-pixel-app/commit/b1bec12e149b97b6e05273a27c36264fdc4877bc))
+* **panel-components:** devtools: extract devtools into own panel component ([5e85428](https://github.com/stuf/etm12-pixel-app/commit/5e8542815e261ac39bb56b74d41252f48b826f63))
+* wIP implement new panel base ([704202a](https://github.com/stuf/etm12-pixel-app/commit/704202a393d8de4ae171770dc17cf2ccaa4a92db))
+
+
+
 ## [0.3.3](https://github.com/stuf/etm12-pixel-app/compare/v0.3.2...v0.3.3) (2019-10-28)
 
 
