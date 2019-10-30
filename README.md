@@ -27,6 +27,12 @@ yarn start
 - `yarn test:simple` — Application-wide tests without watch-mode
 - `yarn test:cov` — Test and collect code coverage reports
 
+### Testing libraries
+
+- unit tests through `jest`
+- snapshot testing as lightweight regression tests for presentation components
+- property-based testing through `jsverify`
+
 ## Building
 
 The production bundle can be created by running

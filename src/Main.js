@@ -17,7 +17,7 @@ function MainScene({ routerProps = {}, ...props }) {
   );
 
   return (
-    <main className="layout--main debugRoot">
+    <main className="layout--main">
       <Router {...routerProps}>
         <Switch>
           <Route path="/load" component={WithRootProps(LoadImageScene)} />
