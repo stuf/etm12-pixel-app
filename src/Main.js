@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import SplashScene from 'scenes/Splash';
 import EditorScene from 'scenes/Editor';
+import LoadImageScene from 'scenes/LoadImage';
 import NotFoundScene from 'scenes/NotFound';
 import TestPanelsScene from 'scenes/test/TestPanels';
 
@@ -19,6 +20,7 @@ function MainScene({ routerProps = {}, ...props }) {
     <main className="layout--main debugRoot">
       <Router {...routerProps}>
         <Switch>
+          <Route path="/load" component={WithRootProps(LoadImageScene)} />
           <Route path="/editor" component={WithRootProps(EditorScene)} />
           <Route
             exact
