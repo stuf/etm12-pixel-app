@@ -1,3 +1,4 @@
+import * as J from 'jsverify';
 import * as A from 'common/canvas';
 
 import { testEq } from 'test-utils';
@@ -11,8 +12,6 @@ const {
   drawingEvents,
   getIx,
   getIxRange,
-  rgbFromHex,
-  fromHexColor,
   empty,
   saveImage,
   convertFromHexColor,
@@ -25,11 +24,20 @@ const mkMouseOut = () => new MouseEvent('mouseout');
 
 //
 
+const arbCoord = J.tuple([J.nat, J.nat]);
+const arbSize = J.tuple([J.nat, J.nat]);
+
 describe('<canvas> element', () => {
   describe('scaling', () => {
-    it('scaleSize', () => {
-      expect(scaleSize([1, 1], 8)).toEqual([8, 8]);
-    });
+    J.property(
+      'scaleSize (a, b) * m = (am, bm)',
+      arbSize,
+      J.nat,
+      ([a, b], m) => {
+        const [da, db] = scaleSize([a, b], m);
+        return da === a * m && db === b * m;
+      },
+    );
   });
 
   describe('context', () => {
@@ -38,7 +46,6 @@ describe('<canvas> element', () => {
     });
 
     it('getContext', () => {
-      // CanvasRenderingContext2D
       const dom = document.createElement('canvas');
       const ctx = getContext(dom);
 
