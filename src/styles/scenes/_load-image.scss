@@ -1,0 +1,35 @@
+.load-image-root {
+  background-color: $color-gray-200;
+}
+
+.loadImage__preview {
+  padding: $spacing-base 0;
+
+  > * {
+    margin: $spacing-base 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &Header {
+    font-weight: $font-weight-bold;
+  }
+
+  &Content {
+    text-align: center;
+  }
+
+  &Footer {
+    text-align: right;
+  }
+
+  &Size {
+    margin-bottom: $spacing-base;
+  }
+}
