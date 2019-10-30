@@ -24,14 +24,9 @@
   height: 100%;
 
   &__children {
-    border: dashed 1px #00f;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &::before {
-      @include debugAnnotate('panelRoot__children', 1);
-    }
 
     > .panelRoot {
       flex: 1;

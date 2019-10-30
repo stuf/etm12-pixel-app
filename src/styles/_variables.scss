@@ -1,8 +1,13 @@
 $font-family-base: 'IBM Plex Sans', 'Work Sans', sans-serif !default;
 $font-family-monospace: 'IBM Plex Mono', monospace !default;
 
+// TYPOGRAPHY
+
 $font-weight-base: 400 !default;
 $font-size-base: 16px !default;
+
+$font-weight-bold: 600 !default;
+$font-weight-light: 200 !default;
 
 $text-primary: rgba(0, 0, 0, 0.87) !default;
 $text-secondary: rgba(0, 0, 0, 0.54) !default;
@@ -17,11 +22,13 @@ $text-size-normal: $font-size-base !default;
 $text-color-white: rgba(255, 255, 255, 0.8);
 $text-color-black: rgba(0, 0, 0, 0.8);
 
+$color-white: #ffffff !default;
 $color-gray-100: #f5f5f5 !default;
 $color-gray-200: #eeeeee !default;
 $color-gray-300: #e0e0e0 !default;
 $color-gray-400: #bdbdbd !default;
 $color-gray-800: #424242 !default;
+$color-black: #000000 !default;
 
 // SIZING & SPACING
 
@@ -38,6 +45,10 @@ $unit-10x: $mini-unit * 10 !default;
 // SPACING
 
 $spacing-base: 0.5rem !default;
+
+// BORDERS
+
+$border-radius-base: $mini-unit / 2 !default;
 
 // FORMS & INPUTS
 
