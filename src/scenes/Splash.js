@@ -25,10 +25,7 @@ function SplashScene({ redirectTo, redirectDelay = 2000, history }) {
   const sinkEff = U.sink(U.when(redirectTo, redirectEff));
 
   return (
-    <div
-      className={U.cns('scene-root', 'splash-root')}
-      data-scene-name="splash"
-    >
+    <section className={U.cns('scene-root', 'splash-root')}>
       <>{sinkEff}</>
       <Panel>
         <div className="splash-logo">
@@ -36,7 +33,7 @@ function SplashScene({ redirectTo, redirectDelay = 2000, history }) {
           <h1>pixel</h1>
         </div>
       </Panel>
-    </div>
+    </section>
   );
 }
 

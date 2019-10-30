@@ -4,11 +4,11 @@ import * as U from 'karet.util';
 
 function NotFoundScene() {
   return (
-    <article className={U.cns('not-found-root', 'scene-root')}>
+    <section className={U.cns('not-found-root', 'scene-root')}>
       <header>Not found</header>
 
       <p>Now why'd you have and come to a place that doesn't exist</p>
-    </article>
+    </section>
   );
 }
 

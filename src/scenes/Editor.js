@@ -25,8 +25,9 @@ import * as M from 'common/meta';
 import { empty, saveImage } from 'common/canvas';
 
 export default function EditorScene(props) {
+  const test = U.atom(32);
   const { state, canvasData, menuItems, env } = props;
-  const { canvas, color, currentFile, app, devtool } = U.destructure(state);
+  const { canvas, color, currentFile, devtool } = U.destructure(state);
 
   const { size, scale } = U.destructure(canvas);
   const { currentColor, currentPalette, palettes } = U.destructure(color);
@@ -61,10 +62,7 @@ export default function EditorScene(props) {
   //
 
   return (
-    <div
-      className={U.cns('scene-root', 'editor-root')}
-      data-scene-name="editor"
-    >
+    <section className={U.cns('scene-root', 'editor-root')}>
       {U.ifElse(
         imageDataValid,
         <>
@@ -163,6 +161,10 @@ export default function EditorScene(props) {
                 Purge history
               </ClearHistoryButton>
             </Group>
+
+            <Group title="Image">
+              <Field label="Test value" value={test} />
+            </Group>
           </div>
         </>,
         <div>
@@ -170,6 +172,6 @@ export default function EditorScene(props) {
           something went wrong
         </div>,
       )}
-    </div>
+    </section>
   );
 }

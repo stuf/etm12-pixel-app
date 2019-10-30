@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<article
+<section
   className="not-found-root scene-root"
 >
   <header>
@@ -10,5 +10,5 @@ exports[`renders correctly 1`] = `
   <p>
     Now why'd you have and come to a place that doesn't exist
   </p>
-</article>
+</section>
 `;

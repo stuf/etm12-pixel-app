@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div
+<section
   className="scene-root splash-root"
-  data-scene-name="splash"
 >
   <FromClass
     args={
@@ -69,5 +68,5 @@ exports[`renders correctly 1`] = `
       </h1>
     </div>
   </Panel>
-</div>
+</section>
 `;
