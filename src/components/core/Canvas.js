@@ -47,6 +47,8 @@ export default function Canvas({ size, color, scale, data, devtool }) {
     }),
   );
 
+  const effSink = U.sink(updateData);
+
   //
 
   return (
@@ -58,7 +60,7 @@ export default function Canvas({ size, color, scale, data, devtool }) {
         height: sndIn(scaledSize),
       }}
     >
-      <>{U.sink(updateData)}</>
+      <>{effSink}</>
       <PixelGrid size={size} scale={scale} />
       {U.when(
         U.view(['flags', 'offsetGuide'], devtool),
