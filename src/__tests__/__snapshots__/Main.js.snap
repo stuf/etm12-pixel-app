@@ -8,6 +8,10 @@ exports[`matches snapshot 1`] = `
     <Switch>
       <Route
         component={[Function]}
+        path="/load"
+      />
+      <Route
+        component={[Function]}
         path="/editor"
       />
       <Route
