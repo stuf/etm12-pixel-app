@@ -80,13 +80,7 @@ export default function EditorScene(props) {
           />
 
           <div className={U.cns('editorLeft')}>
-            {U.when(
-              U.view('devMode', app),
-              <Group title="Dev tools">
-                <FlagToggleList items={U.view('flags', devtool)} />
-              </Group>,
-            )}
-
+            <Panel.Devtools {...{ devtool }} />
             <Panel.ColorPalette
               {...{
                 currentPalette,
