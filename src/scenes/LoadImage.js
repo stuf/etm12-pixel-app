@@ -13,9 +13,6 @@ import Panel from 'components/layout/Panel';
 import Button from 'components/ui/Button';
 import Modal from 'components/ui/Modal';
 
-// const getImageSize = img =>
-//   U.flatMapLatest(x => K.constant(R.props(['width', 'height'], x)), img);
-
 export default function LoadImageScene(props) {
   const loadImage = U.flatMapLatest(dataURL => {
     const img = new Image();
@@ -24,16 +21,7 @@ export default function LoadImageScene(props) {
     return K.fromEvents(img, 'load', L.get('target')).toProperty();
   });
 
-  Object.assign(window, {
-    U,
-    H,
-    R,
-    V,
-    props,
-  });
-
   const files = U.view(L.rewrite(Array.from), U.atom([]));
-  const selectedFile = U.view(L.first, files);
 
   const uploads = U.thru(
     files,
@@ -49,8 +37,6 @@ export default function LoadImageScene(props) {
     ),
     U.toProperty,
   );
-
-  files.log('files');
 
   const firstImg = U.thru(uploads, U.view(L.first));
   const fr = U.view('dataURL', firstImg);
@@ -69,9 +55,6 @@ export default function LoadImageScene(props) {
   const width = fstIn(imageSize);
   const height = sndIn(imageSize);
   const src = L.get('src', loadedImage);
-
-  loadedImage.log('x');
-  imageSize.log('y');
 
   return (
     <section className={U.cns('scene-root', 'load-image-root')}>
