@@ -22,5 +22,15 @@ describe('ColorPalette', () => {
     const wrapper = mount(
       <ColorPalette {...{ currentColor, currentPalette, palettes }} />,
     );
+
+    wrapper
+      .find('.colorPalette__palette')
+      .at(1)
+      .find('.colorPalette__colorButton')
+      .at(2)
+      .simulate('click');
+
+    expect(currentPalette.get()).toBe(1);
+    expect(currentColor.get()).toBe(2);
   });
 });

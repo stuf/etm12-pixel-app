@@ -16,7 +16,6 @@ import { Field, Range, Dropdown } from 'components/form';
 import { FlagToggleList } from 'components/core/Devtool';
 import * as Panel from 'components/panels';
 import Button from 'components/ui/Button';
-import Palette from 'components/ui/Palette';
 import Bitmap from 'components/ui/Bitmap';
 import Group from 'components/ui/Group';
 

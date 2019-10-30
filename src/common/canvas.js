@@ -73,7 +73,7 @@ const _hexFromString = str => Long.fromString(str, null, 16);
  * Convert a string representing a hexadecimal color, optionally
  * including an alpha value, into a 4-tuple (RGBA).
  */
-export const convertFromHexColor = str => {
+export const convertFromHexColor = U.lift(str => {
   if (str.length === 6) {
     const val = parseInt(str, 16);
     return [(val & 0xff0000) >> 16, (val & 0xff00) >> 8, val & 0xff, 255];
@@ -91,7 +91,7 @@ export const convertFromHexColor = str => {
     +val.and(gmask).shr(8),
     +val.and(amask),
   ];
-};
+});
 
 /**
  * @type {LiftedAry1Fn<[number, number], number[]>}
