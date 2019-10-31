@@ -5,6 +5,10 @@
 .loadImage__preview {
   padding: $spacing-base 0;
 
+  img {
+    max-width: 100%;
+  }
+
   > * {
     margin: $spacing-base 0;
 
