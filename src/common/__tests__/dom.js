@@ -11,8 +11,14 @@ describe('common/dom', () => {
 
   it('mkResizeObserver', () => {
     const fn = jest.fn();
-    const el = document.createElement('div');
     const obs = mkResizeObserver(fn);
     expect(obs).toBeInstanceOf(ResizeObserver);
+  });
+
+  it.skip('observeOffset', () => {
+    const el = document.createElement('div');
+    const obs = observeOffset(el);
+
+    el.dispatchEvent(new UIEvent('resize'));
   });
 });
