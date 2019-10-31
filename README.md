@@ -17,9 +17,41 @@
 You'll need Node.js (a fresh version, anything over 8 but 12 is preferred). Yarn is recommended, but not required.
 
 ```sh
+# Install all dependencies
 yarn
+```
+
+```sh
+# Run app
 yarn start
 ```
+
+### Git hooks
+
+This repository uses [husky](https://github.com/typicode/husky) for Git hooks. _All tests must pass to be allowed pushing to remote_.
+
+### Committing code
+
+This repository uses [Git commitizen](https://github.com/commitizen) for creating commit messages in the repository. After installing dependencies, commitizen should also be configured in the project. Use `git cz` instead of `git commit` for commits.
+
+### Project scripts
+
+- `yarn start`
+  - start application locally with some additional development environment-related additions
+- `yarn start:app`
+  - same as `yarn start`, but skip devenv-related additions
+- `yarn build`
+  - create production bundle; _`yarn prebuild` must succeed_
+- `yarn build:changelog`
+  - generate [CHANGELOG.md](./CHANGELOG.md) file based committed code changes
+- `yarn prebuild`
+  - run tests and collect code coverage before creating the application bundle
+- `yarn test`
+  - run tests in watch mode
+- `yarn test:simple`
+  - run tests without watch mode
+- `yarn test:cov`
+  - run tests without watch mode, collect code coverage reports
 
 ## Running tests
 
