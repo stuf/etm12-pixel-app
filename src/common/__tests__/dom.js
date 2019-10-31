@@ -1,4 +1,4 @@
-import { mkElem } from 'common/dom';
+import { mkElem, mkResizeObserver, observeOffset } from 'common/dom';
 
 describe('common/dom', () => {
   it('mkElem', () => {
@@ -7,5 +7,12 @@ describe('common/dom', () => {
     expect(el).toBeInstanceOf(HTMLElement);
     expect(el).toBeInstanceOf(HTMLDivElement);
     expect(el).toMatchObject({ width: 200 });
+  });
+
+  it('mkResizeObserver', () => {
+    const fn = jest.fn();
+    const el = document.createElement('div');
+    const obs = mkResizeObserver(fn);
+    expect(obs).toBeInstanceOf(ResizeObserver);
   });
 });
