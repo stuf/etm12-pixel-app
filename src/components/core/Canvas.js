@@ -4,7 +4,7 @@ import * as R from 'kefir.ramda';
 import * as L from 'kefir.partial.lenses';
 import * as K from 'kefir';
 
-import { pagePos } from 'common/events';
+import { takeEvents, pagePos } from 'common/events';
 import { fstIn, sndIn } from 'common/meta';
 import {
   elementOffsetFor,
@@ -19,15 +19,25 @@ import Bitmap from 'components/ui/Bitmap';
 import PixelGrid from './_/PixelGrid';
 import OffsetGuide from './_/OffsetGuide';
 
-export default function Canvas({ size, color, scale, data, devtool }) {
+export default function Canvas({
+  size,
+  color,
+  scale,
+  data,
+  devtool,
+  updateOffsetBy,
+}) {
   /** @type {ObsElement} */
   const dom = U.variable();
   const rgba = L.get([L.dropPrefix('#'), L.reread(fromHex)], color);
 
+  const updateBy = U.parallel([K.constant(true), scale, updateOffsetBy]);
+
   const scaledSize = scaleSize(size, scale);
 
   const pixelXY = drawingEvents(dom);
-  const offset = elementOffsetFor(dom);
+
+  const offset = updateBy.flatMap(() => elementOffsetFor(dom)).toProperty();
   const offsetXY = offsetPositionWith(elementOffsetFor(dom), pagePos(pixelXY));
   const scaledXY = scalePositionWith(reciprocal(scale), offsetXY);
 
