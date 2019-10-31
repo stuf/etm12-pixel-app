@@ -11,7 +11,6 @@ describe('LoadImage', () => {
     const file = new File(['foo'], 'foo.png', { type: 'image/png' });
 
     const button = scene.find('#load-image');
-    console.log({ button });
 
     scene.find('input[type="file"]').simulate('change', {
       target: {
