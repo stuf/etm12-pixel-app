@@ -2,6 +2,9 @@
 /**
  * @module EditorScene
  * @namespace scenes
+ *
+ * @todo Recalculating offset in a smarter way than using ResizeObserver to merely
+ *       trigger new calls to `getBoundingClientRect`.
  */
 import * as React from 'karet';
 import * as A from 'kefir.atom';
@@ -22,10 +25,13 @@ import Group from 'components/ui/Group';
 import LayoutHeader from 'components/layout/Header';
 
 import * as M from 'common/meta';
+import { observeOffset } from 'common/dom';
 import { empty, saveImage } from 'common/canvas';
 
 export default function EditorScene(props) {
-  const test = U.atom(32);
+  const editorRoot = U.variable();
+  const obs = observeOffset(editorRoot);
+
   const { state, canvasData, menuItems, env } = props;
   const { canvas, color, currentFile, devtool } = U.destructure(state);
 
@@ -83,7 +89,16 @@ export default function EditorScene(props) {
             />
           </div>
 
-          <div className={U.cns('relative-pos', 'editorCenter')}>
+          <div
+            className={U.cns('relative-pos', 'editorCenter')}
+            ref={U.refTo(editorRoot)}
+          >
+            <div className="editorScale">
+              <header>Scale</header>
+
+              <Range value={scale} min={2} max={17} tickFormat={x => `${x}x`} />
+            </div>
+
             <Canvas
               {...{
                 devtool,
@@ -91,6 +106,7 @@ export default function EditorScene(props) {
                 scale,
                 data,
                 color: selectedColor,
+                updateOffsetBy: obs,
               }}
             />
           </div>
@@ -155,10 +171,6 @@ export default function EditorScene(props) {
               <ClearHistoryButton history={canvasData}>
                 Purge history
               </ClearHistoryButton>
-            </Group>
-
-            <Group title="Image">
-              <Field label="Test value" value={test} />
             </Group>
           </div>
         </>,
