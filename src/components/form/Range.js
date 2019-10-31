@@ -7,28 +7,32 @@ import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
 
-function Range({
-  value,
-  min,
-  max,
-  step = 1,
-  onChange,
-  className,
-  id = 'none',
-}) {
+export default function Range(props) {
+  const {
+    value,
+    min,
+    max,
+    showTick = R.F,
+    tickFormat = R.identity,
+    step = 1,
+    onChange,
+    className,
+    id,
+  } = props;
+
   return (
     <div className={U.cns('formField', '--range', className)}>
       <U.Input
         {...{ type: 'range', value, min, max, step, onChange, list: id }}
       />
 
-      <datalist id={id}>
+      <datalist id={id} className="formField__ticks">
         {U.thru(
-          R.range(0, max),
+          R.range(min, max),
           U.mapElems((it, i) => {
             const isFirst = R.equals(it, min);
             const isLast = R.equals(it, R.subtract(max, 1));
-            const label = U.when(R.or(isFirst, isLast), it);
+            const label = U.when(R.or(isFirst, isLast), U.lift(tickFormat)(it));
 
             return (
               <option
@@ -47,5 +51,3 @@ function Range({
     </div>
   );
 }
-
-export default Range;
