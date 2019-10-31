@@ -60,7 +60,7 @@ describe('<canvas> element', () => {
 
       const ctx = dom.getContext('2d');
       /** @type {ImageData} */
-      const data = getImageData(ctx, w, h);
+      const data = getImageData(ctx, [w, h]);
 
       expect(data).toBeInstanceOf(ImageData);
       expect(data.width).toBe(w);

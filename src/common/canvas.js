@@ -5,6 +5,7 @@ import { saveAs } from 'file-saver';
 import Long from 'long';
 
 import { takeEvents } from 'common/events';
+import { mkElem } from 'common/dom';
 import { mkClampedArray, mkImageData } from 'common/data';
 
 import { LiftedAry1Fn, LiftedAry2Fn, Size } from 'types.d';
@@ -22,9 +23,18 @@ export const scaleSize = U.lift(([w, h], m) => [w * m, h * m]);
 export const getContext = U.lift(el => el.getContext('2d'));
 
 /**
+ * @type {LiftedAry2Fn<CanvasRenderingContext2D, Size, ImageData>}
+ */
+export const getImageData = U.lift((ctx, [w, h]) =>
+  ctx.getImageData(0, 0, w, h),
+);
+
+/**
  * @type {LiftedAry3Fn<CanvasRenderingContext2D, number, number, ImageData>}
  */
-export const getImageData = U.lift((ctx, w, h) => ctx.getImageData(0, 0, w, h));
+export const getImageData_ = U.lift((ctx, w, h) =>
+  ctx.getImageData(0, 0, w, h),
+);
 
 //
 
@@ -109,10 +119,7 @@ export const empty = U.lift(([w, h]) => Array(w * h * COLOR_CHANNELS).fill(0));
 export const saveImage = U.lift((data, size, filename) => {
   const [width, height] = size;
 
-  const el = Object.assign(document.createElement('canvas'), {
-    width,
-    height,
-  });
+  const el = mkElem('canvas', { width, height });
 
   const ctx = getContext(el);
 
