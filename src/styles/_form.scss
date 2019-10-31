@@ -42,6 +42,32 @@ $field-border-radius: 4px !default;
   &.--range {
     user-select: none;
 
+    datalist {
+      display: flex;
+      justify-content: space-between;
+
+      > option {
+        display: none;
+        position: relative;
+        padding-top: $unit-1x;
+        margin-top: $unit-1x;
+
+        &[label] {
+          display: block;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: 50%;
+          top: 0;
+          width: 1px;
+          height: 5px;
+          border-left: solid 1px #f00;
+        }
+      }
+    }
+
     input[type='range'] {
       height: 1rem;
       appearance: none;
