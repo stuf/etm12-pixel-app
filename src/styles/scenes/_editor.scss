@@ -54,3 +54,11 @@ $border-thick: solid 2px $border-color;
     height: 100%;
   }
 }
+
+.editorScale {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  margin: 1rem 1rem 0 0;
+}
