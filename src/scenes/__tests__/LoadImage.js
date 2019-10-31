@@ -5,7 +5,18 @@ import toJson from 'enzyme-to-json';
 import LoadImageScene from 'scenes/LoadImage';
 
 describe('LoadImage', () => {
-  it('matches snapshot', () => {
-    mount(<LoadImageScene />);
+  it('allow for a workflow', () => {
+    const scene = mount(<LoadImageScene />);
+
+    const file = new File(['foo'], 'foo.png', { type: 'image/png' });
+
+    const button = scene.find('#load-image');
+    console.log({ button });
+
+    scene.find('input[type="file"]').simulate('change', {
+      target: {
+        files: [file],
+      },
+    });
   });
 });
