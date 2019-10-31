@@ -6,15 +6,21 @@ import toJson from 'enzyme-to-json';
 
 import EditorScene from 'scenes/Editor';
 
+import { empty } from 'common/canvas';
+
 import Button from 'components/ui/Button';
 
 it('matches snapshot', () => {
+  const size = [4, 4];
+
   const state = U.atom({
-    canvas: { size: [4, 4], scale: 16 },
+    canvas: { size, scale: 16 },
     color: { currentPalette: 0, currentColor: 0, palettes: [] },
   });
 
-  const canvasData = U.atom(H.init({ maxCount: 10, replacePeriod: 200 }, []));
+  const canvasData = U.atom(
+    H.init({ maxCount: 10, replacePeriod: 200 }, empty(size)),
+  );
 
   const w = mount(<EditorScene {...{ state, canvasData }} />);
 
