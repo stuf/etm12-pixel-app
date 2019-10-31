@@ -40,11 +40,6 @@ export default function EditorScene(props) {
 
   const imageDataValid = canvasData instanceof A.AbstractMutable;
 
-  const ensureEmptyImage = U.thru(
-    empty(size),
-    U.consume(data => U.view(Z.present, canvasData).set(data)),
-  );
-
   const canvasDataCurrent = U.view(Z.present, canvasData);
 
   //
@@ -66,7 +61,7 @@ export default function EditorScene(props) {
       {U.ifElse(
         imageDataValid,
         <>
-          <>{U.sink(U.parallel([ensureEmptyImage, actions]))}</>
+          <>{U.sink(U.parallel([actions]))}</>
           <LayoutHeader
             {...{
               env,
