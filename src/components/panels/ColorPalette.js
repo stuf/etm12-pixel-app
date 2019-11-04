@@ -31,7 +31,10 @@ export default function Palette(props) {
               U.when(R.equals(currentPalette, pi), '--active'),
             )}
           >
-            <header className="colorPalette__header">{nameIn(p)}</header>
+            {U.when(
+              showNames,
+              <header className="colorPalette__header">{nameIn(p)}</header>,
+            )}
 
             <ul className="colorPalette__colorList">
               {U.thru(

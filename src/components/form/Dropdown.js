@@ -1,8 +1,4 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
-/**
- * @module Dropdown
- * @namespace components.form
- */
 import * as React from 'karet';
 import * as U from 'karet.util';
 import * as L from 'kefir.partial.lenses';

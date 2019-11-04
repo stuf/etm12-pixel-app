@@ -1,18 +1,16 @@
 /* eslint no-unused-vars: [1, {"varsIgnorePattern": "[K|T]"}] */
-/**
- * @module Range
- * @namespace components.form
- */
 import * as React from 'karet';
 import * as U from 'karet.util';
 import * as R from 'kefir.ramda';
+import * as L from 'kefir.partial.lenses';
+
+import { asDec } from 'common/util';
 
 export default function Range(props) {
   const {
     value,
     min,
     max,
-    showTick = R.F,
     tickFormat = R.identity,
     step = 1,
     onChange,
@@ -23,7 +21,15 @@ export default function Range(props) {
   return (
     <div className={U.cns('formField', '--range', className)}>
       <U.Input
-        {...{ type: 'range', value, min, max, step, onChange, list: id }}
+        {...{
+          type: 'range',
+          value: U.view(L.normalize(asDec), value),
+          min,
+          max,
+          step,
+          onChange,
+          list: id,
+        }}
       />
 
       <datalist id={id} className="formField__ticks">
