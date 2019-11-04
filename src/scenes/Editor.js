@@ -32,7 +32,7 @@ export default function EditorScene(props) {
   const editorRoot = U.variable();
   const obs = observeOffset(editorRoot);
 
-  const { state, canvasData, menuItems, env } = props;
+  const { state, canvasData, menuItems, env, history } = props;
   const { canvas, color, currentFile, devtool } = U.destructure(state);
 
   const { size, scale } = U.destructure(canvas);
@@ -51,6 +51,8 @@ export default function EditorScene(props) {
   //
 
   const actions = U.serializer();
+
+  const loadImageEff = U.doPush(actions, () => history.push('/load'));
 
   const saveImageEff = U.doPush(actions, () =>
     U.thru(
@@ -93,12 +95,6 @@ export default function EditorScene(props) {
             className={U.cns('relative-pos', 'editorCenter')}
             ref={U.refTo(editorRoot)}
           >
-            <div className="editorScale">
-              <header>Scale</header>
-
-              <Range value={scale} min={2} max={17} tickFormat={x => `${x}x`} />
-            </div>
-
             <Canvas
               {...{
                 devtool,
@@ -138,7 +134,7 @@ export default function EditorScene(props) {
                   Save Image
                 </Button>
 
-                <Button group disabled>
+                <Button group id="load-image" action={loadImageEff}>
                   Load Image
                 </Button>
               </div>
