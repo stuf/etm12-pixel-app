@@ -1,7 +1,8 @@
 $modal-background: $color-white !default;
 
 .modal {
-  border: solid 2px rgba($color-black, 0.3);
+  // border: solid 2px rgba($color-black, 0.3);
+  box-shadow: $box-shadow-small;
   border-radius: $border-radius-base;
   background: $modal-background;
   width: 30vw;
@@ -9,15 +10,17 @@ $modal-background: $color-white !default;
   &__header,
   &__footer,
   &__content {
-    padding: $unit-1x;
+    padding: $unit-2x;
   }
 
   &__header {
+    padding-bottom: $unit-1x;
     text-transform: uppercase;
     font-weight: 900;
   }
 
   &__footer {
+    padding-top: $unit-1x;
     text-align: right;
   }
 }
