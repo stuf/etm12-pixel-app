@@ -1,6 +1,7 @@
 import * as React from 'karet';
 import * as L from 'kefir.partial.lenses';
 import * as U from 'karet.util';
+import * as H from 'kefir.partial.lenses.history';
 import * as R from 'kefir.ramda';
 import * as K from 'kefir';
 import * as FR from 'karet.fr';
@@ -86,6 +87,7 @@ export default function LoadImageScene(props) {
         U.holding(() => {
           canvasSize.set([width, height]);
           canvasData.view(present).set(data);
+          canvasData.modify(H.undoForget);
           history.push('/editor');
         });
       }),
@@ -131,7 +133,7 @@ export default function LoadImageScene(props) {
                     {fstIn(imageSize)} × {sndIn(imageSize)} pixels
                   </div>
                   <div className="loadImage__previewImage">
-                    <img {...{ src }} />
+                    <img {...{ src, alt: 'Preview' }} />
                   </div>
                 </div>
               </section>,
