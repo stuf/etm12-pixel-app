@@ -4,7 +4,7 @@ import * as R from 'kefir.ramda';
 import * as L from 'kefir.partial.lenses';
 import * as K from 'kefir';
 
-import { takeEvents, pagePos } from 'common/events';
+import { pagePos } from 'common/events';
 import { fstIn, sndIn } from 'common/meta';
 import {
   elementOffsetFor,
@@ -19,26 +19,24 @@ import Bitmap from 'components/ui/Bitmap';
 import PixelGrid from './_/PixelGrid';
 import OffsetGuide from './_/OffsetGuide';
 
-export default function Canvas({
-  size,
-  color,
-  scale,
-  data,
-  devtool,
-  updateOffsetBy,
-}) {
-  /** @type {ObsElement} */
-  const dom = U.variable();
+export default function Canvas(props) {
+  const {
+    size,
+    color,
+    scale,
+    data,
+    devtool,
+    updateOffsetBy,
+    dom = U.variable(),
+  } = props;
   const rgba = L.get([L.dropPrefix('#'), L.reread(fromHex)], color);
 
-  const updateBy = U.parallel([K.constant(true), scale, updateOffsetBy]);
-
+  const updateBy = U.parallel([K.constant(true), updateOffsetBy]).toProperty();
   const scaledSize = scaleSize(size, scale);
 
   const pixelXY = drawingEvents(dom);
-
   const offset = updateBy.flatMap(() => elementOffsetFor(dom)).toProperty();
-  const offsetXY = offsetPositionWith(elementOffsetFor(dom), pagePos(pixelXY));
+  const offsetXY = offsetPositionWith(offset, pagePos(pixelXY));
   const scaledXY = scalePositionWith(reciprocal(scale), offsetXY);
 
   const posIx = U.thru(
@@ -46,13 +44,14 @@ export default function Canvas({
     U.skipDuplicates(R.equals),
   );
 
-  const colorXY = K.combine([posIx], [rgba]);
+  const colorXY = K.combine([posIx], [rgba]).toProperty();
 
   //
 
   const updateData = U.thru(
-    colorXY,
-    U.consume(([[ia, ib], c]) => {
+    U.template([colorXY, size]),
+    U.consume(([[[ia, ib], c]]) => {
+      console.log({ ia, ib, c });
       data.view(L.slice(ia, ib)).set(c);
     }),
   );
