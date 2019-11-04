@@ -30,6 +30,7 @@ export default function TestPanelsScene(props) {
 
 //
 
+// eslint-disable-next-line
 const json = [
   {
     children: [
