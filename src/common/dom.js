@@ -1,5 +1,4 @@
 import * as U from 'karet.util';
-import * as R from 'kefir.ramda';
 /**
  * @param {string} type
  * @param {object} attrs

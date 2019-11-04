@@ -3,6 +3,11 @@ import * as R from 'kefir.ramda';
 
 import { LiftedAry1Fn } from 'types.d';
 
+export const toBase = b => n => parseInt(n, b);
+
+export const asDec = toBase(10);
+export const asHex = toBase(16);
+
 export const surroundWith = R.curry((l, r, v) => R.join('', [l, v, r]));
 
 export const parenthesize = v => surroundWith('(', ')', v);
