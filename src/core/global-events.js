@@ -3,10 +3,9 @@
  * @namespace core
  */
 import * as U from 'karet.util';
+import * as R from 'kefir.ramda';
 import * as K from 'kefir';
 import { takeEvents } from 'common/events';
-
-import { Value } from 'types.d';
 
 /**
  * @type {WindowEvents}
@@ -31,18 +30,31 @@ export const Document = {
   },
 };
 
-// Derived
+// Derived keyboard events
 
-export const Derived = {
-  Window: {
-    mouse: {
-      mouseDownAndDrag: K.merge([
-        Window.mouse.mousedown,
-        Window.mouse.mousemove,
-      ]).toProperty(),
-    },
-  },
-};
+const globalKeydown = Document.keyboard.keydown;
+
+export const altPressed = U.skipUnless(
+  R.whereEq({ altKey: true }),
+  globalKeydown,
+);
+
+export const ctrlPressed = U.skipUnless(
+  R.whereEq({ ctrlKey: true }),
+  globalKeydown,
+);
+
+export const metaPressed = U.skipUnless(
+  R.whereEq({ metaKey: true }),
+  globalKeydown,
+);
+
+export const shiftPressed = U.skipUnless(
+  R.whereEq({ shiftKey: true }),
+  globalKeydown,
+);
+
+//
 
 /**
  * @typedef {K.Property<MouseEvent, any>} MouseEventValue
