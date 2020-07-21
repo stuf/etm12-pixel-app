@@ -50,7 +50,7 @@
     "@types/react-dom": "^16.9.1",
     "@types/react-router": "^5.1.1",
     "@types/react-router-dom": "^5.1.0",
-    "codecov": "^3.6.1",
+    "codecov": "^3.7.1",
     "conventional-changelog-cli": "^2.0.25",
     "cz-conventional-changelog": "3.0.2",
     "enzyme": "^3.10.0",
