@@ -60,7 +60,7 @@
     "jest-canvas-mock": "^2.1.2",
     "jest-kefir": "^1.0.0",
     "jsverify": "^0.8.4",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "react-test-renderer": "^16.10.2",
     "resize-observer-polyfill": "^1.5.1",
     "shelljs": "^0.8.3",
